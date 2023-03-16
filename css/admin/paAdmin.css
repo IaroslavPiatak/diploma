@@ -3,6 +3,7 @@ body{
   justify-content: center;
   align-items: center;
 }
+/*контейнер для фотокарточек*/
 .pa_container{
   display: flex;
   justify-content: center;
@@ -10,6 +11,7 @@ body{
   align-items: center;
   flex-direction: column;
 }
+/*Главная фотокарточка и контейнер для первых четырех*/
 .first_container{
   width:1100px;
   height:350px;
@@ -18,15 +20,18 @@ body{
   align-items: center;
   gap:100px;
   }
-
+/*Стили карточки профиля*/
 .profile_card{
-  display: flex;
+display: flex;
+align-items: center;
+justify-content:center ;
 width: 300px;
 height: 350px;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 15px;
 background: #FFFFFF;
   }
+  /*Контейнер карточек с настройками(первые четыре)*/
 .card_content{
   width:700px;
   height:350px;
@@ -34,6 +39,7 @@ background: #FFFFFF;
   flex-wrap:wrap;
   gap:50px 100px;
 }
+  /*Стили карточки с настройками(первые четыре)*/
   .mail, .setting, .new_user, .delete, .facultative, .items, .shedule{
 width: 300px;
 height: 150px;
@@ -41,6 +47,7 @@ background: #FFFFFF;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 15px;
   }
+    /*Нижний контейнер с карточками*/
   .second_container{
     width:1100px;
     height:150px;
@@ -48,10 +55,57 @@ border-radius: 15px;
     display:flex; 
     gap:100px;
   }
-
+  /*Стиль карточки профиля 2*/
   .profile_card_content{
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
+gap:20px;
   }
+.profile_card_text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+  /*текст в карточке*/
+.name span{
+  font-weight: 500;
+font-size: 20px;
+line-height: 24px;
+color: #2F2D35;
+}
+.email span{
+  font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+color: #808080;
+}
+.exit a{
+  text-decoration: none;
+  font-size: 18px;
+line-height: 21px;
+color: #808080;
+}
+  /*контент в маленьких карточках*/
+.content{
+  display: flex;
+  flex-direction: column; 
+  padding-left: 25px;
+  gap:15px;
+
+}
+.text{
+  width:250px;
+  height:70px;
+  padding-top: 25px;
+}
+.text span{
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: #8F7ECE;
+  
+
+}
