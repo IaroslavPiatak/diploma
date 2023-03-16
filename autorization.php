@@ -14,7 +14,7 @@ if ($checkUser[0][0] == 1) {
 
     if($requestRole == 1)
     {
-        header('Location:index.html');
+        header('Location:admin/paAdmin.html');
     }
 }
 
