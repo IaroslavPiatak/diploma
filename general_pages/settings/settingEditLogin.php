@@ -1,4 +1,9 @@
 <!-- Made by Iaroslav Piatak -->
+<?php
+session_start();
+require_once '../../connection.php';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,6 +17,7 @@
 </head>
 
 <body>
+
     <main>
         <div class="content_container">
 
@@ -27,23 +33,25 @@
                             </div>
 
                             <div class="exit">
-                                <span>Вернуться в личный кабинет</span>
+                                <a href="../../admin/paAdmin.php"><span>Вернуться в личный кабинет</span></a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="right_block">
-                   <div class="form_block">
-                    <div class="form_block_content">
-                        <form action = "autorization.php" method = "post">
-                            <input type = "text" class="text_input" name="login" placeholder = "Введите старый логин">
-                            <input type = "text" class="text_input" name="password" placeholder = "Введите новый логин">
-                            <button type = "submit">Подтвердить</button>
-                        </form>
+                    <div class="form_block">
+                        <div class="form_block_content">
+                            <form method="post" action="settingEdit.php">
+                                <input type="text" class="text_input" name="oldLogin"
+                                    placeholder="Введите старый логин">
+                                <input type="text" class="text_input" name="newLogin" placeholder="Введите новый логин">
+                                <input type="hidden" name="action" value="login"  hiden>
+                                <button type="submit">Подтвердить</button>
+                            </form>
+                        </div>
+                        
 
                     </div>
-
-                   </div>
                 </div>
             </div>
 

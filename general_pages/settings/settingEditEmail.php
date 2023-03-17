@@ -35,9 +35,10 @@
                 <div class="right_block">
                    <div class="form_block">
                     <div class="form_block_content">
-                        <form action = "autorization.php" method = "post">
-                            <input type = "password" class="text_input" name="login" placeholder = "Введите старый пароль">
-                            <input type = "password" class="text_input" name="password" placeholder = "Введите новый пароль">
+                    <form method="post" action="settingEdit.php">
+                            <input type = "text" class="text_input" name="oldEmail" placeholder = "Введите старую почту">
+                            <input type = "text" class="text_input" name="newEmail" placeholder = "Введите новую почту">
+                            <input type="hidden" name="action" value="email"  hiden>
                             <button type = "submit">Подтвердить</button>
                         </form>
 

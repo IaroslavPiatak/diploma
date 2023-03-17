@@ -45,7 +45,7 @@ require_once '../connection.php';
                         <span>slavikipp@gmail.com</span>
                     </div>
                     <div class="exit">
-                        <a href="#">Выход</a>
+                        <a href="../index.html">Выход</a>
                     </div>
                 </div>
             </div>

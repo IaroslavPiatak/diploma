@@ -27,7 +27,7 @@
                             </div>
 
                             <div class="exit">
-                                <span>Вернуться в личный кабинет</span>
+                            <a href="../../admin/paAdmin.php"><span>Вернуться в личный кабинет</span></a>
                             </div>
                         </div>
                     </div>
@@ -35,9 +35,10 @@
                 <div class="right_block">
                    <div class="form_block">
                     <div class="form_block_content">
-                        <form action = "autorization.php" method = "post">
-                            <input type = "text" class="text_input" name="login" placeholder = "Введите старую почту">
-                            <input type = "text" class="text_input" name="password" placeholder = "Введите новую почту">
+                        <form action = "settingEdit.php" method = "post">
+                            <input type = "password" class="text_input" name="oldPassword" placeholder = "Введите старый пароль">
+                            <input type = "password" class="text_input" name="newPassword" placeholder = "Введите новый пароль">
+                            <input type="hidden" name="action" value="password"  hiden>
                             <button type = "submit">Подтвердить</button>
                         </form>
 
