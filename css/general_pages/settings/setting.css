@@ -1,4 +1,7 @@
 /* Made by Iaroslav Piatak */
+*{
+    user-select: none;
+}
 a
 {
     text-decoration: none;
@@ -96,10 +99,18 @@ body {
     font-size: 18px;
     line-height: 21px;
     text-align: center;
+}
 
+.exit a
+{
+    color: gray;
+}
+
+.exit a:hover
+{
     color: #EC5863;
-
-
+    transition: 1s;
+    cursor:pointer;
 }
 
 .right_block {

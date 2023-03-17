@@ -1,4 +1,8 @@
 <!-- Made by Iaroslav Piatak -->
+<?php
+session_start();
+require_once '../../connection.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,7 +39,19 @@
                 <div class="right_block">
                    <div class="form_block">
                     <div class="form_block_content">
-                        <form>
+                        <?php
+                        if ($_FILES && $_FILES["filename"]["error"]== UPLOAD_ERR_OK) // Если поле массива error = 0 ИЛИ не имеет ошибок, то загружаем файл
+                        {   $nameForDataBase = $_FILES["filename"]["name"]; 
+                            $userId = $_SESSION['dataOfUser']['userId'];
+                            $name = '../../img/admin/avatars/' . $_FILES["filename"]["name"]; // сохраняем имя файла
+                            move_uploaded_file($_FILES["filename"]["tmp_name"], $name); // в функции передаем временное расположение файла и его имя
+                            mysqli_query($connect,"UPDATE `admins` SET `photo`=' $nameForDataBase' WHERE `user_id` = '$userId'");
+                            echo "Файл загружен";
+                        }
+    
+                        
+                        ?>
+                        <form method="post" enctype="multipart/form-data">
                             <div class="input_back">
                                 <input class="input_photo" type="file" name="filename" size="10" accept="image/*,image/jpeg" />
                                 <div class="input_back_text">
@@ -45,8 +61,9 @@
                             </div>
                             <button type="submit">Подтвердить</button>
                         </form>
-                        
 
+                        
+        
                     </div>
 
                    </div>
