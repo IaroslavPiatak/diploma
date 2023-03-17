@@ -37,36 +37,59 @@ require_once '../../connection.php';
                     </div>
                 </div>
                 <div class="right_block">
-                   <div class="form_block">
-                    <div class="form_block_content">
-                        <?php
-                        if ($_FILES && $_FILES["filename"]["error"]== UPLOAD_ERR_OK) // Если поле массива error = 0 ИЛИ не имеет ошибок, то загружаем файл
-                        {   $nameForDataBase = $_FILES["filename"]["name"]; 
-                            $userId = $_SESSION['dataOfUser']['userId'];
-                            $name = '../../img/admin/avatars/' . $_FILES["filename"]["name"]; // сохраняем имя файла
-                            move_uploaded_file($_FILES["filename"]["tmp_name"], $name); // в функции передаем временное расположение файла и его имя
-                            mysqli_query($connect,"UPDATE `admins` SET `photo`=' $nameForDataBase' WHERE `user_id` = '$userId'");
-                            echo "Файл загружен";
-                        }
-    
-                        
-                        ?>
-                        <form method="post" enctype="multipart/form-data">
-                            <div class="input_back">
-                                <input class="input_photo" type="file" name="filename" size="10" accept="image/*,image/jpeg" />
-                                <div class="input_back_text">
-                                    <span>Загрузите фото вашего профиля</span>
+                    <div class="form_block">
+                        <div class="form_block_content">
+                      
+                            <?php
+                            if ($_FILES && $_FILES["filename"]["error"] == UPLOAD_ERR_OK) // Если поле массива error = 0 ИЛИ не имеет ошибок, то загружаем файл
+                            {
+                                $nameForDataBase = $_FILES["filename"]["name"];
+                                $userId = $_SESSION['dataOfUser']['userId'];
+                                $name = '../../img/admin/avatars/' . $_FILES["filename"]["name"]; // сохраняем имя файла
+                                move_uploaded_file($_FILES["filename"]["tmp_name"], $name); // в функции передаем временное расположение файла и его имя
+                                
+                                $oldPhoto = mysqli_fetch_all(mysqli_query($connect, "SELECT `photo` FROM `admins` WHERE `user_id` = '$userId'"))[0][0];
+                                if ($oldPhoto === NULL) {
+                                  
+                                  
+                                    mysqli_query($connect, "UPDATE `admins` SET `photo`=' $nameForDataBase' WHERE `user_id` = '$userId'");
+                                    header('Location:../../admin/paAdmin.php');
+
+                                } else {
+                                    
+                                    
+                                    mysqli_query($connect, "UPDATE `admins` SET `photo`=' $nameForDataBase' WHERE `user_id` = '$userId'");
+                                    $oldPhotoPath = '../../img/admin/avatars/' . $oldPhoto;
+                                    $oldPhotoPath = str_replace(' ', '', $oldPhotoPath);
+                                    unlink($oldPhotoPath);
+                                    header('Location:../../admin/paAdmin.php');
+
+                                }
+
+
+
+                            }
+
+
+                            ?>
+                            <form method="post" enctype="multipart/form-data">
+                                <div class="input_back">
+                                    <input class="input_photo" type="file" name="filename" size="10"
+                                        accept="image/*,image/jpeg" />
+                                    <div class="input_back_text">
+                                        <span>Загрузите фото вашего профиля</span>
+                                    </div>
+                                    <div class="input_back_photo"></div>
                                 </div>
-                                <div class="input_back_photo"></div>
-                            </div>
-                            <button type="submit">Подтвердить</button>
-                        </form>
+                                <button type="submit">Подтвердить</button>
+                                
+                            </form>
 
-                        
-        
+
+
+                        </div>
+
                     </div>
-
-                   </div>
                 </div>
             </div>
 
@@ -76,6 +99,16 @@ require_once '../../connection.php';
         </div>
 
     </main>
+    <script>
+
+         const text = document.querySelector('.input_back_text');
+         const input = document.querySelector('.input_photo');
+         input.addEventListener("input", (event) => {
+            text.innerHTML = `<span>Ваша фотография готова к загрузке</span>`;
+         });
+         
+    </script>
+  
 
 </body>
 
