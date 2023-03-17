@@ -20,7 +20,7 @@ require_once '../connection.php';
             <div class="profile_card">
                 <!--Карточка профиля-->
                 <div class="profile_card_content">
-                    <div class="progile_card_img">
+                    <div class="profile_card_img">
                         <?php
                     
                         $userId = $_SESSION['dataOfUser']['userId'];
@@ -28,7 +28,7 @@ require_once '../connection.php';
                        
                         
                         if ($check_photo === NULL) {
-                            echo '<img src="../img/admin/avatar.png">';
+                            echo '<img src="../img/admin/avatar.png" class="avatar">';
                         } else {
                             $path = '../img/admin/avatars/' . $check_photo;
                             $path = str_replace(' ', '', $path);
@@ -38,7 +38,6 @@ require_once '../connection.php';
                         ?>
 
                     </div>
-                    <div class="profile_card_text">
                         <div class="name">
                             <span>Пятак Ярослав Алексеевич</span>
                         </div>
@@ -48,88 +47,84 @@ require_once '../connection.php';
                         <div class="exit">
                             <a href="#">Выход</a>
                         </div>
-                    </div>
                 </div>
             </div>
             <!--Карточки с настройками-->
             <div class="card_content">
-                <div class="mail">
-                    <div class="content">
-                        <div class="text">
-                            <span>Почта</span>
-                        </div>
-                        <div class="img">
-                            <img src="../img/admin/card_icon.png">
+                    <div class="mail">
+                        <div class="content">
+                                <div class="text">
+                                    <span>Почта</span>
+                                </div>
+                                <div class="img">
+                                    <img src="../img/admin/card_icon.png" class="icon">
+                                </div>
                         </div>
                     </div>
-                </div>
-                <a href="../general_pages/settings/setting.html">
                     <div class="setting">
                         <div class="content">
                             <div class="text">
                                 <span>Настройки</span>
                             </div>
                             <div class="img">
-                                <img src="../img/admin/card_icon (1).png">
+                                <img src="../img/admin/card_icon (1).png" class="icon1">
                             </div>
                         </div>
                     </div>
-                </a>
-                <div class="new_user">
+                    <div class="new_user">
+                        <div class="content">
+                            <div class="text">
+                                <span>Зарегистрировать нового пользователя</span>
+                            </div>
+                            <div class="img">
+                                <img src="../img/admin/adduser_105070 1.png" class="icon2">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="delete">
+                        <div class="content">
+                            <div class="text">
+                                <span>Заявки на удаление</spam>
+                            </div>
+                            <div class="img">
+                                <img src="../img/admin/notepad_regular_icon_203433 1.png" class="icon1">
+                            </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+             <div class = "second_container">
+                <div class="facultative">
                     <div class="content">
                         <div class="text">
-                            <span>Зарегистрировать нового пользователя</span>
+                            <span>Факультеты и группы</span>
                         </div>
                         <div class="img">
-                            <img src="../img/admin/adduser_105070 1.png">
+                            <img src="../img/admin/universitygraduatehat_104965 1.png" class="icon1">
                         </div>
                     </div>
                 </div>
-                <div class="delete">
+                <div class="items">
                     <div class="content">
                         <div class="text">
-                            <span>Заявки на удаление</spam>
+                            <span>Предметы</span>
                         </div>
                         <div class="img">
-                            <img src="../img/admin/notepad_regular_icon_203433 1.png">
+                            <img src="../img/admin/Vector (9).png" class="icon1">
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="second_container">
-            <div class="facultative">
-                <div class="content">
-                    <div class="text">
-                        <span>Факультеты и группы</span>
-                    </div>
-                    <div class="img">
-                        <img src="../img/admin/universitygraduatehat_104965 1.png">
+                <div class="shedule">
+                    <div class="content">
+                        <div class="text">
+                            <span>Учебное расписание</span>
+                        </div>
+                        <div class="img">
+                            <img src="../img/admin/calendar_day_month_date_year_schedule_icon_175594 1.png" class="icon1">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="items">
-                <div class="content">
-                    <div class="text">
-                        <span>Предметы</span>
-                    </div>
-                    <div class="img">
-                        <img src="../img/admin/Vector (9).png">
-                    </div>
-                </div>
-            </div>
-            <div class="shedule">
-                <div class="content">
-                    <div class="text">
-                        <span>Учебное расписание</span>
-                    </div>
-                    <div class="img">
-                        <img src="../img/admin/calendar_day_month_date_year_schedule_icon_175594 1.png">
-                    </div>
-                </div>
-            </div>
-        </div>
+             </div>
     </div>
 </body>
-
 </html>

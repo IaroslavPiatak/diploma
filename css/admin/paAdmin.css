@@ -23,14 +23,14 @@ body{
   }
 /*Стили карточки профиля*/
 .profile_card{
-display: flex;
-align-items: center;
-justify-content:center ;
-width: 300px;
-height: 350px;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 15px;
-background: #FFFFFF;
+  width: 300px;
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
   /*Контейнер карточек с настройками(первые четыре)*/
 .card_content{
@@ -58,36 +58,53 @@ border-radius: 15px;
   }
   /*Стиль карточки профиля 2*/
   .profile_card_content{
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-gap:20px;
+    width: 250px;
+    height: 300px;
+    margin: 0 auto;
   }
-.profile_card_text{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-  /*текст в карточке*/
-.name span{
-  font-weight: 500;
-font-size: 20px;
-line-height: 24px;
-color: #2F2D35;
-}
-.email span{
+  .profile_card_img{
+    text-align: center;
+  }
+  .name{
+    width: 250px;
+    height: 50px;
+    margin-top: 20px;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: #2F2D35;
+  }
+.email{
+  width: 250px;
+  height: 20px;
+  font-family: 'Rubik';
+  font-weight: normal;
   font-weight: 400;
-font-size: 16px;
-line-height: 19px;
-color: #808080;
+  font-size: 16px;
+  line-height: 19px; 
+  text-align: center;
+  color: #808080;
+  
+}
+
+.exit{
+  width: 250px;
+  height: 50px;
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  color: #808080;
+  margin-top:55px;
 }
 .exit a{
   text-decoration: none;
-  font-size: 18px;
-line-height: 21px;
-color: #808080;
+  color: #808080;
 }
   /*контент в маленьких карточках*/
 .content{
@@ -107,6 +124,20 @@ color: #808080;
   font-size: 20px;
   line-height: 24px;
   color: #8F7ECE;
-  
-
+}
+.icon{
+  width:45px;
+  height:35px;
+}
+.icon1{
+  width:45px;
+  height:45px;
+}
+.icon2{
+  width:44.98px;
+  height:45px;
+}
+.avatar{
+  width:100px;
+  height:100px;
 }
