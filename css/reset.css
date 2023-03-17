@@ -1,50 +1,42 @@
 /* ----- css Reset ----- */
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
-html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6,  
-pre, form, fieldset, input, textarea, p, blockquote, th, td {  
-	margin: 0;
+/*Очищаем все отступы и границы*/
+*{
     padding: 0;
-    border: 0;
+    margin: 0;
+    border:0;
+}
+/*Меняет подсчет ширины блока, для более удобной верстки*/
+*,*::before, *::after{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+/*Убираем линии обводки у некоторых браузеров*/
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+/*Добавляет HTML5 тегам значение блок*/
+nav,footer,header,aside{display: block;}
+/*Уравнивают поведение шрифтов и элементов в разных браузерах*/
+html,body{
+    height: 100%;
+    width: 100%;
     font-size: 100%;
-   
-    outline: none;
-	font-family: 'Rubik', sans-serif;
-} 
-body,html{
-	background-color:  #F6F5FB;
-	width: 100%;
-	height: 100%;
-		
-	}
-fieldset, img {  
-	border: 0; 
-} 
-table { 
-	border-collapse: collapse; 
-	border-spacing: 0; 
-} 
-ol, ul { 
-	list-style: none;
-} 
-address, caption, cite, code, dfn, em, strong, th, var { 
-	font-weight: normal; 
-	font-style: normal; 
-} 
-caption, th { 
-	text-align: left; 
-} 
-h1, h2, h3, h4, h5, h6 { 
-	font-weight: normal; 
-	font-size: 100%; 
-} 
-q:before, q:after { 
-	content: ''; 
-} 
-abbr, acronym {  
-	border: 0; 
+    line-height: 1;
+    font-size: 14px;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
 }
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+/*Включаем наследование семейства шрифта для тегов form*/
+input,button,textarea{font-family: inherit;}
+/*Убирают особенности отображения некоторых браузеров*/
+input::-ms-clear{display: none;} /*превдоэлемент, который убирает крестик в текстовом поле ввода Бразуера Microsoft*/
+button{cursor: pointer;}
+button::-moz-focus-inner{padding: 0;border: 0;} /*убирает лишние отступы вокруг кнопок в Mozila*/
+a,a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li {list-style: none;}
+img{vertical-align: top;}
+/*Обнуление заголовков*/
+h1,h2,h3,h4,h5,h6{font-size: inherit; font-weight: 400;}
