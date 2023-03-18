@@ -32,7 +32,7 @@ require_once '../connection.php';
                         } else {
                             $path = '../img/admin/avatars/' . $check_photo;
                             $path = str_replace(' ', '', $path);
-                            echo '<img src="' . $path . '">';
+                            echo '<img class = "avatarChange" src="' . $path . '">';
 
                         }
                         ?>

@@ -27,7 +27,7 @@
                             </div>
 
                             <div class="exit">
-                                <span>Вернуться в личный кабинет</span>
+                            <a href="../../admin/paAdmin.php"><span>Вернуться в личный кабинет</span></a>
                             </div>
                         </div>
                     </div>

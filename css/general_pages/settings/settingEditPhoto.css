@@ -1,5 +1,13 @@
 /* Made by Iaroslav Piatak */
-
+a
+{
+    color: gray;
+}
+a:hover
+{
+    color: #EC5863;
+    transition: 1s;
+}
 body {
     display: flex;
     justify-content: center;

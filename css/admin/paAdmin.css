@@ -143,3 +143,12 @@ border-radius: 15px;
   width:100px;
   height:100px;
 }
+
+.avatarChange
+{
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  background-size:auto;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
+}
