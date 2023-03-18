@@ -108,6 +108,11 @@ border-radius: 15px;
   text-decoration: none;
   color: #808080;
 }
+
+.exit a:hover{
+  color: #EC5863;
+    transition: 1s;
+}
   /*контент в маленьких карточках*/
 .content{
   display: flex;

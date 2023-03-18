@@ -1,6 +1,12 @@
 <?php
 session_start();
 require_once '../connection.php';
+
+
+if(!$_SESSION['dataOfUser']) // если нет сессии о пользователе , то не даем войти
+{
+    header('Location:../index.html');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,13 +45,21 @@ require_once '../connection.php';
 
                     </div>
                     <div class="name">
-                        <span>Пятак Ярослав Алексеевич</span>
+                    <?php
+                        $userFullName = mysqli_fetch_all(mysqli_query($connect,"SELECT `first_name`, `last_name`, `surname`
+                        FROM `admins` WHERE `user_id` = '$userId'"));
+                        echo'<span>'.$userFullName[0][1] . ' ' .$userFullName[0][0] . ' ' .$userFullName[0][2].'</span>';
+                        ?>
                     </div>
                     <div class="email">
-                        <span>slavikipp@gmail.com</span>
+                        <?php
+                        $userEmail = mysqli_fetch_all(mysqli_query($connect,"SELECT email FROM `admins` WHERE `user_id` = '$userId'"))[0][0];
+                        echo'<span>'.$userEmail.'</span>';
+                        ?>
+                        
                     </div>
                     <div class="exit">
-                        <a href="../index.html">Выход</a>
+                        <a href="../exit.php">Выход</a>
                     </div>
                 </div>
             </div>
