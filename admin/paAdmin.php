@@ -122,6 +122,7 @@ if (!$_SESSION['dataOfUser']) // если нет сессии о пользов�
                     </div>
                 </div>
             </a>
+            <a href="subject/subject.php">
             <div class="items">
                 <div class="content">
                     <div class="text">
@@ -132,6 +133,7 @@ if (!$_SESSION['dataOfUser']) // если нет сессии о пользов�
                     </div>
                 </div>
             </div>
+            </a>
             <div class="shedule">
                 <div class="content">
                     <div class="text">
