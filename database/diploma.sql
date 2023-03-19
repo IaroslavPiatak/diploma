@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Мар 18 2023 г., 20:37
+-- Время создания: Мар 19 2023 г., 16:00
 -- Версия сервера: 8.0.30
 -- Версия PHP: 8.1.9
 
@@ -51,7 +51,7 @@ INSERT INTO `admins` (`admin_id`, `user_id`, `first_name`, `last_name`, `surname
 --
 
 CREATE TABLE `faculties` (
-  `faculty_id` int DEFAULT NULL,
+  `faculty_id` int NOT NULL,
   `faculty_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -106,6 +106,12 @@ ALTER TABLE `admins`
   ADD PRIMARY KEY (`admin_id`);
 
 --
+-- Индексы таблицы `faculties`
+--
+ALTER TABLE `faculties`
+  ADD PRIMARY KEY (`faculty_id`);
+
+--
 -- Индексы таблицы `roles`
 --
 ALTER TABLE `roles`
@@ -126,6 +132,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `admins`
   MODIFY `admin_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT для таблицы `faculties`
+--
+ALTER TABLE `faculties`
+  MODIFY `faculty_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 
 --
 -- AUTO_INCREMENT для таблицы `roles`

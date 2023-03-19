@@ -18,7 +18,7 @@ require_once '../../connection.php';
     <main>
         <?php
         $countFaculties = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `faculties`"))[0][0]; // считаем факультеты, если их 0, выводим код из if
-        if ($countFaculties == 0) {
+        if ($countFaculties == 0) { 
             ?>
             <div class="main_container">
                 <div class="inner_container">
@@ -97,12 +97,12 @@ require_once '../../connection.php';
                             </div>
                         </a>
                     </div>
-                    <div class="right_block">
+                    <div class="right_block"> <!--Запускаем скрипт для правого блока -->
                         <?
                         $firstFacultyId = mysqli_fetch_all(mysqli_query($connect,
-                        "SELECT `faculty_id` FROM `faculties` LIMIT 1"))[0][0];
+                        "SELECT `faculty_id` FROM `faculties` LIMIT 1"))[0][0]; // получаем id первого факультета
                         
-                        for ($i = 0; $i < $countFaculties; $i++) {
+                        for ($i = 0; $i < $countFaculties; $i++) { // заполняем правый блок, пока не будет 6 карточек
                             if ($i == 6) {
                                 break;
                             }
@@ -112,31 +112,31 @@ require_once '../../connection.php';
                                     <span>'
                                     . $facultyName = mysqli_fetch_all(mysqli_query($connect,
                                     "SELECT `faculty_name` FROM `faculties` 
-                                    WHERE `faculty_id` = '$firstFacultyId'"))[0][0] .
+                                    WHERE `faculty_id` = '$firstFacultyId'"))[0][0] . // вытаскиваем имя факультета, по id первого факультета
                                     '</span>
                                     
                                 </div>
                             </div>
                         </div>';
-                        $firstFacultyId++;
+                        $firstFacultyId++; // увеличиваем id первого элемента, т.е. получаем id 2 элемента
 
                         }
                         ?>
                     </div>
                 </div>
                 <?
-                if ($countFaculties >= 7) {
+                if ($countFaculties >= 7) { // если факультетов больше или равно 7, то отрисовываем нижний блок
                     ?>
                     <div class="down_block">
                         <?
-                        for ($i <= 7; $i < $countFaculties; ++$i) {
+                        for ($i <= 7; $i < $countFaculties; ++$i) { // вывод блоков
                             echo ' <div class="faculty">
                             <div class="faculty_content">
                                 <div class="faculty_text">
                                     <span>'
                                     . $facultyName = mysqli_fetch_all(mysqli_query($connect,
                                     "SELECT `faculty_name` FROM `faculties` 
-                                    WHERE `faculty_id` = '$firstFacultyId'"))[0][0] .
+                                    WHERE `faculty_id` = '$firstFacultyId'"))[0][0] . // получение имени по id
                                     '</span>
                                     
                                 </div>
@@ -149,10 +149,6 @@ require_once '../../connection.php';
 
                 <?
                 }
-                ?>
-
-            <?
-
         }
         ?>
 
