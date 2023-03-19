@@ -3,7 +3,7 @@ session_start();
 require_once '../connection.php';
 
 
-if(!$_SESSION['dataOfUser']) // если нет сессии о пользователе , то не даем войти
+if (!$_SESSION['dataOfUser']) // если нет сессии о пользователе , то не даем войти
 {
     header('Location:../index.html');
 }
@@ -45,18 +45,18 @@ if(!$_SESSION['dataOfUser']) // если нет сессии о пользова
 
                     </div>
                     <div class="name">
-                    <?php
-                        $userFullName = mysqli_fetch_all(mysqli_query($connect,"SELECT `first_name`, `last_name`, `surname`
+                        <?php
+                        $userFullName = mysqli_fetch_all(mysqli_query($connect, "SELECT `first_name`, `last_name`, `surname`
                         FROM `admins` WHERE `user_id` = '$userId'"));
-                        echo'<span>'.$userFullName[0][1] . ' ' .$userFullName[0][0] . ' ' .$userFullName[0][2].'</span>';
+                        echo '<span>' . $userFullName[0][1] . ' ' . $userFullName[0][0] . ' ' . $userFullName[0][2] . '</span>';
                         ?>
                     </div>
                     <div class="email">
                         <?php
-                        $userEmail = mysqli_fetch_all(mysqli_query($connect,"SELECT email FROM `admins` WHERE `user_id` = '$userId'"))[0][0];
-                        echo'<span>'.$userEmail.'</span>';
+                        $userEmail = mysqli_fetch_all(mysqli_query($connect, "SELECT email FROM `admins` WHERE `user_id` = '$userId'"))[0][0];
+                        echo '<span>' . $userEmail . '</span>';
                         ?>
-                        
+
                     </div>
                     <div class="exit">
                         <a href="../exit.php">Выход</a>
@@ -110,16 +110,18 @@ if(!$_SESSION['dataOfUser']) // если нет сессии о пользова
             </div>
         </div>
         <div class="second_container">
-            <div class="facultative">
-                <div class="content">
-                    <div class="text">
-                        <span>Факультеты и группы</span>
-                    </div>
-                    <div class="img">
-                        <img src="../img/admin/universitygraduatehat_104965 1.png" class="icon1">
+            <a href="faculty/faculty.php">
+                <div class="facultative">
+                    <div class="content">
+                        <div class="text">
+                            <span>Факультеты и группы</span>
+                        </div>
+                        <div class="img">
+                            <img src="../img/admin/universitygraduatehat_104965 1.png" class="icon1">
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
             <div class="items">
                 <div class="content">
                     <div class="text">
