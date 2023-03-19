@@ -1,8 +1,11 @@
-
+::-webkit-scrollbar {
+    width: 0;
+  }
 body
 {
     display: flex;
     justify-content: center;
+   
 }
 .main_container{
     margin-top: 100px;
@@ -34,7 +37,7 @@ body
     height: 550px;
     display: flex;
     flex-direction: row;
-    gap: 50px;
+    gap: 50px 100px;
     justify-content: space-between;
     flex-wrap: wrap;
  

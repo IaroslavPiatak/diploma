@@ -28,20 +28,22 @@ require_once '../../connection.php';
                                 <span>Факультеты</span>
                             </div>
                             <div class="exit">
-                                <a href="faculty.php">К факультетам</a>
+                                <a href="../paAdmin.php">Вернуться в личный кабинет</a>
                             </div>
                         </div>
                     </div>
-                    <div class="register_faculty">
-                        <div class="register_faculty_content">
-                            <div class="text">
-                                <span>Зарегистрировать новый факультет</span>
-                            </div>
-                            <div class="img">
-                                <img src="/img/admin/faculty/Group (1).png" class="icon1">
+                    <a href="faculty.php">
+                        <div class="register_faculty">
+                            <div class="register_faculty_content">
+                                <div class="text">
+                                    <span>Вернуться к факультетам</span>
+                                </div>
+                                <div class="img">
+                                    <img src="/img/admin/faculty/Group (1).png" class="icon1">
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="right_block">
                     <div class="create">
