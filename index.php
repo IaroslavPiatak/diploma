@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once 'connection.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -32,6 +33,7 @@ require_once 'connection.php';
 
                     $checkUser = mysqli_fetch_all(mysqli_query($connect, "SELECT * FROM `users` WHERE `user_login` = '$login' AND `user_password` = '$password'"));
                     if (empty($checkUser)) {
+                       
 
                         ?>
 
