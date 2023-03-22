@@ -117,6 +117,8 @@ require_once '../../connection.php';
                                     
                                 </div>
                             </div>
+                            <input type="hidden" value= "'. $firstFacultyId. '">
+                            <button type="submit"></button>
                         </form>';
                         $firstFacultyId++; // увеличиваем id первого элемента, т.е. получаем id 2 элемента
 

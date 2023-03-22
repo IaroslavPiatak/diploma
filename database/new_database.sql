@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Мар 19 2023 г., 23:22
+-- Время создания: Мар 22 2023 г., 14:22
 -- Версия сервера: 8.0.24
 -- Версия PHP: 7.1.33
 
@@ -35,7 +35,7 @@ CREATE TABLE `admins` (
   `surname` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `photo` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Дамп данных таблицы `admins`
@@ -53,7 +53,20 @@ INSERT INTO `admins` (`admin_id`, `user_id`, `first_name`, `last_name`, `surname
 CREATE TABLE `faculties` (
   `faculty_id` int NOT NULL,
   `faculty_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `groups`
+--
+
+CREATE TABLE `groups` (
+  `groups_id` int NOT NULL,
+  `faculty_id` int NOT NULL,
+  `groups_name` varchar(255) NOT NULL,
+  `number_of_students` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -64,7 +77,7 @@ CREATE TABLE `faculties` (
 CREATE TABLE `roles` (
   `role_id` int NOT NULL,
   `role_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Дамп данных таблицы `roles`
@@ -78,13 +91,20 @@ INSERT INTO `roles` (`role_id`, `role_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `subject`
+-- Структура таблицы `subjects`
 --
 
-CREATE TABLE `subject` (
-  `subject_id` int NOT NULL,
-  `subject_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `subjects` (
+  `subjects_id` int NOT NULL,
+  `subjects_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `subjects`
+--
+
+INSERT INTO `subjects` (`subjects_id`, `subjects_name`) VALUES
+(1, 'Математика');
 
 -- --------------------------------------------------------
 
@@ -97,7 +117,7 @@ CREATE TABLE `users` (
   `user_role` int NOT NULL,
   `user_login` varchar(255) NOT NULL,
   `user_password` varchar(255) NOT NULL
-)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Дамп данных таблицы `users`
@@ -123,16 +143,22 @@ ALTER TABLE `faculties`
   ADD PRIMARY KEY (`faculty_id`);
 
 --
+-- Индексы таблицы `groups`
+--
+ALTER TABLE `groups`
+  ADD PRIMARY KEY (`groups_id`);
+
+--
 -- Индексы таблицы `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`role_id`);
 
 --
--- Индексы таблицы `subject`
+-- Индексы таблицы `subjects`
 --
-ALTER TABLE `subject`
-  ADD PRIMARY KEY (`subject_id`);
+ALTER TABLE `subjects`
+  ADD PRIMARY KEY (`subjects_id`);
 
 --
 -- Индексы таблицы `users`
@@ -157,16 +183,22 @@ ALTER TABLE `faculties`
   MODIFY `faculty_id` int NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT для таблицы `groups`
+--
+ALTER TABLE `groups`
+  MODIFY `groups_id` int NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT для таблицы `roles`
 --
 ALTER TABLE `roles`
   MODIFY `role_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT для таблицы `subject`
+-- AUTO_INCREMENT для таблицы `subjects`
 --
-ALTER TABLE `subject`
-  MODIFY `subject_id` int NOT NULL AUTO_INCREMENT;
+ALTER TABLE `subjects`
+  MODIFY `subjects_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
@@ -178,4 +210,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-    
