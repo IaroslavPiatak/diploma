@@ -1,6 +1,7 @@
 <!-- Mady by Iaroslav Piatak (php) -->
 <?php
 require_once '../../connection.php';
+print_r($_POST);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -106,7 +107,7 @@ require_once '../../connection.php';
                             if ($i == 6) {
                                 break;
                             }
-                            echo ' <form action = "../groups/groups.php" method="POST" class="faculty">
+                            echo ' <div class="faculty">
                             <div class="faculty_content">
                                 <div class="faculty_text">
                                     <span>'
@@ -117,7 +118,7 @@ require_once '../../connection.php';
                                     
                                 </div>
                             </div>
-                        </form>';
+                        </div>';
                         $firstFacultyId++; // увеличиваем id первого элемента, т.е. получаем id 2 элемента
 
                         }
