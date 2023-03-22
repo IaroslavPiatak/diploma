@@ -2,6 +2,7 @@
 <?php
 require_once '../../connection.php';
 print_r($_POST);
+// записать в переменную из POST id факультета
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -102,6 +103,11 @@ print_r($_POST);
                         <?
                         $firstFacultyId = mysqli_fetch_all(mysqli_query($connect,
                         "SELECT `faculty_id` FROM `faculties` LIMIT 1"))[0][0]; // получаем id первого факультета
+                        
+                        // $l = 0; $r = 0;
+                        // $firstFacultyId = mysqli_fetch_all(mysqli_query($connect,
+                        // "SELECT `group_id` FROM `groups` WHERE `faculty_id` = '$facultyId'")); // получаем id первого факультета
+                        // $r++;
                         
                         for ($i = 0; $i < $countFaculties; $i++) { // заполняем правый блок, пока не будет 6 карточек
                             if ($i == 6) {
