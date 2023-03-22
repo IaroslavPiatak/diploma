@@ -30,7 +30,9 @@ if (!$_SESSION['dataOfUser']) // если нет сессии о пользов�
                         <?php
 
                         $userId = $_SESSION['dataOfUser']['userId'];
+                        
                         $check_photo = mysqli_fetch_all(mysqli_query($connect, "SELECT `photo` FROM `admins` WHERE `user_id` = '$userId'"))[0][0];
+                        
 
 
                         if ($check_photo === NULL) {
