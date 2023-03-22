@@ -18,8 +18,8 @@ print_r($_POST);
 <body>
     <main>
         <?php
-        $countFaculties = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `faculties`"))[0][0]; // считаем факультеты, если их 0, выводим код из if
-        if ($countFaculties == 0) { 
+        $countGroups = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `groups`"))[0][0]; // считаем факультеты, если их 0, выводим код из if
+        if ($countGroups == 0) { 
             ?>
             <div class="main_container">
                 <div class="inner_container">

@@ -117,6 +117,8 @@ require_once '../../connection.php';
                                     
                                 </div>
                             </div>
+                            <input type = "hidden" name = "facultyId"    value = "' . $firstFacultyId . '">
+                            <button type = "submit" class = "btn_form"></button>
                         </form>';
                         $firstFacultyId++; // увеличиваем id первого элемента, т.е. получаем id 2 элемента
 
@@ -130,18 +132,20 @@ require_once '../../connection.php';
                     <div class="down_block">
                         <?
                         for ($i <= 7; $i < $countFaculties; ++$i) { // вывод блоков
-                            echo ' <div class="faculty">
+                            echo ' <form action = "../groups/groups.php" method="POST" class="faculty">
                             <div class="faculty_content">
                                 <div class="faculty_text">
                                     <span>'
                                     . $facultyName = mysqli_fetch_all(mysqli_query($connect,
                                     "SELECT `faculty_name` FROM `faculties` 
-                                    WHERE `faculty_id` = '$firstFacultyId'"))[0][0] . // получение имени по id
+                                    WHERE `faculty_id` = '$firstFacultyId'"))[0][0] . // вытаскиваем имя факультета, по id первого факультета
                                     '</span>
                                     
                                 </div>
                             </div>
-                        </div>';
+                            <input type = "hidden" name = "facultyId"    value = "' . $firstFacultyId . '">
+                            <button type = "submit" class = "btn_form"></button>
+                        </form>';
                         $firstFacultyId++;
                         }
                         ?>
