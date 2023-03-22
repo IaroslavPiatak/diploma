@@ -1,7 +1,25 @@
 <!-- Mady by Iaroslav Piatak (php) -->
 <?php
 require_once '../../connection.php';
+if (!empty($_POST['subjectName'])) {
+    $subjectName = $_POST['subjectName'];
+    $checkSubject = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `subject`
+    WHERE `subject_name` = '$subjectName'"))[0][0];
+    if ($checkSubject == 0) {
+        mysqli_query($connect, "INSERT INTO `subject`(`subject_name`) VALUES ('$subjectName')");
+        header('Location:subject.php');
+
+    } elseif ($checkSubject > 0) {
+
+        ?>
+        <script async src="../../js/alert.js"></script>
+    <?
+    }
+
+}
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,32 +71,13 @@ require_once '../../connection.php';
                                     placeholder="Введите название предмета">
                                 <button type="submit">Подтвердить</button>
                             </form>
-                            <?php
-                            if (!empty($_POST['subjectName'])) {
-                                $subjectName = $_POST['subjectName'];
-                                $checkSubject = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `subject`
-                                WHERE `subject_name` = '$subjectName'"))[0][0];
-                                if ($checkSubject == 0) {
-                                    mysqli_query($connect, "INSERT INTO `subject`(`subject_name`) VALUES ('$subjectName')");
-                                    header('Location:subject.php');
-
-                                } elseif ($checkSubject > 0) {
-
-                                    ?>
-                                    <script async    src="../../js/alert.js"></script>
-                                <?
-                                }
-
-                            }
-
-                            ?>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-         <!-- Модалка -->
-         <div class="modal"> <!--Подложка, затемняющая основной контент-->
+        <!-- Модалка -->
+        <div class="modal"> <!--Подложка, затемняющая основной контент-->
             <div class="modal_box">
                 <button class="cross-btn">
                     <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">

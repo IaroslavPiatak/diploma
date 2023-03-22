@@ -2,6 +2,23 @@
 <?php
 require_once '../../connection.php';
 
+if (isset($_POST['facultyName'])) {
+    $facultyName = $_POST['facultyName'];
+    $checkFaculty = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `faculties`
+                                WHERE `faculty_name` = '$facultyName'"))[0][0];
+    if ($checkFaculty == 0) {
+        mysqli_query($connect, "INSERT INTO `faculties`(`faculty_name`) VALUES ('$facultyName')");
+        header('Location:faculty.php');
+
+    } elseif ($checkFaculty > 0) {
+
+        ?>
+        <script async src="../../js/alert.js"></script>
+    <?
+    }
+
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,25 +71,7 @@ require_once '../../connection.php';
                                     placeholder="Введите название факультета">
                                 <button type="submit">Подтвердить</button>
                             </form>
-                            <?php
-                            if (isset($_POST['facultyName'])) {
-                                $facultyName = $_POST['facultyName'];
-                                $checkFaculty = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `faculties`
-                                WHERE `faculty_name` = '$facultyName'"))[0][0];
-                                if ($checkFaculty == 0) {
-                                    mysqli_query($connect, "INSERT INTO `faculties`(`faculty_name`) VALUES ('$facultyName')");
-                                    header('Location:faculty.php');
 
-                                } elseif ($checkFaculty > 0) {
-
-                                    ?>
-                                    <script async    src="../../js/alert.js"></script>
-                                <?
-                                }
-
-                            }
-
-                            ?>
                         </div>
                     </div>
                 </div>
