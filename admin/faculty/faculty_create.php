@@ -51,6 +51,7 @@ if (isset($_POST['facultyName'])) {
                         </div>
                     </div>
                     <a href="faculty.php">
+                        
                         <div class="register_faculty">
                             <div class="register_faculty_content">
                                 <div class="text">
@@ -60,7 +61,10 @@ if (isset($_POST['facultyName'])) {
                                     <img src="/img/admin/faculty/Group (1).png" class="icon1">
                                 </div>
                             </div>
+                            
                         </div>
+                        
+                    
                     </a>
                 </div>
                 <div class="right_block">

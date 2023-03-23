@@ -129,6 +129,7 @@ body {
 }
 
 
+
 .warning {
   width: 700px;
   height: 550px;
@@ -230,6 +231,7 @@ body {
   justify-content: center;
 }
 
+
 .btn_form {
 
   position: absolute;
@@ -237,5 +239,6 @@ body {
   width: 100%;
   height: 100%;
   opacity: 0;
+  
   
 }

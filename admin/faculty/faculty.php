@@ -18,7 +18,7 @@ require_once '../../connection.php';
     <main>
         <?php
         $countFaculties = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `faculties`"))[0][0]; // считаем факультеты, если их 0, выводим код из if
-        if ($countFaculties == 0) { 
+        if ($countFaculties == 0) {
             ?>
             <div class="main_container">
                 <div class="inner_container">
@@ -37,6 +37,7 @@ require_once '../../connection.php';
                             </div>
                         </div>
                         <a href="faculty_create.php">
+                        
                             <div class="register_faculty">
                                 <div class="register_faculty_content">
                                     <div class="text">
@@ -46,7 +47,10 @@ require_once '../../connection.php';
                                         <img src="/img/admin/faculty/Group (1).png" class="icon1">
                                     </div>
                                 </div>
+                                
                             </div>
+                            
+                        
                         </a>
                     </div>
                     <div class="right_block">
@@ -85,6 +89,7 @@ require_once '../../connection.php';
                             </div>
                         </div>
                         <a href="faculty_create.php">
+                        
                             <div class="register_faculty">
                                 <div class="register_faculty_content">
                                     <div class="text">
@@ -94,14 +99,21 @@ require_once '../../connection.php';
                                         <img src="/img/admin/faculty/Group (1).png" class="icon1">
                                     </div>
                                 </div>
+                                
                             </div>
+                            
+                        
                         </a>
                     </div>
                     <div class="right_block"> <!--Запускаем скрипт для правого блока -->
                         <?
-                        $firstFacultyId = mysqli_fetch_all(mysqli_query($connect,
-                        "SELECT `faculty_id` FROM `faculties` LIMIT 1"))[0][0]; // получаем id первого факультета
-                        
+                        $firstFacultyId = mysqli_fetch_all(
+                            mysqli_query(
+                                $connect,
+                                "SELECT `faculty_id` FROM `faculties` LIMIT 1"
+                            )
+                        )[0][0]; // получаем id первого факультета
+                    
                         for ($i = 0; $i < $countFaculties; $i++) { // заполняем правый блок, пока не будет 6 карточек
                             if ($i == 6) {
                                 break;
@@ -110,16 +122,22 @@ require_once '../../connection.php';
                             <div class="faculty_content">
                                 <div class="faculty_text">
                                     <span>'
-                                    . $facultyName = mysqli_fetch_all(mysqli_query($connect,
-                                    "SELECT `faculty_name` FROM `faculties` 
-                                    WHERE `faculty_id` = '$firstFacultyId'"))[0][0] . // вытаскиваем имя факультета, по id первого факультета
-                                    '</span>
+                                . $facultyName = mysqli_fetch_all(
+                                    mysqli_query(
+                                        $connect,
+                                        "SELECT `faculty_name` FROM `faculties` 
+                                    WHERE `faculty_id` = '$firstFacultyId'"
+                                    )
+                                )[0][0] . // вытаскиваем имя факультета, по id первого факультета
+                                '</span>
                                     
                                 </div>
+                                <input type = "hidden" name = "facultyId" value = "' . $firstFacultyId . '">
+                                <button class = "btn_form" type = "submit"></button>
                             </div>
                         </form>';
-                        $firstFacultyId++; // увеличиваем id первого элемента, т.е. получаем id 2 элемента
-
+                            $firstFacultyId++; // увеличиваем id первого элемента, т.е. получаем id 2 элемента
+                    
                         }
                         ?>
                     </div>
@@ -134,17 +152,21 @@ require_once '../../connection.php';
                             <div class="faculty_content">
                                 <div class="faculty_text">
                                     <span>'
-                                    . $facultyName = mysqli_fetch_all(mysqli_query($connect,
-                                    "SELECT `faculty_name` FROM `faculties` 
-                                    WHERE `faculty_id` = '$firstFacultyId'"))[0][0] . // вытаскиваем имя факультета, по id первого факультета
-                                    '</span>
+                                . $facultyName = mysqli_fetch_all(
+                                    mysqli_query(
+                                        $connect,
+                                        "SELECT `faculty_name` FROM `faculties` 
+                                    WHERE `faculty_id` = '$firstFacultyId'"
+                                    )
+                                )[0][0] . // вытаскиваем имя факультета, по id первого факультета
+                                '</span>
                                     
                                 </div>
+                                <input type = "hidden" name = "facultyId" value = "' . $firstFacultyId . '">
+                                <button class = "btn_form" type = "submit"></button>
                             </div>
-                            <input type = "hidden" name = "facultyId"    value = "' . $firstFacultyId . '">
-                            <button type = "submit" class = "btn_form"></button>
                         </form>';
-                        $firstFacultyId++;
+                            $firstFacultyId++;
                         }
                         ?>
                     </div>
