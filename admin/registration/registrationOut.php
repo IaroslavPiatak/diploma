@@ -1,5 +1,5 @@
 <?php
 session_start();
-$_SESSION['student'] = [ ];
+unset($_SESSION['studentWithFaculty']);
 header('Location:../paAdmin.php');
 ?>

@@ -1,37 +1,151 @@
 const inputAdmin = document.getElementById("inputAdmin");
 const labelAdmin = document.getElementById("labelAdmin");
-
 const inputTeacher = document.getElementById("inputTeacher");
 const labelTeacher = document.getElementById("labelTeacher");
-
 const inputStudent = document.getElementById("inputStudent");
 const labelStudent = document.getElementById("labelStudent");
-
-
 const radioCard = document.querySelectorAll('.faculty_content');
-
+const titleList = document.getElementById("titleList");
+const buttonBackGroups = document.getElementById("button_back_groups");
+const buttonBackStudentFinal = document.getElementById("button_back_student_final");
+//проврка дефолтного выделения в шапке
 const userRole = document.getElementById("userRole");
 
+// при нажатии кнопки назад у студентв в финальном листе (работает почему то только тут)
 
 
-function clickStudent()
+
+
+// вывод финальных страниц
+const finalPage = document.getElementById('finalPage');
+if(finalPage.innerHTML == 'student')
 {
-    labelStudent.classList.add('clickInput');
-    labelStudent.style.color = "#8F7ECE";
+    titleList.classList.add('hidden');
+    document.querySelector('.list_output_admin').classList.add('hidden');
+    document.querySelector('.list_output_student_final').classList.remove('hidden');
 
 
-    labelAdmin.classList.remove('clickInput');
-    labelTeacher.classList.remove('clickInput');
-    labelTeacher.style.color = "#2F2D35";
-    labelAdmin.style.color = "#2F2D35";
-
-    document.querySelector('.list_output_student_faculties').classList.remove('hidden');
-
+    
 }
 
 
 
+if(userRole.innerHTML == 'admin')
+{
+    labelAdmin.classList.add('clickInput');
+    labelAdmin.style.color = "#8F7ECE";
+    document.querySelector('.list_output_admin').classList.remove('hidden');
+    document.querySelector('.list_output_teacher').classList.add('hidden');
+    document.querySelector('.list_output_student').classList.add('hidden');
+    titleList.innerHTML = `<span>Выберите привелегии</span>`;
 
+}
+
+else if (userRole.innerHTML == 'teacher')
+{
+    labelTeacher.classList.add('clickInput');
+    labelTeacher.style.color = "#8F7ECE";
+    document.querySelector('.list_output_admin').classList.add('hidden');
+    document.querySelector('.list_output_teacher').classList.remove('hidden');
+    document.querySelector('.list_output_student').classList.add('hidden');
+    titleList.innerHTML = `<span>Выберите предмет</span>`;
+
+
+}
+
+else if (userRole.innerHTML == 'student')
+{
+    labelStudent.classList.add('clickInput');
+    labelStudent.style.color = "#8F7ECE";
+    labelAdmin.classList.remove('clickInput');
+    labelTeacher.classList.remove('clickInput');
+    labelTeacher.style.color = "#2F2D35";
+    labelAdmin.style.color = "#2F2D35";
+    document.querySelector('.list_output_admin').classList.add('hidden');
+    document.querySelector('.list_output_teacher').classList.add('hidden');
+    document.querySelector('.list_output_student').classList.remove('hidden');
+    titleList.innerHTML = `<span>Выберите факультет</span>`;
+
+}
+
+else if (userRole.innerHTML == 'studentGroup')
+{
+    labelStudent.classList.add('clickInput');
+    labelStudent.style.color = "#8F7ECE";
+    labelAdmin.classList.remove('clickInput');
+    labelTeacher.classList.remove('clickInput');
+    labelTeacher.style.color = "#2F2D35";
+    labelAdmin.style.color = "#2F2D35";
+    titleList.innerHTML = `<span>Выберите группу</span>`;
+    document.querySelector('.list_output_admin').classList.add('hidden');
+    document.querySelector('.list_output_teacher').classList.add('hidden');
+    document.querySelector('.list_output_student').classList.remove('hidden');
+
+}
+
+else
+{
+    alert('ОШИБКА');
+}
+
+// Проверка на вывод групп
+const  groupOutput = document.getElementById("groupOutput");
+
+if(groupOutput.innerHTML == 'true')
+{
+    document.querySelector('.list_output_student').classList.add('hidden');
+    document.querySelector('.list_output_student_group').classList.remove('hidden');
+    
+}
+
+// Событие для админа
+inputAdmin.addEventListener("click", () => {
+    labelAdmin.classList.add('clickInput');
+    labelAdmin.style.color = "#8F7ECE";
+    labelStudent.classList.remove('clickInput');
+    labelTeacher.classList.remove('clickInput');
+    labelTeacher.style.color = "#2F2D35";
+    labelStudent.style.color = "#2F2D35";
+    document.querySelector('.list_output_admin').classList.remove('hidden');
+    document.querySelector('.list_output_teacher').classList.add('hidden');
+    document.querySelector('.list_output_student').classList.add('hidden');
+    document.querySelector('.list_output_student_group').classList.add('hidden');
+    titleList.innerHTML = `<span>Выберите привелегии</span>`;
+
+});
+// Событие для препода
+inputTeacher.addEventListener("click", () => {
+    labelTeacher.classList.add('clickInput');
+    labelTeacher.style.color = "#8F7ECE";
+    labelStudent.classList.remove('clickInput');
+    labelAdmin.classList.remove('clickInput');
+    labelAdmin.style.color = "#2F2D35";
+    labelStudent.style.color = "#2F2D35";
+    document.querySelector('.list_output_admin').classList.add('hidden');
+    document.querySelector('.list_output_teacher').classList.remove('hidden');
+    document.querySelector('.list_output_student').classList.add('hidden');
+    document.querySelector('.list_output_student_group').classList.add('hidden');
+    titleList.innerHTML = `<span>Выберите предмет</span>`;
+
+
+});
+// Событие для студента
+inputStudent.addEventListener("click", () => {
+    labelStudent.classList.add('clickInput');
+    labelStudent.style.color = "#8F7ECE";
+    labelAdmin.classList.remove('clickInput');
+    labelTeacher.classList.remove('clickInput');
+    labelTeacher.style.color = "#2F2D35";
+    labelAdmin.style.color = "#2F2D35";
+    document.querySelector('.list_output_admin').classList.add('hidden');
+    document.querySelector('.list_output_teacher').classList.add('hidden');
+    document.querySelector('.list_output_student').classList.remove('hidden');
+    document.querySelector('.list_output_student_group').classList.add('hidden');
+    titleList.innerHTML = `<span>Выберите факультет</span>`;
+   
+    
+
+});
 
 // выбор факультетов
 for (let i = 0; i < radioCard.length; i++) {
@@ -55,49 +169,36 @@ for (let i = 0; i < radioCard.length; i++) {
 }
 
 
-
-
-// Событие для админа
-inputAdmin.addEventListener("click", function inputAdmin () {
-
-
-    labelAdmin.classList.add('clickInput');
-    labelAdmin.style.color = "#8F7ECE";
-
-
-
-    labelStudent.classList.remove('clickInput');
+// при нажатии кнопки назад у студента
+buttonBackGroups.addEventListener("click", () => {
+    
+    labelStudent.classList.add('clickInput');
+    labelStudent.style.color = "#8F7ECE";
+    labelAdmin.classList.remove('clickInput');
     labelTeacher.classList.remove('clickInput');
     labelTeacher.style.color = "#2F2D35";
-    labelStudent.style.color = "#2F2D35";
-})
-
-
-// Событие для преподавателя
-inputTeacher.addEventListener("click",  function inputTeacher () {
-    labelTeacher.classList.add('clickInput');
-    labelTeacher.style.color = "#8F7ECE";
-
-
-
-    labelStudent.classList.remove('clickInput');
-    labelAdmin.classList.remove('clickInput');
     labelAdmin.style.color = "#2F2D35";
-    labelStudent.style.color = "#2F2D35";
+    document.querySelector('.list_output_admin').classList.add('hidden');
+    document.querySelector('.list_output_teacher').classList.add('hidden');
+    document.querySelector('.list_output_student').classList.remove('hidden');
+    document.querySelector('.list_output_student_group').classList.add('hidden');
 
+    titleList.innerHTML = `<span>Выберите факультет</span>`;
 });
 
 
-// Событие для студента
-inputStudent.addEventListener("click", ()=>
-{
-    clickStudent();
-});
 
-if(userRole.innerHTML == 'student')
-{
-    clickStudent();
-}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
