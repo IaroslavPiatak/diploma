@@ -5,7 +5,7 @@ require_once '../connection.php';
 
 if (!$_SESSION['dataOfUser']) // если нет сессии о пользователе , то не даем войти
 {
-    header('Location:../index.html');
+    header('Location:../index.php');
 }
 ?>
 <!DOCTYPE html>

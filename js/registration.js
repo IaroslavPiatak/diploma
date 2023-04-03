@@ -7,11 +7,30 @@ const labelStudent = document.getElementById("labelStudent");
 const radioCard = document.querySelectorAll('.faculty_content');
 const titleList = document.getElementById("titleList");
 const buttonBackGroups = document.getElementById("button_back_groups");
-const buttonBackStudentFinal = document.getElementById("button_back_student_final");
+const buttonBackTeacher = document.getElementById("buttonBackTeacher");
+const checkboxCard = document.querySelectorAll('.faculty_content_teacher');
 //проврка дефолтного выделения в шапке
 const userRole = document.getElementById("userRole");
 
-// при нажатии кнопки назад у студентв в финальном листе (работает почему то только тут)
+// при нажатии кнопки назад у преподавателя
+buttonBackTeacher.addEventListener("click", () => {
+    
+    labelTeacher.classList.add('clickInput');
+    labelTeacher.style.color = "#8F7ECE";
+    labelAdmin.classList.remove('clickInput');
+    labelStudent.classList.remove('clickInput');
+    labelStudent.style.color = "#2F2D35";
+    labelAdmin.style.color = "#2F2D35";
+    document.querySelector('.list_output_admin').classList.add('hidden');
+    document.querySelector('.list_output_teacher').classList.remove('hidden');
+    document.querySelector('.list_output_student').classList.add('hidden');
+    document.querySelector('.list_output_student_group').classList.add('hidden');
+
+
+    titleList.innerHTML = `<span>Выберите предметы</span>`;
+});
+
+
 
 
 
@@ -22,10 +41,15 @@ if(finalPage.innerHTML == 'student')
 {
     titleList.classList.add('hidden');
     document.querySelector('.list_output_admin').classList.add('hidden');
-    document.querySelector('.list_output_student_final').classList.remove('hidden');
+    document.querySelector('.list_output_student_final').classList.remove('hidden');  
+}
 
+else if (finalPage.innerHTML == 'teacher')
+{
+    titleList.innerHTML = `<span>Выбранные предметы</span>`;
+    document.querySelector('.list_output_admin').classList.add('hidden');
+    document.querySelector('.list_output_teacher_final').classList.remove('hidden'); 
 
-    
 }
 
 
@@ -48,7 +72,7 @@ else if (userRole.innerHTML == 'teacher')
     document.querySelector('.list_output_admin').classList.add('hidden');
     document.querySelector('.list_output_teacher').classList.remove('hidden');
     document.querySelector('.list_output_student').classList.add('hidden');
-    titleList.innerHTML = `<span>Выберите предмет</span>`;
+    titleList.innerHTML = `<span>Выберите предметы</span>`;
 
 
 }
@@ -125,7 +149,7 @@ inputTeacher.addEventListener("click", () => {
     document.querySelector('.list_output_teacher').classList.remove('hidden');
     document.querySelector('.list_output_student').classList.add('hidden');
     document.querySelector('.list_output_student_group').classList.add('hidden');
-    titleList.innerHTML = `<span>Выберите предмет</span>`;
+    titleList.innerHTML = `<span>Выберите предметы</span>`;
 
 
 });
@@ -146,6 +170,28 @@ inputStudent.addEventListener("click", () => {
     
 
 });
+
+// выбор предметов для учителя
+for (let i = 0; i < checkboxCard.length; i++) {
+    let click = 0;
+    checkboxCard[i].addEventListener('click', () => {
+        if(click == 0)
+        {
+            checkboxCard[i].style.border = "3px solid #8F7ECE";
+            checkboxCard[i].style.boxShadow = " 4px 4px 4px #8F7ECE";
+            click = 1;
+        }
+        else
+        {
+            checkboxCard[i].style.border = null;
+            checkboxCard[i].style.boxShadow = "0px 4px 4px rgba(0, 0, 0, 0.25)";
+            click = 0;
+        }
+    })
+    
+
+}
+
 
 // выбор факультетов
 for (let i = 0; i < radioCard.length; i++) {
@@ -169,6 +215,8 @@ for (let i = 0; i < radioCard.length; i++) {
 }
 
 
+
+
 // при нажатии кнопки назад у студента
 buttonBackGroups.addEventListener("click", () => {
     
@@ -185,6 +233,7 @@ buttonBackGroups.addEventListener("click", () => {
 
     titleList.innerHTML = `<span>Выберите факультет</span>`;
 });
+
 
 
 

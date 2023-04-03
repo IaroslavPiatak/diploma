@@ -3,17 +3,22 @@
 require_once '../../connection.php';
 session_start();
 
+
 // проверка на финальную страницу регистрации
 if (isset($_SESSION['studentWithFaculty']['studentFinal']) && $_SESSION['studentWithFaculty']['studentFinal'] == 'true') {
     $finalPage = 'student';
 
 
+} elseif (isset($_SESSION['teacher']['teacherFinal']) && $_SESSION['teacher']['teacherFinal'] == 'true') {
+    $finalPage = 'teacher';
 } else
     $finalPage = 'none';
 // проверка на роль страничеи
 if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFaculty'])) {
     $userRole = 'studentGroup';
     $groupOutput = 'true';
+} else if (isset($_SESSION['teacher']) and !empty($_SESSION['teacher'])) {
+    $userRole = 'teacher';
 } else {
     $userRole = 'admin'; // переменная определяющая какой пункт меню в header будет выделен изначально
     $groupOutput = 'false';
@@ -33,6 +38,7 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
 </head>
 
 <body>
+
     <main>
         <!-- В другом положении span НЕ РАБОТАЕТ !!!!    
         <span class="hidden" id="userRole"><?= $userRole ?></span>
@@ -52,6 +58,13 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
                         <span>Студент</span>
                     </div>
                 <?
+                } else if ($finalPage == 'teacher') {
+                    ?>
+                        <div class="final_header_container">
+                            <span>Преподаватель</span>
+                        </div>
+                <?
+
                 } else {
                     echo ' <div class="input_container_admin">
                     <label id="labelAdmin">Администратор</label>
@@ -101,6 +114,22 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
                         value="<?= $_SESSION['studentWithFaculty']['login'] ?>">
                     <input class="input_data" type="text" placeholder="Введите Пароль" name="password"
                         value="<?= $_SESSION['studentWithFaculty']['password'] ?>">
+                <?
+
+                } else if (isset($_SESSION['teacher']) and !empty($_SESSION['teacher'])) {
+                    ?>
+                        <input class="input_data" type="text" placeholder="Введите Фамилию" name="lastName"
+                            value="<?= $_SESSION['teacher']['lastName'] ?>">
+                        <input class="input_data" type="text" placeholder="Введите Имя" name="name"
+                            value="<?= $_SESSION['teacher']['name'] ?>">
+                        <input class="input_data" type="text" placeholder="Введите Отчество" name="surname"
+                            value="<?= $_SESSION['teacher']['surname'] ?>">
+                        <input class="input_data" type="text" placeholder="Введите Email" name="email"
+                            value="<?= $_SESSION['teacher']['email'] ?>">
+                        <input class="input_data" type="text" placeholder="Введите Логин" name="login"
+                            value="<?= $_SESSION['teacher']['login'] ?>">
+                        <input class="input_data" type="text" placeholder="Введите Пароль" name="password"
+                            value="<?= $_SESSION['teacher']['password'] ?>">
                 <?
 
                 } else {
@@ -217,7 +246,7 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
                             <span>Назад</span>
                         </div>
                         <button id="button_back_groups" type="button" class="btn_form"></button>
-                        
+
 
                     </div>
 
@@ -239,7 +268,40 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
 
             <!-- Лист вывода  для преподвателей -->
             <div class="list_output_teacher hidden">
-                <span>Преподы</span>
+                <?
+                $countSubjects = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `subjects`"))[0][0];
+                $firstSubjectsId = mysqli_fetch_all(
+                    mysqli_query(
+                        $connect,
+                        "SELECT `subjects_id` FROM `subjects` LIMIT 1"
+                    )
+                )[0][0]; // получаем id первого предмета
+                
+                for ($i = 0; $i < $countSubjects; $i++) { // заполняем правый блок, пока не будет 6 карточек
+                    $subjectName = mysqli_fetch_all(mysqli_query($connect, "SELECT `subjects_name` FROM `subjects`
+                            WHERE `subjects_id` = '$firstSubjectsId'"))[0][0];
+                    echo '
+                        <div class="faculty_content_teacher">
+                        <div class="faculty_text">
+                            <span>' . $subjectName . '</span>
+                            
+                        </div>
+                        <input class = "checkboxTeacher" type = "checkbox" name = "subject' . $i . '" value = "' . $firstSubjectsId . '">
+                </div>';
+                    $firstSubjectsId++; // увеличиваем id первого элемента, т.е. получаем id 2 элемента
+                }
+                ?>
+                <div class="faculty_content_button">
+                    <div class="faculty_text_button">
+                        <span>Далее</span>
+
+                    </div>
+                    <input type="hidden" name="countOfSubjects" value="<?= $countSubjects ?>">
+                    <button type="submit" id="btn_form_faculties_next" class="btn_form" name="type_form"
+                        value="test"></button>
+
+
+                </div>
             </div>
             <!-- Конец листа вывода  для преподвателей -->
 
@@ -276,19 +338,20 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
                         <div class="faculty_text_button">
                             <span>К группам</span>
                         </div>
-                        <button id="button_back_student_final" type="submit" class="btn_form" name="type_form"  value="studentBackToGroups"></button>
+                        <button id="button_back_student_final" type="submit" class="btn_form" name="type_form"
+                            value="studentBackToGroups"></button>
                         <?
-                        if(isset($_SESSION['studentWithFaculty']['groupId']))
-                        {
+                        if (isset($_SESSION['studentWithFaculty']['groupId'])) {
                             ?>
-                            <input type="hidden" name="gropId" value="<?= $_SESSION['studentWithFaculty']['groupId']?>">
-                        <input type="hidden" name="facultyId" value="<?= $_SESSION['studentWithFaculty']['facultyId']?>">
+                            <input type="hidden" name="gropId" value="<?= $_SESSION['studentWithFaculty']['groupId'] ?>">
+                            <input type="hidden" name="facultyId"
+                                value="<?= $_SESSION['studentWithFaculty']['facultyId'] ?>">
                         <?
-                            
+
                         }
                         ?>
-                        
-                        
+
+
 
                     </div>
                 </div>
@@ -314,16 +377,63 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
                     </div>
 
                     <div class="faculty_content_button">
-                    <div class="faculty_text_button">
-                        <span>Зарегистрировать</span>
+                        <div class="faculty_text_button">
+                            <span>Зарегистрировать</span>
+                        </div>
+                        <button type="submit" id="btn_form_faculties_next" class="btn_form" name="type_form"
+                            value="studentRegister"></button>
+
+
                     </div>
-                    <button type="submit" id="btn_form_faculties_next" class="btn_form" name="type_form"
-                        value="studentRegister"></button>
-
-
-                </div>
                 </div>
             </div>
+            <!--Конец вывода финальной страницы студента  -->
+
+            <!--Начало  вывода финальной страницы преподавателя -->
+            <div class="list_output_teacher_final hidden">
+                <?
+                $countSubjects = $_SESSION['teacher']['countOfSubjects'];
+                for ($i = 0; $i < $countSubjects; $i++) {
+                    $subjectId = $_SESSION['teacher']['subject' . $i];
+                    $subjectName = mysqli_fetch_all(mysqli_query($connect, "SELECT `subjects_name` FROM `subjects` WHERE `subjects_id` = '$subjectId'"))[0][0];
+
+                    echo '
+                        <div class="faculty_content_teacher">
+                        <div class="faculty_text">
+                            <span>' . $subjectName . '</span>
+                            
+                        </div>
+                </div>';
+                }
+
+
+                ?>
+
+                <div class="faculty_content_button_back">
+                    <div class="faculty_text_button">
+                        <span>К выбору предметов</span>
+                    </div>
+                    <button id="buttonBackTeacher" type="submit" class="btn_form" name="type_form"
+                        value="teacherBackToSubjects"></button>
+
+                </div>
+
+                <div class="faculty_content_button">
+                <div class="faculty_text_button">
+                    <span>Зарегистрировать</span>
+                </div>
+                <button type="submit" id="btn_form_faculties_next" class="btn_form" name="type_form"
+                    value="studentRegister"></button>
+
+
+            </div>
+
+            </div>
+
+
+            
+
+
             <!--Конец вывода финальной страницы студента  -->
         </form>
 

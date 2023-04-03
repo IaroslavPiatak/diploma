@@ -48,6 +48,23 @@ elseif($_POST['type_form'] == 'studentBackToGroups')
 header('Location: registration.php');
 }
 
+elseif($_POST['type_form'] == 'teacherBackToSubjects')
+{
+    $_SESSION['teacher'] =
+[
+    'lastName' => $_POST['lastName'],
+    'name' => $_POST['name'],
+    'surname' => $_POST['surname'],
+    'email' => $_POST['email'],
+    'login' => $_POST['login'],
+    'password' => $_POST['password'],
+    'facultyId' => $_POST['facultyId'],
+    'teacherFinal' => 'false'
+
+];
+header('Location: registration.php');
+}
+
 elseif (($_POST['type_form'] == 'studentRegister'))
 {
     $login = $_SESSION['studentWithFaculty']['login'];
@@ -67,6 +84,36 @@ elseif (($_POST['type_form'] == 'studentRegister'))
     header('Location: registrationOut.php');
     
    
+}
+
+elseif (($_POST['type_form'] == 'test'))
+{
+    $_SESSION['teacher'] =
+[
+    'lastName' => $_POST['lastName'],
+    'name' => $_POST['name'],
+    'surname' => $_POST['surname'],
+    'email' => $_POST['email'],
+    'login' => $_POST['login'],
+    'password' => $_POST['password'],
+    'teacherFinal' => 'false'
+];
+    $numberOfSubject = 0;
+    for($i = 0; $i < $_POST['countOfSubjects']; $i++)
+    {
+        if(isset($_POST['subject'.$i]))
+        {
+            $_SESSION['teacher']['subject'.$numberOfSubject] = $_POST['subject'.$i];
+            $numberOfSubject++;
+        }
+        else
+        {
+            continue;
+        }
+    }
+    $_SESSION['teacher']['countOfSubjects'] = $numberOfSubject;
+    $_SESSION['teacher']['teacherFinal'] = 'true';
+    header('Location: registration.php');
 }
 
 else

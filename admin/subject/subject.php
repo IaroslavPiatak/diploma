@@ -17,7 +17,7 @@ require_once '../../connection.php';
 <body>
     <main>
         <?php
-        $countFaculties = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `subject`"))[0][0]; // считаем факультеты, если их 0, выводим код из if
+        $countFaculties = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `subjects`"))[0][0]; // считаем факультеты, если их 0, выводим код из if
         if ($countFaculties == 0) { 
             ?>
             <div class="main_container">
@@ -101,7 +101,7 @@ require_once '../../connection.php';
                     <div class="right_block"> <!--Запускаем скрипт для правого блока -->
                         <?
                         $firstFacultyId = mysqli_fetch_all(mysqli_query($connect,
-                        "SELECT `subject_id` FROM `subject` LIMIT 1"))[0][0]; // получаем id первого факультета
+                        "SELECT `subjects_id` FROM `subjects` LIMIT 1"))[0][0]; // получаем id первого факультета
                         
                         for ($i = 0; $i < $countFaculties; $i++) { // заполняем правый блок, пока не будет 6 карточек
                             if ($i == 6) {
@@ -112,8 +112,8 @@ require_once '../../connection.php';
                                 <div class="faculty_text">
                                     <span>'
                                     . $facultyName = mysqli_fetch_all(mysqli_query($connect,
-                                    "SELECT `subject_name` FROM `subject` 
-                                    WHERE `subject_id` = '$firstFacultyId'"))[0][0] . // вытаскиваем имя факультета, по id первого факультета
+                                    "SELECT `subjects_name` FROM `subjects` 
+                                    WHERE `subjects_id` = '$firstFacultyId'"))[0][0] . // вытаскиваем имя факультета, по id первого факультета
                                     '</span>
                                     
                                 </div>
@@ -136,8 +136,8 @@ require_once '../../connection.php';
                                 <div class="faculty_text">
                                     <span>'
                                     . $facultyName = mysqli_fetch_all(mysqli_query($connect,
-                                    "SELECT `subject_name` FROM `subject` 
-                                    WHERE `subject_id` = '$firstFacultyId'"))[0][0] . // получение имени по id
+                                    "SELECT `subjects_name` FROM `subjects` 
+                                    WHERE `subjects_id` = '$firstFacultyId'"))[0][0] . // получение имени по id
                                     '</span>
                                     
                                 </div>

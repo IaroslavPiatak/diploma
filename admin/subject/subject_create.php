@@ -3,10 +3,10 @@
 require_once '../../connection.php';
 if (!empty($_POST['subjectName'])) {
     $subjectName = $_POST['subjectName'];
-    $checkSubject = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `subject`
-    WHERE `subject_name` = '$subjectName'"))[0][0];
+    $checkSubject = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `subjects`
+    WHERE `subjects_name` = '$subjectName'"))[0][0];
     if ($checkSubject == 0) {
-        mysqli_query($connect, "INSERT INTO `subject`(`subject_name`) VALUES ('$subjectName')");
+        mysqli_query($connect, "INSERT INTO `subjects`(`subjects_name`) VALUES ('$subjectName')");
         header('Location:subject.php');
 
     } elseif ($checkSubject > 0) {
