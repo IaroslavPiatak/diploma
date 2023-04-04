@@ -61,8 +61,7 @@ if(userRole.innerHTML == 'admin')
     document.querySelector('.list_output_admin').classList.remove('hidden');
     document.querySelector('.list_output_teacher').classList.add('hidden');
     document.querySelector('.list_output_student').classList.add('hidden');
-    titleList.innerHTML = `<span>Выберите привелегии</span>`;
-
+    titleList.innerHTML = `<span>Введите личные данные</span>`;
 }
 
 else if (userRole.innerHTML == 'teacher')
