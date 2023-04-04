@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Мар 24 2023 г., 13:53
+-- Время создания: Апр 04 2023 г., 09:08
 -- Версия сервера: 8.0.30
 -- Версия PHP: 8.1.9
 
@@ -91,12 +91,65 @@ INSERT INTO `roles` (`role_id`, `role_name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `studients`
+--
+
+CREATE TABLE `studients` (
+  `studient_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `surname` varchar(255) NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `faculty_id` int NOT NULL,
+  `group_id` int NOT NULL,
+  `photo` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `subjects`
 --
 
 CREATE TABLE `subjects` (
   `subjects_id` int NOT NULL,
   `subjects_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `teachers`
+--
+
+CREATE TABLE `teachers` (
+  `teacher_id` int NOT NULL,
+  `user_id` int NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `surname` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `photo` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Дамп данных таблицы `teachers`
+--
+
+INSERT INTO `teachers` (`teacher_id`, `user_id`, `first_name`, `last_name`, `surname`, `email`, `photo`) VALUES
+(1, 29, '1', '1', '1', '1', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `teachers-subjects`
+--
+
+CREATE TABLE `teachers-subjects` (
+  `id_link` int NOT NULL,
+  `id_teacher` int NOT NULL,
+  `id_subject` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -148,10 +201,28 @@ ALTER TABLE `roles`
   ADD PRIMARY KEY (`role_id`);
 
 --
+-- Индексы таблицы `studients`
+--
+ALTER TABLE `studients`
+  ADD PRIMARY KEY (`studient_id`);
+
+--
 -- Индексы таблицы `subjects`
 --
 ALTER TABLE `subjects`
   ADD PRIMARY KEY (`subjects_id`);
+
+--
+-- Индексы таблицы `teachers`
+--
+ALTER TABLE `teachers`
+  ADD PRIMARY KEY (`teacher_id`);
+
+--
+-- Индексы таблицы `teachers-subjects`
+--
+ALTER TABLE `teachers-subjects`
+  ADD PRIMARY KEY (`id_link`);
 
 --
 -- Индексы таблицы `users`
@@ -173,13 +244,13 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT для таблицы `faculties`
 --
 ALTER TABLE `faculties`
-  MODIFY `faculty_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `faculty_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT для таблицы `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `groups_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `groups_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT для таблицы `roles`
@@ -188,16 +259,34 @@ ALTER TABLE `roles`
   MODIFY `role_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT для таблицы `studients`
+--
+ALTER TABLE `studients`
+  MODIFY `studient_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT для таблицы `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `subjects_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `subjects_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT для таблицы `teachers`
+--
+ALTER TABLE `teachers`
+  MODIFY `teacher_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT для таблицы `teachers-subjects`
+--
+ALTER TABLE `teachers-subjects`
+  MODIFY `id_link` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

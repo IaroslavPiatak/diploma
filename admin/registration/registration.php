@@ -183,7 +183,6 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
                         $firstFacultyId++; // увеличиваем id первого элемента, т.е. получаем id 2 элемента
                 
                     }
-                }
 
                 ?>
                 <div class="faculty_content_button">
@@ -195,6 +194,9 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
 
 
                 </div>
+                <?
+                }
+                ?>
             </div>
             <!-- Конец листа вывода для студентов  -->
 
@@ -270,6 +272,10 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
             <div class="list_output_teacher hidden">
                 <?
                 $countSubjects = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `subjects`"))[0][0];
+                if($countSubjects == 0)
+                echo 'Предметов нет!!!';
+                else
+                {
                 $firstSubjectsId = mysqli_fetch_all(
                     mysqli_query(
                         $connect,
@@ -291,6 +297,7 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
                     $firstSubjectsId++; // увеличиваем id первого элемента, т.е. получаем id 2 элемента
                 }
                 ?>
+
                 <div class="faculty_content_button">
                     <div class="faculty_text_button">
                         <span>Далее</span>
@@ -298,10 +305,11 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
                     </div>
                     <input type="hidden" name="countOfSubjects" value="<?= $countSubjects ?>">
                     <button type="submit" id="btn_form_faculties_next" class="btn_form" name="type_form"
-                        value="test"></button>
-
-
+                        value="teacherNextFinal"></button>
                 </div>
+                <?
+                }
+                ?>
             </div>
             <!-- Конец листа вывода  для преподвателей -->
 
@@ -423,7 +431,7 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
                     <span>Зарегистрировать</span>
                 </div>
                 <button type="submit" id="btn_form_faculties_next" class="btn_form" name="type_form"
-                    value="studentRegister"></button>
+                    value="teacherRegister"></button>
 
 
             </div>

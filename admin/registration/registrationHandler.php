@@ -1,6 +1,7 @@
 <?php
 require_once '../../connection.php';
 session_start();
+print_r($_SESSION['teacher']);
 if($_POST['type_form'] == 'studentFaculties')
 {
     if(isset($_SESSION['studentWithFaculty']))
@@ -86,7 +87,37 @@ elseif (($_POST['type_form'] == 'studentRegister'))
    
 }
 
-elseif (($_POST['type_form'] == 'test'))
+elseif (($_POST['type_form'] == 'teacherRegister'))
+{
+   
+    $login = $_SESSION['teacher']['login'];
+    $password = $_SESSION['teacher']['password'];
+    mysqli_query($connect, "INSERT INTO `users`(`user_role`, `user_login`, `user_password`) VALUES ('2',
+    '$login', '$password')");
+
+    $user_id =  mysqli_fetch_all(mysqli_query($connect, "SELECT `user_id` FROM `users` WHERE `user_login` = '$login' AND `user_password` = '$password'"))[0][0];
+    $lastName = $_SESSION['teacher']['lastName'];
+    $name = $_SESSION['teacher']['name'];
+    $surname = $_SESSION['teacher']['surname'];
+    $email = $_SESSION['teacher']['email'];
+   
+    mysqli_query($connect, "INSERT INTO `teachers`(`user_id`, `last_name`, `first_name`, `surname`, `email`) 
+    VALUES ($user_id,'$lastName','$name','$surname','$email')");
+
+    $countOfSubjects = $_SESSION['teacher']['countOfSubjects'];
+    $teacher_id = mysqli_fetch_all(mysqli_query($connect, "SELECT `teacher_id` FROM `teachers` WHERE  `user_id` = '$user_id'"))[0][0];
+    for($i = 0; $i < $countOfSubjects; $i++)
+    {
+        $subject_id = $_SESSION['teacher']['subject'.$i]; 
+        mysqli_query($connect, "INSERT INTO `teachers-subjects`(`id_teacher`, `id_subject`) VALUES ('$teacher_id','$subject_id')");
+
+    }
+    header('Location: registrationOut.php');
+    
+   
+}
+
+elseif (($_POST['type_form'] == 'teacherNextFinal'))
 {
     $_SESSION['teacher'] =
 [
