@@ -9,6 +9,33 @@ const titleList = document.getElementById("titleList");
 const buttonBackGroups = document.getElementById("button_back_groups");
 const buttonBackTeacher = document.getElementById("buttonBackTeacher");
 const checkboxCard = document.querySelectorAll('.faculty_content_teacher');
+const modal = document.getElementById("alert");
+
+//Модальное окно
+if(modal.innerHTML == 'true')
+{
+    document.querySelector(".modal").classList.add("open");
+
+document.querySelector(".cross-btn").addEventListener("click", () =>
+{
+    document.querySelector(".modal").classList.remove("open");
+
+});
+
+window.addEventListener('keydown', (e) =>
+{
+    if(e.key === "Escape")
+    {
+        document.querySelector(".modal").classList.remove("open");
+    }
+});
+
+
+
+
+
+}
+
 //проврка дефолтного выделения в шапке
 const userRole = document.getElementById("userRole");
 

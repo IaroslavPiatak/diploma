@@ -4,12 +4,10 @@
 
 /* удаляет scroll bar */
 body {
+    height: 120%;
     display: flex;
     justify-content: center;
     background-color: #F6F5FB;
-
-
-
 }
 
 .main_container {
@@ -446,3 +444,95 @@ input::placeholder {
     opacity: 0;
     cursor: pointer;
 }
+
+/* Модальное окно */
+
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .4s, visibility .4s;
+  }
+  
+  .modal_box {
+    width: 400px;
+    height: 200px;
+    background: #FFFFFF;
+    z-index: 1;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0);
+    transition: transform .8s;
+  }
+  
+  .modal_box_text {
+    width: 300px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal_box_text span {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #8F7ECE;
+  
+  }
+  
+  .cross-btn {
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    z-index: 2;
+    width: 25px;
+    height: 25px;
+    top:15px;
+    right: 20px;
+  
+  }
+  
+  .cross-btn svg path
+  {
+    transition: 0.25s;
+  }
+  
+  .cross-btn:hover svg path
+  {
+    
+    fill: #EC5863;
+    stroke: #EC5863;
+    transition: 0.25s;
+  }
+  
+  .cross-btn:active svg path
+  {
+    
+    fill: gray;
+    stroke: gray;
+  
+  }
+  
+  .modal.open {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .modal.open .modal_box {
+    transform: scale(1);
+  }
