@@ -67,16 +67,18 @@ if (!$_SESSION['dataOfUser']) // если нет сессии о пользов�
             </div>
             <!--Карточки с настройками-->
             <div class="card_content">
-                <div class="mail">
-                    <div class="content">
-                        <div class="text">
-                            <span>Почта</span>
-                        </div>
-                        <div class="img">
-                            <img src="../img/admin/card_icon.png" class="icon">
+                <a href="../general_pages/mail/mail.html">
+                    <div class="mail">
+                        <div class="content">
+                            <div class="text">
+                                <span>Почта</span>
+                            </div>
+                            <div class="img">
+                                <img src="../img/admin/card_icon.png" class="icon">
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
                 <a href="../general_pages/settings/setting.html">
                     <div class="setting">
                         <div class="content">

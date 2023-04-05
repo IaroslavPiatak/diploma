@@ -503,7 +503,7 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
                     </svg>
                     
             </button>
-            <div class="modal_box_text"><span>Неверный логин или пароль</span></div>
+            <div class="modal_box_text"><span>Пользователь с таким логином уже существует</span></div>
         </div>
     </div>
 

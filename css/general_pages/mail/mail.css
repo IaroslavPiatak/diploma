@@ -1,0 +1,149 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.main_container {
+    width: 1100px;
+    height: 650px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+   
+    width: 1000px;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.all_mail {
+    width: 220px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+   
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #8F7ECE;
+}
+
+.all_mail label {
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border: 3px #8F7ECE solid;
+    border-radius: 15px;
+}
+
+.buttons {
+    width: 320px;
+    height: 100px;
+  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button_header {
+    width: 150px;
+    height: 50px;
+    background: #8F7ECE;
+    border-radius: 15px;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #FFFFFF;
+
+}
+
+.exit {
+    background: #EC5863;
+}
+
+.letter_box {
+    width: 1000px;
+    height: 365px;
+    
+  
+    
+}
+
+.letter {
+    width: 1000px;
+    height: 75px;
+    margin-top: 20px;
+  
+    display: flex;
+}
+
+.icon {
+    width: 100px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+
+}
+
+.letter_open {
+
+
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+    background-image: url(../../../img/general_pages/mail/close_letter.png);
+}
+
+.theme {
+    width: 750px;
+    height: 75px;
+  
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2F2D35;
+}
+
+.date {
+    width: 150px;
+    height: 75px;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #2F2D35;
+
+}
