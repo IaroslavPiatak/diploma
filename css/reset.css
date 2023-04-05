@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
+/*Очищаем все отступы и границы*/
+*{
+    padding: 0;
+    margin: 0;
+    border:0;
+    font-family: 'Rubik';
+}
+/*Меняет подсчет ширины блока, для более удобной верстки*/
+*,*::before, *::after{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+/*Убираем линии обводки у некоторых браузеров*/
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+/*Добавляет HTML5 тегам значение блок*/
+nav,footer,header,aside{display: block;}
+/*Уравнивают поведение шрифтов и элементов в разных браузерах*/
+html,body{
+    height: 100%;
+    width: 100%;
+    font-size: 100%;
+    line-height: 1;
+    font-size: 14px;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+/*Включаем наследование семейства шрифта для тегов form*/
+input,button,textarea{font-family: inherit;}
+/*Убирают особенности отображения некоторых браузеров*/
+input::-ms-clear{display: none;} /*превдоэлемент, который убирает крестик в текстовом поле ввода Бразуера Microsoft*/
+button{cursor: pointer;}
+button::-moz-focus-inner{padding: 0;border: 0;} /*убирает лишние отступы вокруг кнопок в Mozila*/
+a,a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li {list-style: none;}
+img{vertical-align: top;}
+/*Обнуление заголовков*/
+h1,h2,h3,h4,h5,h6{font-size: inherit; font-weight: 400;}
+
+a{text-decoration: none;}

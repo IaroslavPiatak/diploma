@@ -1,0 +1,128 @@
+
+  .main_container{
+    width: 1200px;
+    height: 1080px; 
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+  /*контейнер для фотокарточек*/
+  .pa_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap:50px;
+  }
+  .first_container{
+    width:1100px;
+    height:350px;
+    display: flex;
+    justify-content: center;  
+    align-items: center;
+    gap:100px;
+    }
+  .profile_card{
+    width: 300px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+    .profile_card_img{
+      text-align: center;
+    }
+    .name{
+        width: 250px;
+        height: 50px;
+        margin-top: 20px;
+        font-family: 'Rubik';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 24px;
+        text-align: center;
+        color: #2F2D35;
+      }
+    .email{
+      width: 250px;
+      height: 20px;
+      font-family: 'Rubik';
+      font-weight: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px; 
+      text-align: center;
+      color: #808080;
+      
+    }
+    .exit{
+      width: 250px;
+      height: 50px;
+      font-family: 'Rubik';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 21px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #808080;
+      margin-top:55px;
+    }
+    .exit a{
+      text-decoration: none;
+      color: #808080;
+    }
+    .mail, .settings, .journal, .other{
+        width: 300px;
+        height: 150px;
+        background: #FFFFFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 15px;
+          }
+        .content{
+            display: flex;
+            flex-direction: column; 
+            padding-left: 25px;
+            gap:15px;
+          
+          }
+          .text{
+            width:250px;
+            height:70px;
+            padding-top: 25px;
+          }
+          .text span{
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 24px;
+            color: #8F7ECE;
+          }
+          .icon{    
+            width:45px;
+            height:45px;
+          }
+          .card_content{
+            width:700px;
+            height:350px;
+            display: flex;
+            flex-wrap:wrap;
+            gap:50px 100px;
+          }
+          .shedule{
+            width: 1100px;
+            height: 449px;
+            border-radius:15px;
+          }
+          .shedule_img{
+            width:1100px;
+            height:449px;
+          }
+          .avatar{
+            width:100px;
+            height:100px;
+          }
