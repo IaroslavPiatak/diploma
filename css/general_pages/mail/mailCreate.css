@@ -7,7 +7,7 @@ body {
 
 .main_container {
     width: 1100px;
-    height: 650px;
+    height: 700px;
 
     background: #F9F9F9;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -61,16 +61,18 @@ body {
     color: #FFFFFF;
 }
 
-.right_container input {
+.right_container span {
     width: 100%;
     height: 100%;
     font-family: 'Rubik';
     font-style: normal;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 24px;
     line-height: 24px;
-    text-align: center;
-    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #F6F5FB;
     background-color: inherit;
 
 }
@@ -88,6 +90,25 @@ body {
 .button_header {
     width: 150px;
     height: 50px;
+    background: #8F7ECE;
+    border-radius: 15px;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #FFFFFF;
+
+}
+
+.button_delete {
+    width: 300px;
+    height: 50px;
+    margin-top: 30px;
     background: #8F7ECE;
     border-radius: 15px;
     font-family: 'Rubik';

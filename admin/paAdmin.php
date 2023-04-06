@@ -67,7 +67,7 @@ if (!$_SESSION['dataOfUser']) // если нет сессии о пользов�
             </div>
             <!--Карточки с настройками-->
             <div class="card_content">
-                <a href="../general_pages/mail/mail.html">
+                <a href="../general_pages/mail/mail.php">
                     <div class="mail">
                         <div class="content">
                             <div class="text">

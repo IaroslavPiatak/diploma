@@ -95,9 +95,10 @@ body {
 .letter {
     width: 1000px;
     height: 75px;
-    margin-top: 20px;
+   
   
     display: flex;
+    
 }
 
 .icon {
@@ -146,4 +147,23 @@ body {
 
     color: #2F2D35;
 
+}
+
+
+.inputSubmit
+{
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    opacity: 0;
+}
+
+form
+{
+    margin-top: 20px;
+    position: relative;
+    z-index: 0;
+  
 }

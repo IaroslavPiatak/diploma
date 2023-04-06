@@ -43,7 +43,7 @@ echo '<span hidden id = "outputContent">admin</span>';
                 </div>
 
                 <div class="exit_btn_container">
-                    <button type="button" class="exit_btn" onClick='location.href="mail.html"'>Вернуться к письмам
+                    <button type="button" class="exit_btn" onClick='location.href="mail.php"'>Вернуться к письмам
                     </button>
                 </div>
             </div>
@@ -53,14 +53,21 @@ echo '<span hidden id = "outputContent">admin</span>';
                 $countOfAdmins = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `admins`"))[0][0];
                 $userIdMass = mysqli_fetch_all(mysqli_query($connect, "SELECT `user_id` FROM `admins`"));
                 for ($i = 0; $i < $countOfAdmins; $i++) {
+                    $userId = $userIdMass[$i][0];
+                    if ($userId == $_SESSION['dataOfUser']['userId']) {
+                        continue;
+                    }
                     ?>
+
                     <form method="post" action="mailCreate.php">
                         <div class="profile_card">
                             <div class="profile_card_content">
                                 <div class="profile_card_img">
                                     <?php
 
-                                    $userId = $userIdMass[$i][0];
+
+
+                                    echo '<input type = "hidden" name="destination" value = "' . $userId . '">';
 
                                     $check_photo = mysqli_fetch_all(mysqli_query($connect, "SELECT `photo` FROM `admins` WHERE `user_id` = '$userId'"))[0][0];
 
@@ -82,7 +89,7 @@ echo '<span hidden id = "outputContent">admin</span>';
                                     $userFullName = mysqli_fetch_all(mysqli_query($connect, "SELECT `first_name`, `last_name`, `surname`
                         FROM `admins` WHERE `user_id` = '$userId'"));
                                     echo '<span>' . $userFullName[0][1] . ' ' . $userFullName[0][0] . ' ' . $userFullName[0][2] . '</span>';
-                                    echo '<input type = "hidden" name="name" value = "'. $userFullName[0][1] . ' ' . $userFullName[0][0] . ' ' . $userFullName[0][2] .'">';
+                                    echo '<input type = "hidden" name="name" value = "' . $userFullName[0][1] . ' ' . $userFullName[0][0] . ' ' . $userFullName[0][2] . '">';
                                     ?>
                                 </div>
                                 <div class="email">
@@ -94,10 +101,10 @@ echo '<span hidden id = "outputContent">admin</span>';
                                 </div>
 
                             </div>
-                            
+
                             <input class="btn-submit" type="submit">
                         </div>
-                        
+
                     </form>
                 <?
                 }
