@@ -12,15 +12,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/pa_student.css">
-    <title>Личный кабинет студента</title>
+    <link rel="stylesheet" href="css/pa_teacher.css">
+    <title>Личный кабинет учителя</title>
 </head>
 <body>
     <div class="main_contanier">
     <div class="pa_container">
-        <div class="student_container">
+        <div class="teacher_container">
             <div class="profile_card">
-                <!--Карточка профиля-->
                 <div class="profile_card_content">
                     <div class="profile_card_img">
                     <?php
@@ -61,7 +60,7 @@
                 </div>
             </div>
             <div class="card_content">
-                <a href="#">
+            <a href="#">
                 <div class="mail">
                      <div class="content">
                         <div class="text">
