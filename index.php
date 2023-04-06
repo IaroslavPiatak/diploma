@@ -31,7 +31,8 @@ require_once 'connection.php';
                     $password = $_POST['password'];
 
 
-                    $checkUser = mysqli_fetch_all(mysqli_query($connect, "SELECT * FROM `users` WHERE `user_login` = '$login' AND `user_password` = '$password'"));
+                    $checkUser = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `users` WHERE `user_login` = '$login' AND `user_password` = '$password'"));
+                    
                     if (empty($checkUser)) {
                        
 
@@ -43,8 +44,7 @@ require_once 'connection.php';
 
 
                     } else if ($checkUser[0][0] == 1) {
-
-                        $request = mysqli_fetch_all(mysqli_query($connect, 'SELECT * FROM `users`'));
+                        $request = mysqli_fetch_all(mysqli_query($connect, "SELECT * FROM `users` WHERE `user_login` = '$login' AND `user_password` = '$password'"));
                         $requestUserId = $request[0][0];
                         $requestRole = $request[0][1];
                         $requestLogin = $request[0][2];
@@ -60,6 +60,7 @@ require_once 'connection.php';
                             header('Location:admin/paAdmin.php');
                         }
                     }
+                
 
                 }
 

@@ -5,7 +5,7 @@ require_once '../connection.php';
 
 if (!$_SESSION['dataOfUser']) // если нет сессии о пользователе , то не даем войти
 {
-    header('Location:../index.html');
+    header('Location:../index.php');
 }
 ?>
 <!DOCTYPE html>
@@ -30,7 +30,9 @@ if (!$_SESSION['dataOfUser']) // если нет сессии о пользов�
                         <?php
 
                         $userId = $_SESSION['dataOfUser']['userId'];
+
                         $check_photo = mysqli_fetch_all(mysqli_query($connect, "SELECT `photo` FROM `admins` WHERE `user_id` = '$userId'"))[0][0];
+
 
 
                         if ($check_photo === NULL) {
@@ -65,16 +67,18 @@ if (!$_SESSION['dataOfUser']) // если нет сессии о пользов�
             </div>
             <!--Карточки с настройками-->
             <div class="card_content">
-                <div class="mail">
-                    <div class="content">
-                        <div class="text">
-                            <span>Почта</span>
-                        </div>
-                        <div class="img">
-                            <img src="../img/admin/card_icon.png" class="icon">
+                <a href="../general_pages/mail/mail.php">
+                    <div class="mail">
+                        <div class="content">
+                            <div class="text">
+                                <span>Почта</span>
+                            </div>
+                            <div class="img">
+                                <img src="../img/admin/card_icon.png" class="icon">
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
                 <a href="../general_pages/settings/setting.html">
                     <div class="setting">
                         <div class="content">
@@ -87,16 +91,19 @@ if (!$_SESSION['dataOfUser']) // если нет сессии о пользов�
                         </div>
                     </div>
                 </a>
-                <div class="new_user">
-                    <div class="content">
-                        <div class="text">
-                            <span>Зарегистрировать нового пользователя</span>
-                        </div>
-                        <div class="img">
-                            <img src="../img/admin/adduser_105070 1.png" class="icon2">
+
+                <a href="registration/registration.php">
+                    <div class="new_user">
+                        <div class="content">
+                            <div class="text">
+                                <span>Зарегистрировать нового пользователя</span>
+                            </div>
+                            <div class="img">
+                                <img src="../img/admin/adduser_105070 1.png" class="icon2">
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
                 <div class="delete">
                     <div class="content">
                         <div class="text">
@@ -123,16 +130,16 @@ if (!$_SESSION['dataOfUser']) // если нет сессии о пользов�
                 </div>
             </a>
             <a href="subject/subject.php">
-            <div class="items">
-                <div class="content">
-                    <div class="text">
-                        <span>Предметы</span>
-                    </div>
-                    <div class="img">
-                        <img src="../img/admin/Vector (9).png" class="icon1">
+                <div class="items">
+                    <div class="content">
+                        <div class="text">
+                            <span>Предметы</span>
+                        </div>
+                        <div class="img">
+                            <img src="../img/admin/Vector (9).png" class="icon1">
+                        </div>
                     </div>
                 </div>
-            </div>
             </a>
             <div class="shedule">
                 <div class="content">

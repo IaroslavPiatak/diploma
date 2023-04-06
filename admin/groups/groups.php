@@ -1,6 +1,23 @@
 <!-- Mady by Iaroslav Piatak (php) -->
 <?php
 require_once '../../connection.php';
+session_start();
+if(!empty($_POST['facultyId']))
+{
+    $_SESSION['facultyId'] =
+        [
+            'facultyId' => $_POST['facultyId']
+        ];
+
+
+}
+
+
+$facultyId = $_SESSION['facultyId']['facultyId'];
+
+
+
+// записать в переменную из POST id факультета
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,15 +27,16 @@ require_once '../../connection.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/admin/faculty/faculty.css">
-    <title>Факультеты</title>
+    <link rel="stylesheet" href="/css/admin/groups/groups.css">
+    <title>Группы</title>
 </head>
 
 <body>
     <main>
         <?php
-        $countFaculties = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `subjects`"))[0][0]; // считаем факультеты, если их 0, выводим код из if
-        if ($countFaculties == 0) { 
+        $countGroups = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `groups`
+        WHERE `faculty_id` = '$facultyId'"))[0][0]; // считаем группы, если их 0, выводим код из if
+        if ($countGroups == 0) {
             ?>
             <div class="main_container">
                 <div class="inner_container">
@@ -26,39 +44,43 @@ require_once '../../connection.php';
                         <div class="profile_faculty">
                             <div class="profile_setting_content">
                                 <div class="img_block">
-                                    <img src="/img/admin/subject/backpack_regular_icon_203970 1.png" class="icon2">
+                                    <img src="/img/admin/groups/groups_icon.png" class="icon2">
                                 </div>
                                 <div class="title">
-                                    <span>Предметы</span>
+                                    <span>Группы</span>
                                 </div>
                                 <div class="exit">
-                                    <a href="../paAdmin.php">Вернуться в личный кабинет</a>
+                                    <a href="../faculty/faculty.php">Вернуться к факультетам</a>
                                 </div>
                             </div>
                         </div>
-                        <a href="subject_create.php">
+                        <form action="groups_create.php" method="post">
                             <div class="register_faculty">
                                 <div class="register_faculty_content">
                                     <div class="text">
-                                        <span>Зарегистрировать новый предмет</span>
+                                        <span>Зарегистрировать новую группу</span>
                                     </div>
                                     <div class="img">
                                         <img src="/img/admin/faculty/Group (1).png" class="icon1">
                                     </div>
                                 </div>
+                                <?
+                                echo '<input  name = "facultyId" type="hidden" value="' . $facultyId . '">';
+                                ?>
+                                <button class="btn_form" type="submit"></button>
                             </div>
-                            </div>
-                        </a>
 
+                        </form>
+                    </div>
                     <div class="right_block">
                         <div class="warning">
                             <div class="warning_content">
                                 <div class="warning_img">
-                                    <img src="/img/admin/subject/cookies_regular_icon_203707 1.png"
-                                        class="icon2">
+                                    <img src="/img/admin/groups/cat.png" class="icon2">
                                 </div>
                                 <div class="warning_text">
-                                    <span>Ни одного предмета, кроме печеньки, мы тут не обнаружили !</span>
+                                    <span>Наш кот - Василий подсказывает, что ни одна группа на данном факультете еще не
+                                        зарегистрирована !</span>
                                 </div>
                             </div>
                         </div>
@@ -75,75 +97,79 @@ require_once '../../connection.php';
                         <div class="profile_faculty">
                             <div class="profile_setting_content">
                                 <div class="img_block">
-                                    <img src="/img/admin/subject/backpack_regular_icon_203970 1.png" class="icon2">
+                                    <img src="/img/admin/groups/groups_icon.png" class="icon2">
                                 </div>
                                 <div class="title">
-                                    <span>Предметы</span>
+                                    <span>Группы</span>
                                 </div>
                                 <div class="exit">
-                                    <a href="../paAdmin.php">Вернуться в личный кабинет</a>
+                                    <a href="../faculty/faculty.php">Вернуться к факультетам</a>
                                 </div>
                             </div>
                         </div>
-                        <a href="subject_create.php">
+                        <form action="groups_create.php" method="post">
                             <div class="register_faculty">
                                 <div class="register_faculty_content">
                                     <div class="text">
-                                        <span>Зарегистрировать новый предмет</span>
+                                        <span>Зарегистрировать новую группу</span>
                                     </div>
                                     <div class="img">
                                         <img src="/img/admin/faculty/Group (1).png" class="icon1">
                                     </div>
                                 </div>
+                                <?
+                                echo '<input  name = "facultyId" type="hidden" value="' . $facultyId . '">';
+                                ?>
+                                <button class="btn_form" type="submit"></button>
                             </div>
-                        </a>
+
+                        </form>
                     </div>
                     <div class="right_block"> <!--Запускаем скрипт для правого блока -->
                         <?
-                        $firstFacultyId = mysqli_fetch_all(mysqli_query($connect,
-                        "SELECT `subjects_id` FROM `subjects` LIMIT 1"))[0][0]; // получаем id первого факультета
-                        
-                        for ($i = 0; $i < $countFaculties; $i++) { // заполняем правый блок, пока не будет 6 карточек
+                        $arrayOfGroups = mysqli_fetch_all(
+                            mysqli_query(
+                                $connect,
+                                "SELECT `groups_name` FROM `groups` WHERE `faculty_id` = '$facultyId'"
+                            )
+                        ); // получаем id первой группы
+                        $nextGroup = 0;
+
+
+
+                        for ($i = 0; $i < $countGroups; $i++) { // заполняем правый блок, пока не будет 6 карточек
                             if ($i == 6) {
                                 break;
                             }
                             echo ' <div class="faculty">
                             <div class="faculty_content">
                                 <div class="faculty_text">
-                                    <span>'
-                                    . $facultyName = mysqli_fetch_all(mysqli_query($connect,
-                                    "SELECT `subjects_name` FROM `subjects` 
-                                    WHERE `subjects_id` = '$firstFacultyId'"))[0][0] . // вытаскиваем имя факультета, по id первого факультета
-                                    '</span>
+                                    <span>' . $arrayOfGroups[$nextGroup][0] . '</span>
                                     
                                 </div>
                             </div>
                         </div>';
-                        $firstFacultyId++; // увеличиваем id первого элемента, т.е. получаем id 2 элемента
-
+                            $nextGroup++; // увеличиваем id первого элемента, т.е. получаем id 2 элемента
+                    
                         }
                         ?>
                     </div>
                 </div>
                 <?
-                if ($countFaculties >= 7) { // если факультетов больше или равно 7, то отрисовываем нижний блок
+                if ($countGroups >= 7) { // если факультетов больше или равно 7, то отрисовываем нижний блок
                     ?>
                     <div class="down_block">
                         <?
-                        for ($i <= 7; $i < $countFaculties; ++$i) { // вывод блоков
+                        for ($i <= 7; $i < $countGroups; ++$i) { // вывод блоков
                             echo ' <div class="faculty">
                             <div class="faculty_content">
                                 <div class="faculty_text">
-                                    <span>'
-                                    . $facultyName = mysqli_fetch_all(mysqli_query($connect,
-                                    "SELECT `subjects_name` FROM `subjects` 
-                                    WHERE `subjects_id` = '$firstFacultyId'"))[0][0] . // получение имени по id
-                                    '</span>
+                                <span>' . $arrayOfGroups[$nextGroup][0] . '</span>
                                     
                                 </div>
                             </div>
                         </div>';
-                        $firstFacultyId++;
+                            $nextGroup++;
                         }
                         ?>
                     </div>

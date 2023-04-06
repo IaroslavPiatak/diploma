@@ -28,6 +28,7 @@ html,body{
     -ms-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
+    background-color: #F6F5FB;
 }
 /*Включаем наследование семейства шрифта для тегов form*/
 input,button,textarea{font-family: inherit;}

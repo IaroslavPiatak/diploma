@@ -1,15 +1,22 @@
 <!-- Mady by Iaroslav Piatak (php) -->
 <?php
 require_once '../../connection.php';
-if (!empty($_POST['subjectName'])) {
-    $subjectName = $_POST['subjectName'];
-    $checkSubject = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `subjects`
-    WHERE `subjects_name` = '$subjectName'"))[0][0];
-    if ($checkSubject == 0) {
-        mysqli_query($connect, "INSERT INTO `subjects`(`subjects_name`) VALUES ('$subjectName')");
-        header('Location:subject.php');
+session_start();
+$facultyId = $_SESSION['facultyId']['facultyId'];
 
-    } elseif ($checkSubject > 0) {
+
+
+if (isset($_GET['groupsName'])) {
+    $groupsName = $_GET['groupsName'];
+    $numberOfStudents = $_GET['numberOfStudents'];
+    $checkGroup = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `groups`
+                                WHERE `groups_name` = '$groupsName'"))[0][0];
+    if ($checkGroup == 0) {
+        mysqli_query($connect, "INSERT INTO `groups`(`faculty_id`, `groups_name`, `number_of_students`) 
+        VALUES ('$facultyId','$groupsName','$numberOfStudents')");
+        header('Location:groups.php');
+
+    } elseif ($checkGroup > 0) {
 
         ?>
         <script async src="../../js/alert.js"></script>
@@ -19,7 +26,6 @@ if (!empty($_POST['subjectName'])) {
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,8 +34,8 @@ if (!empty($_POST['subjectName'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/admin/faculty/faculty_create.css">
-    <title>Факультеты</title>
+    <link rel="stylesheet" href="/css/admin/groups/groups_create.css">
+    <title>Группы</title>
 </head>
 
 <body>
@@ -40,42 +46,48 @@ if (!empty($_POST['subjectName'])) {
                     <div class="profile_faculty">
                         <div class="profile_setting_content">
                             <div class="img_block">
-                                <img src="/img/admin/subject/backpack_regular_icon_203970 1.png" class="icon2">
+                            <img src="/img/admin/groups/groups_icon.png" class="icon2">
                             </div>
                             <div class="title">
-                                <span>Предметы</span>
+                                <span>Группы</span>
                             </div>
                             <div class="exit">
                                 <a href="../paAdmin.php">Вернуться в личный кабинет</a>
                             </div>
                         </div>
                     </div>
-                    <a href="../subject/subject.php">
-                        <div class="register_faculty">
-                            <div class="register_faculty_content">
-                                <div class="text">
-                                    <span>Вернуться к предметам</span>
+
+                    <form action="groups.php" method="get">
+                            <div class="register_faculty">
+                                <div class="register_faculty_content">
+                                    <div class="text">
+                                        <span>Вернуться к группам</span>
+                                    </div>
+                                    <div class="img">
+                                        <img src="/img/admin/faculty/Group (1).png" class="icon1">
+                                    </div>
                                 </div>
-                                <div class="img">
-                                    <img src="/img/admin/faculty/Group (1).png" class="icon1">
-                                </div>
+
+                                <button class="btn_form" type="submit"></button>
                             </div>
-                        </div>
-                    </a>
+                            
+                        </form>
                 </div>
                 <div class="right_block">
                     <div class="create">
                         <div class="create_content">
-                            <form class="container_input" method="post" action="">
-                                <input type="text" class="text_input" name="subjectName"
-                                    placeholder="Введите название предмета">
+                            <form class="container_input" method="get" action="">
+                                <input type="text" class="text_input" name="groupsName" placeholder="Введите название группы">
+                                <input type="text" class="text_input" name="numberOfStudents" placeholder="Введите кол-во учеников">
                                 <button type="submit">Подтвердить</button>
                             </form>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <!-- Модалка -->
         <div class="modal"> <!--Подложка, затемняющая основной контент-->
             <div class="modal_box">
@@ -87,10 +99,16 @@ if (!empty($_POST['subjectName'])) {
                     </svg>
 
                 </button>
-                <div class="modal_box_text"><span>Такой предмет уже существует!</span></div>
+                <div class="modal_box_text"><span>Такая группа уже существует !</span></div>
             </div>
         </div>
     </main>
+
+
+
+
+
+
 </body>
 
 </html>

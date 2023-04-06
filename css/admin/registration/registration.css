@@ -1,0 +1,535 @@
+::-webkit-scrollbar {
+    width: 0;
+}
+
+/* удаляет scroll bar */
+body {
+    height: 120%;
+    display: flex;
+    justify-content: center;
+    background-color: #F6F5FB;
+}
+
+.main_container {
+    width: 1100px;
+    margin-top: 50px;
+    margin-bottom: 100px;
+
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #F9F9F9;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+
+}
+
+.main_container_header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 1000px;
+    height: 100px;
+
+}
+
+.main_container_header label {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #2F2D35;
+}
+
+
+
+.input_container_admin {
+    position: relative;
+    z-index: 0;
+    width: 220px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input_container_admin input {
+    cursor: pointer;
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+}
+
+.input_container_teacher {
+    position: relative;
+    z-index: 0;
+    width: 200px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input_container_teacher input {
+    cursor: pointer;
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+}
+
+.input_container_student {
+    position: relative;
+    z-index: 0;
+    width: 150px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input_container_student input {
+    cursor: pointer;
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+}
+
+.exit_btn_container {
+    width: 320px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.exit_btn {
+    width: 320px;
+    height: 50px;
+    background: #EC5863;
+    border-radius: 15px;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #FFFFFF;
+
+}
+
+.exit_btn_none {
+    width: 320px;
+    height: 50px;
+    background:#8F7ECE;
+    border-radius: 15px;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #FFFFFF;
+
+}
+
+
+.final_header_container {
+    width: 600px;
+    height: 50px;
+    box-sizing: border-box;
+    border: 3px solid #8F7ECE;
+    border-radius: 15px;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8F7ECE;
+
+}
+
+.clickInput {
+    transition: ease-out 0.1s;
+    border-radius: 15px;
+    border: 3px #8F7ECE solid;
+    padding: 10px;
+}
+
+.input_block {
+    width: 850px;
+    height: 210px;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 15px;
+
+}
+
+
+.input_data {
+    width: 400px;
+    height: 60px;
+    border: 3px solid #8F7ECE;
+    border-radius: 15px;
+    text-align: center;
+    color: #2F2D35;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    padding-left: 10px;
+    background-color: transparent;
+}
+
+
+input::placeholder {
+    color: #808080;
+    text-align: center;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+/* Вывод нижних блоков */
+
+/* Заголовок нижних блоков */
+.title_list {
+
+    width: 500px;
+    height: 50px;
+    margin-top: 30px;
+
+    background: #2F2D35;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.title_list span {
+    width: 300px;
+    height: 50px;
+
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    color: #F6F5FB;
+
+}
+
+/* Селекторы блоков для разных категорий */
+
+.list_output_student,
+.list_output_student_group,
+.list_output_teacher,
+.list_output_teacher_final {
+    width: 950px;
+
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.list_output_admin {
+    width: 950px;
+
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.list_output_none {
+    width: 950px;
+    height: 300px;
+    margin-top: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.list_output_none_text {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 47px;
+    text-align: center;
+
+    color: #2F2D35;
+}
+
+.list_output_student_final {
+    width: 850px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.inner_container_student_title {
+
+    width: 400px;
+    height: 50px;
+    background: #2F2D35;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    color: #F6F5FB;
+
+
+}
+
+
+.inner_container_student {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.faculty_content_button {
+    width: 300px;
+    height: 150px;
+    margin-top: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    position: relative;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    background-color: #8F7ECE;
+}
+
+.faculty_content_button_back {
+    width: 300px;
+    height: 150px;
+    margin-top: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    position: relative;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    background-color: #EC5863;
+}
+
+.faculty_content {
+    width: 300px;
+    height: 150px;
+    margin-top: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    position: relative;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.faculty_content_teacher {
+    width: 300px;
+    height: 150px;
+    margin-top: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    position: relative;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+
+}
+
+
+.faculty_text {
+    width: 250px;
+    height: 70px;
+    margin-top: 10px;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #8F7ECE;
+
+}
+
+.faculty_text_button {
+    width: 250px;
+    height: 70px;
+    margin-top: 10px;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.btn_form {
+    cursor: pointer;
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+
+
+}
+
+.hidden {
+    display: none;
+
+}
+
+.checkboxTeacher {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Модальное окно */
+
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .4s, visibility .4s;
+  }
+  
+  .modal_box {
+    width: 400px;
+    height: 200px;
+    background: #FFFFFF;
+    z-index: 1;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0);
+    transition: transform .8s;
+  }
+  
+  .modal_box_text {
+    width: 300px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal_box_text span {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #8F7ECE;
+  
+  }
+  
+  .cross-btn {
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    z-index: 2;
+    width: 25px;
+    height: 25px;
+    top:15px;
+    right: 20px;
+  
+  }
+  
+  .cross-btn svg path
+  {
+    transition: 0.25s;
+  }
+  
+  .cross-btn:hover svg path
+  {
+    
+    fill: #EC5863;
+    stroke: #EC5863;
+    transition: 0.25s;
+  }
+  
+  .cross-btn:active svg path
+  {
+    
+    fill: gray;
+    stroke: gray;
+  
+  }
+  
+  .modal.open {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .modal.open .modal_box {
+    transform: scale(1);
+  }
