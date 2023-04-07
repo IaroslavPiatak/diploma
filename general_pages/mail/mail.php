@@ -26,7 +26,32 @@ session_start();
 
             <div class="buttons">
                 <button class="button_header" onClick='location.href="mailChange.php"'>Написать</button>
-                <button class="button_header exit" onClick='location.href="../../admin/paAdmin.php"'>Выйти</button>
+                <?
+                $checkUserRole = $_SESSION['dataOfUser']['userRole'];
+                if($checkUserRole == 1)
+                {
+                    ?>
+                    <button class="button_header exit" onClick='location.href="../../admin/paAdmin.php"'>Выйти</button>
+                    <?
+
+                }
+                else if($checkUserRole == 2)
+                {
+                    ?>
+                    <button class="button_header exit" onClick='location.href="../../teacher/pa_teacher.php"'>Выйти</button>
+                    <?
+
+                }
+                else
+                {
+                    ?>
+                    <button class="button_header exit" onClick='location.href="../../student/pa_student.php"'>Выйти</button>
+                    <?
+
+                }
+                
+                ?>
+               
             </div>
         </div>
         <div class="letter_box">
@@ -35,7 +60,18 @@ session_start();
             $countOfLetter = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `letters` WHERE `destination_id` = '$userId'"))[0][0];
             $letters = mysqli_fetch_all(mysqli_query($connect, "SELECT * FROM `letters` WHERE `destination_id` = '$userId'"));
             if ($countOfLetter == 0) {
-                echo 'писем нет !!!';
+                ?>
+                <div class="warning">
+                            <div class="warning_content">
+                                <div class="warning_img">
+                                    <img src="/img/general_pages/mail/mail_box.png" class="icon2">
+                                </div>
+                                <div class="warning_text">
+                                    <span>Ваш почтовый ящик пуст, милорд...</span>
+                                </div>
+                            </div>
+                        </div>
+                <?
             } else {
                 for ($i = 0; $i < $countOfLetter; $i++) {
                     $letterId = $letters[$i][0];

@@ -31,14 +31,14 @@ if (!$_SESSION['dataOfUser']) // если нет сессии о пользов�
 
                         $userId = $_SESSION['dataOfUser']['userId'];
 
-                        $check_photo = mysqli_fetch_all(mysqli_query($connect, "SELECT `photo` FROM `admins` WHERE `user_id` = '$userId'"))[0][0];
+                        $check_photo = mysqli_fetch_all(mysqli_query($connect, "SELECT `photo` FROM `teachers` WHERE `user_id` = '$userId'"))[0][0];
 
 
 
                         if ($check_photo === NULL) {
-                            echo '<img src="../img/admin/avatar.png" class="avatar">';
+                            echo '<img src="../img/teacher/avatar.png" class="avatar">';
                         } else {
-                            $path = '../img/admin/avatars/' . $check_photo;
+                            $path = '../img/teacher/avatars/' . $check_photo;
                             $path = str_replace(' ', '', $path);
                             echo '<img class = "avatarChange" src="' . $path . '">';
 
@@ -49,13 +49,13 @@ if (!$_SESSION['dataOfUser']) // если нет сессии о пользов�
                     <div class="name">
                         <?php
                         $userFullName = mysqli_fetch_all(mysqli_query($connect, "SELECT `first_name`, `last_name`, `surname`
-                        FROM `admins` WHERE `user_id` = '$userId'"));
+                        FROM `teachers` WHERE `user_id` = '$userId'"));
                         echo '<span>' . $userFullName[0][1] . ' ' . $userFullName[0][0] . ' ' . $userFullName[0][2] . '</span>';
                         ?>
                     </div>
                     <div class="email">
                         <?php
-                        $userEmail = mysqli_fetch_all(mysqli_query($connect, "SELECT email FROM `admins` WHERE `user_id` = '$userId'"))[0][0];
+                        $userEmail = mysqli_fetch_all(mysqli_query($connect, "SELECT email FROM `teachers` WHERE `user_id` = '$userId'"))[0][0];
                         echo '<span>' . $userEmail . '</span>';
                         ?>
 
@@ -116,42 +116,9 @@ if (!$_SESSION['dataOfUser']) // если нет сессии о пользов�
                 </div>
             </div>
         </div>
-        <div class="second_container">
-            <a href="faculty/faculty.php">
-                <div class="facultative">
-                    <div class="content">
-                        <div class="text">
-                            <span>Факультеты и группы</span>
-                        </div>
-                        <div class="img">
-                            <img src="../img/admin/universitygraduatehat_104965 1.png" class="icon1">
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <a href="subject/subject.php">
-                <div class="items">
-                    <div class="content">
-                        <div class="text">
-                            <span>Предметы</span>
-                        </div>
-                        <div class="img">
-                            <img src="../img/admin/Vector (9).png" class="icon1">
-                        </div>
-                    </div>
-                </div>
-            </a>
-            <div class="shedule">
-                <div class="content">
-                    <div class="text">
-                        <span>Учебное расписание</span>
-                    </div>
-                    <div class="img">
-                        <img src="../img/admin/calendar_day_month_date_year_schedule_icon_175594 1.png" class="icon1">
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- <div class="second_container">
+           
+        </div> -->
     </div>
 </body>
 

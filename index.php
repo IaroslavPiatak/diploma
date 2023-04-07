@@ -2,6 +2,7 @@
 session_start();
 require_once 'connection.php';
 
+
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +18,8 @@ require_once 'connection.php';
 </head>
 
 <body>
+    
+    
     <div class="main">
         <div class="main_container">
             <div class="main_container_block">
@@ -26,24 +29,15 @@ require_once 'connection.php';
                     <button type="submit">Войти</button>
                 </form>
                 <?
-                if (!empty($_POST)) {
+                if (isset($_POST['login'])) {
                     $login = $_POST['login'];
                     $password = $_POST['password'];
 
 
                     $checkUser = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `users` WHERE `user_login` = '$login' AND `user_password` = '$password'"));
+                    $alert = 'false';
                     
-                    if (empty($checkUser)) {
-                       
-
-                        ?>
-
-                        <script async src="js/alert.js"></script>
-                    <?
-
-
-
-                    } else if ($checkUser[0][0] == 1) {
+                    if ($checkUser[0][0] == 1) {
                         $request = mysqli_fetch_all(mysqli_query($connect, "SELECT * FROM `users` WHERE `user_login` = '$login' AND `user_password` = '$password'"));
                         $requestUserId = $request[0][0];
                         $requestRole = $request[0][1];
@@ -59,7 +53,20 @@ require_once 'connection.php';
                         if ($requestRole == 1) {
                             header('Location:admin/paAdmin.php');
                         }
+                        else if ($requestRole == 2)
+                        {
+                            header('Location:teacher/pa_teacher.php');
+                        }
                     }
+
+                    else
+                    {
+                        $alert = 'true';
+
+                    }
+                    echo'<span hidden id = "modal">'.$alert.'</span>';
+
+                    
                 
 
                 }
@@ -92,7 +99,7 @@ require_once 'connection.php';
     </div>
 
 
-
+    <script async src="js/alert.js"></script>
 </body>
 
 </html>
