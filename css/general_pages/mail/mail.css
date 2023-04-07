@@ -87,9 +87,12 @@ body {
 
 .letter_box {
     width: 1000px;
-    height: 365px;
+    max-height: 500px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+ 
+   
     
   
     
@@ -98,8 +101,6 @@ body {
 .letter {
     width: 1000px;
     height: 75px;
-   
-  
     display: flex;
     
 }
@@ -112,13 +113,18 @@ body {
 
 }
 
-.letter_open {
-
-
+.letter_close {
     width: 60px;
     height: 60px;
     background-size: cover;
     background-image: url(../../../img/general_pages/mail/close_letter.png);
+}
+
+.letter_open {
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+    background-image: url(../../../img/general_pages/mail/open_letter.png);
 }
 
 .theme {
@@ -175,7 +181,7 @@ form
 
 .warning {
     margin-top: 30px;
-    width: 800px;
+    width: 1000px;
     height: 450px;
     display: flex;
     justify-content: center;

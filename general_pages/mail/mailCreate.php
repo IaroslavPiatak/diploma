@@ -2,6 +2,10 @@
 require_once '../../connection.php';
 session_start();
 
+$letterId = $_POST['letterId'];
+mysqli_query($connect, "UPDATE `letters` SET `status`= '1' WHERE `letter_id`= $letterId");
+
+
 if (isset($_POST['destination']) && isset($_POST['name'])) {
     $destination = $_POST['destination'];
     $name = $_POST['name'];
@@ -47,6 +51,22 @@ if (isset($_POST['destination']) && isset($_POST['name'])) {
             FROM `admins` WHERE `user_id` = '$senderId'"));
             $senderFullName = $senderFullName[0][1] . ' ' . $senderFullName[0][0] . ' ' . $senderFullName[0][2];
 
+
+        }
+
+        else if ($senderRole == 2) {
+            $senderFullName = mysqli_fetch_all(mysqli_query($connect, "SELECT `first_name`, `last_name`, `surname`
+            FROM `teachers` WHERE `user_id` = '$senderId'"));
+            $senderFullName = $senderFullName[0][1] . ' ' . $senderFullName[0][0] . ' ' . $senderFullName[0][2];
+
+
+        }
+
+        else
+        {
+            $senderFullName = mysqli_fetch_all(mysqli_query($connect, "SELECT `first_name`, `last_name`, `surname`
+            FROM `studients` WHERE `user_id` = '$senderId'"));
+            $senderFullName = $senderFullName[0][1] . ' ' . $senderFullName[0][0] . ' ' . $senderFullName[0][2];
 
         }
         ?>
@@ -101,7 +121,7 @@ if (isset($_POST['destination']) && isset($_POST['name'])) {
     } else if (isset($_POST['action']) && $_POST['action'] == 'answer') {
 
         $destination = $_POST['destinationAnser'];
-        $userRole = $_SESSION['dataOfUser']['userRole'];
+        $userRole = mysqli_fetch_all(mysqli_query($connect, "SELECT `user_role` FROM `users` WHERE `user_id` = '$destination'"))[0][0];
         if ($userRole == 1) {
             $fullName = mysqli_fetch_all(mysqli_query($connect, "SELECT `first_name`, `last_name`, `surname`
      FROM `admins` WHERE `user_id` = '$destination'"));
@@ -203,3 +223,5 @@ if (isset($_POST['destination']) && isset($_POST['name'])) {
 </body>
 
 </html>
+
+

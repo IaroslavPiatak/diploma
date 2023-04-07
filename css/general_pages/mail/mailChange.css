@@ -27,7 +27,7 @@ body {
 
 .main_container_header {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     width: 1000px;
     height: 100px;
@@ -141,12 +141,15 @@ body {
 
 
 
-.admins_output
+.admins_output,
+.teachers_output,
+.studients_output
 {
-    width: 950px;
+    width: 1000px;
     margin-bottom: 50px;
     display: flex;
     justify-content: space-between;
+    
     flex-wrap: wrap;
 }
 
@@ -238,4 +241,43 @@ body {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
  
 }
+
+
+.warning {
+    margin-top: 30px;
+    width: 1000px;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+   
+    
+  }
+  
+  .warning_content {
+    width: 600px;
+    height: 390px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 50px;
+  }
+  
+  .warning_text {
+    width: 600px;
+    height: 300px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 47px;
+    text-align: center;
+    color: #333333;
+  }
+
+  .icon2 {
+    width: 150px;
+    height: 150px;
+  }
 

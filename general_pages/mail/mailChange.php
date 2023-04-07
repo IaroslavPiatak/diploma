@@ -51,66 +51,249 @@ echo '<span hidden id = "outputContent">admin</span>';
             <div class="admins_output">
                 <?
                 $countOfAdmins = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `admins`"))[0][0];
-                $userIdMass = mysqli_fetch_all(mysqli_query($connect, "SELECT `user_id` FROM `admins`"));
-                for ($i = 0; $i < $countOfAdmins; $i++) {
-                    $userId = $userIdMass[$i][0];
-                    if ($userId == $_SESSION['dataOfUser']['userId']) {
-                        continue;
-                    }
+                if (($countOfAdmins == 0) || ($countOfAdmins == 1 && $userRole == 1)) {
                     ?>
+                    <div class="warning">
+                            <div class="warning_content">
+                                <div class="warning_img">
+                                    <img src="/img/general_pages/mail/ufo.png" class="icon2">
+                                </div>
+                                <div class="warning_text">
+                                    <span>Кажется, тут никого нет...</span>
+                                </div>
+                            </div>
+                        </div>
+                    <?
+                } 
+                else 
+                {
+                    $userIdMass = mysqli_fetch_all(mysqli_query($connect, "SELECT `user_id` FROM `admins`"));
+                    for ($i = 0; $i < $countOfAdmins; $i++) {
+                        $userId = $userIdMass[$i][0];
+                        if ($userId == $_SESSION['dataOfUser']['userId']) {
+                            continue;
+                        }
+                        ?>
 
-                    <form method="post" action="mailCreate.php">
-                        <div class="profile_card">
-                            <div class="profile_card_content">
-                                <div class="profile_card_img">
-                                    <?php
+                        <form method="post" action="mailCreate.php">
+                            <div class="profile_card">
+                                <div class="profile_card_content">
+                                    <div class="profile_card_img">
+                                        <?php
 
 
 
-                                    echo '<input type = "hidden" name="destination" value = "' . $userId . '">';
+                                        echo '<input type = "hidden" name="destination" value = "' . $userId . '">';
 
-                                    $check_photo = mysqli_fetch_all(mysqli_query($connect, "SELECT `photo` FROM `admins` WHERE `user_id` = '$userId'"))[0][0];
+                                        $check_photo = mysqli_fetch_all(mysqli_query($connect, "SELECT `photo` FROM `admins` WHERE `user_id` = '$userId'"))[0][0];
 
 
 
-                                    if ($check_photo === NULL) {
-                                        echo '<img src="../../../img/admin/avatar.png" class="avatar">';
-                                    } else {
-                                        $path = '../../../img/admin/avatars/' . $check_photo;
-                                        $path = str_replace(' ', '', $path);
-                                        echo '<img class = "avatarChange" src="' . $path . '">';
+                                        if ($check_photo === NULL) {
+                                            echo '<img src="../../../img/admin/avatar.png" class="avatar">';
+                                        } else {
+                                            $path = '../../../img/admin/avatars/' . $check_photo;
+                                            $path = str_replace(' ', '', $path);
+                                            echo '<img class = "avatarChange" src="' . $path . '">';
 
-                                    }
-                                    ?>
+                                        }
+                                        ?>
+
+                                    </div>
+                                    <div class="name">
+                                        <?php
+                                        $userFullName = mysqli_fetch_all(mysqli_query($connect, "SELECT `first_name`, `last_name`, `surname`
+                            FROM `admins` WHERE `user_id` = '$userId'"));
+                                        echo '<span>' . $userFullName[0][1] . ' ' . $userFullName[0][0] . ' ' . $userFullName[0][2] . '</span>';
+                                        echo '<input type = "hidden" name="name" value = "' . $userFullName[0][1] . ' ' . $userFullName[0][0] . ' ' . $userFullName[0][2] . '">';
+                                        ?>
+                                    </div>
+                                    <div class="email">
+                                        <?php
+                                        $userEmail = mysqli_fetch_all(mysqli_query($connect, "SELECT email FROM `admins` WHERE `user_id` = '$userId'"))[0][0];
+                                        echo '<span>' . $userEmail . '</span>';
+                                        ?>
+
+                                    </div>
 
                                 </div>
-                                <div class="name">
-                                    <?php
-                                    $userFullName = mysqli_fetch_all(mysqli_query($connect, "SELECT `first_name`, `last_name`, `surname`
-                        FROM `admins` WHERE `user_id` = '$userId'"));
-                                    echo '<span>' . $userFullName[0][1] . ' ' . $userFullName[0][0] . ' ' . $userFullName[0][2] . '</span>';
-                                    echo '<input type = "hidden" name="name" value = "' . $userFullName[0][1] . ' ' . $userFullName[0][0] . ' ' . $userFullName[0][2] . '">';
-                                    ?>
-                                </div>
-                                <div class="email">
-                                    <?php
-                                    $userEmail = mysqli_fetch_all(mysqli_query($connect, "SELECT email FROM `admins` WHERE `user_id` = '$userId'"))[0][0];
-                                    echo '<span>' . $userEmail . '</span>';
-                                    ?>
 
-                                </div>
-
+                                <input class="btn-submit" type="submit">
                             </div>
 
-                            <input class="btn-submit" type="submit">
-                        </div>
-
-                    </form>
-                <?
+                        </form>
+                    <?
+                    }
                 }
-
                 ?>
             </div>
+
+
+            <!-- Вывод преподов -->
+
+            <div class="teachers_output">
+                <?
+                $countOfTeachers = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `teachers`"))[0][0];
+                if (($countOfTeachers == 0) || ($countOfTeachers == 1 && $userRole == 2)) {
+                    ?>
+                    <div class="warning">
+                            <div class="warning_content">
+                                <div class="warning_img">
+                                    <img src="/img/general_pages/mail/ufo.png" class="icon2">
+                                </div>
+                                <div class="warning_text">
+                                    <span>Кажется, тут никого нет...</span>
+                                </div>
+                            </div>
+                        </div>
+                    <?
+                } 
+                else 
+                {
+                    $userIdMass = mysqli_fetch_all(mysqli_query($connect, "SELECT `user_id` FROM `teachers`"));
+                    for ($i = 0; $i < $countOfAdmins; $i++) {
+                        $userId = $userIdMass[$i][0];
+                        if ($userId == $_SESSION['dataOfUser']['userId']) {
+                            continue;
+                        }
+                        ?>
+
+                        <form method="post" action="mailCreate.php">
+                            <div class="profile_card">
+                                <div class="profile_card_content">
+                                    <div class="profile_card_img">
+                                        <?php
+
+
+
+                                        echo '<input type = "hidden" name="destination" value = "' . $userId . '">';
+
+                                        $check_photo = mysqli_fetch_all(mysqli_query($connect, "SELECT `photo` FROM `teachers` WHERE `user_id` = '$userId'"))[0][0];
+
+
+
+                                        if ($check_photo === NULL) {
+                                            echo '<img src="../../../img/teacher/avatar.png" class="avatar">';
+                                        } else {
+                                            $path = '../../../img/teacher/avatars/' . $check_photo;
+                                            $path = str_replace(' ', '', $path);
+                                            echo '<img class = "avatarChange" src="' . $path . '">';
+
+                                        }
+                                        ?>
+
+                                    </div>
+                                    <div class="name">
+                                        <?php
+                                        $userFullName = mysqli_fetch_all(mysqli_query($connect, "SELECT `first_name`, `last_name`, `surname`
+                            FROM `teachers` WHERE `user_id` = '$userId'"));
+                                        echo '<span>' . $userFullName[0][1] . ' ' . $userFullName[0][0] . ' ' . $userFullName[0][2] . '</span>';
+                                        echo '<input type = "hidden" name="name" value = "' . $userFullName[0][1] . ' ' . $userFullName[0][0] . ' ' . $userFullName[0][2] . '">';
+                                        ?>
+                                    </div>
+                                    <div class="email">
+                                        <?php
+                                        $userEmail = mysqli_fetch_all(mysqli_query($connect, "SELECT email FROM `teachers` WHERE `user_id` = '$userId'"))[0][0];
+                                        echo '<span>' . $userEmail . '</span>';
+                                        ?>
+
+                                    </div>
+
+                                </div>
+
+                                <input class="btn-submit" type="submit">
+                            </div>
+
+                        </form>
+                    <?
+                    }
+                }
+                ?>
+            </div>
+
+
+             <!-- Вывод студентов -->
+
+             <div class="studients_output">
+                <?
+                $countOfStudients = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `studients`"))[0][0];
+                if (($countOfStudients == 0) || ($countOfStudients == 1 && $userRole == 2)) {
+                    ?>
+                    <div class="warning">
+                            <div class="warning_content">
+                                <div class="warning_img">
+                                    <img src="/img/general_pages/mail/ufo.png" class="icon2">
+                                </div>
+                                <div class="warning_text">
+                                    <span>Кажется, тут никого нет...</span>
+                                </div>
+                            </div>
+                        </div>
+                    <?
+                } 
+                else 
+                {
+                    $userIdMass = mysqli_fetch_all(mysqli_query($connect, "SELECT `user_id` FROM `studients`"));
+                    for ($i = 0; $i < $countOfStudients; $i++) {
+                        $userId = $userIdMass[$i][0];
+                        if ($userId == $_SESSION['dataOfUser']['userId']) {
+                            continue;
+                        }
+                        ?>
+
+                        <form method="post" action="mailCreate.php">
+                            <div class="profile_card">
+                                <div class="profile_card_content">
+                                    <div class="profile_card_img">
+                                        <?php
+
+
+
+                                        echo '<input type = "hidden" name="destination" value = "' . $userId . '">';
+
+                                        $check_photo = mysqli_fetch_all(mysqli_query($connect, "SELECT `photo` FROM `studients` WHERE `user_id` = '$userId'"))[0][0];
+
+
+
+                                        if ($check_photo === NULL) {
+                                            echo '<img src="../../../img/student/avatar.png" class="avatar">';
+                                        } else {
+                                            $path = '../../../img/student/avatars/' . $check_photo;
+                                            $path = str_replace(' ', '', $path);
+                                            echo '<img class = "avatarChange" src="' . $path . '">';
+
+                                        }
+                                        ?>
+
+                                    </div>
+                                    <div class="name">
+                                        <?php
+                                        $userFullName = mysqli_fetch_all(mysqli_query($connect, "SELECT `first_name`, `last_name`, `surname`
+                            FROM `studients` WHERE `user_id` = '$userId'"));
+                                        echo '<span>' . $userFullName[0][1] . ' ' . $userFullName[0][0] . ' ' . $userFullName[0][2] . '</span>';
+                                        echo '<input type = "hidden" name="name" value = "' . $userFullName[0][1] . ' ' . $userFullName[0][0] . ' ' . $userFullName[0][2] . '">';
+                                        ?>
+                                    </div>
+                                    <div class="email">
+                                        <?php
+                                        $userEmail = mysqli_fetch_all(mysqli_query($connect, "SELECT email FROM `studients` WHERE `user_id` = '$userId'"))[0][0];
+                                        echo '<span>' . $userEmail . '</span>';
+                                        ?>
+
+                                    </div>
+
+                                </div>
+
+                                <input class="btn-submit" type="submit">
+                            </div>
+
+                        </form>
+                    <?
+                    }
+                }
+                ?>
+            </div>
+
         </div>
 
 

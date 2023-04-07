@@ -1,6 +1,7 @@
 <?
 require_once '../../connection.php';
 session_start();
+header('Refresh: 10');
 
 ?>
 
@@ -57,8 +58,10 @@ session_start();
         <div class="letter_box">
             <?
             $userId = $_SESSION['dataOfUser']['userId'];
+          
             $countOfLetter = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `letters` WHERE `destination_id` = '$userId'"))[0][0];
             $letters = mysqli_fetch_all(mysqli_query($connect, "SELECT * FROM `letters` WHERE `destination_id` = '$userId'"));
+          
             if ($countOfLetter == 0) {
                 ?>
                 <div class="warning">
@@ -76,8 +79,14 @@ session_start();
                 for ($i = 0; $i < $countOfLetter; $i++) {
                     $letterId = $letters[$i][0];
                     $senderId = $letters[$i][1];
+                    $letterStatus = $letters[$i][3];
                     $theme = $letters[$i][4];
                     $text = $letters[$i][5];
+                    if($letterStatus == 0)
+                    $letterIcon = '<div class = "letter_close">';
+                    else
+                    $letterIcon = '<div class = "letter_open">';
+                   
                     echo '
                 <form action = "mailCreate.php" method = "post">
                 <input type = "hidden" name = "letterId" value = "' . $letterId . '">
@@ -87,7 +96,9 @@ session_start();
                 <input type = "hidden" name = "action" value = "read">
                 <input type = "submit" class = "inputSubmit">
                 <div class="letter">
-                <div class="icon"><div class="letter_open"></div>
+                <div class="icon">
+                '.$letterIcon.'
+                </div>
                 </div>
                 <div class="theme"><span>' . $theme . '</span></div>
                 <div class="date"><span>10:36</span></div>
