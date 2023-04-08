@@ -82,10 +82,20 @@ header('Refresh: 10');
                     $letterStatus = $letters[$i][3];
                     $theme = $letters[$i][4];
                     $text = $letters[$i][5];
+                    $date = $letters[$i][6];
+                    $time = $letters[$i][7];
+
+                    if($date == date('d.m.y'))
+                    $dateTime = $time;
+                    else
+                    $dateTime = $date;
+
                     if($letterStatus == 0)
                     $letterIcon = '<div class = "letter_close">';
                     else
                     $letterIcon = '<div class = "letter_open">';
+
+                   
                    
                     echo '
                 <form action = "mailCreate.php" method = "post">
@@ -101,7 +111,7 @@ header('Refresh: 10');
                 </div>
                 </div>
                 <div class="theme"><span>' . $theme . '</span></div>
-                <div class="date"><span>10:36</span></div>
+                <div class="date"><span>' . $dateTime . '</span></div>
             </div>
                 
                 </form>';

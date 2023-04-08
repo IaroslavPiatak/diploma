@@ -1,9 +1,13 @@
 <?
 require_once '../../connection.php';
 session_start();
-
-$letterId = $_POST['letterId'];
+if(isset($_POST['letterId']))
+{
+    $letterId = $_POST['letterId'];
 mysqli_query($connect, "UPDATE `letters` SET `status`= '1' WHERE `letter_id`= $letterId");
+
+}
+
 
 
 if (isset($_POST['destination']) && isset($_POST['name'])) {
@@ -16,9 +20,11 @@ if (isset($_POST['destination']) && isset($_POST['name'])) {
     $status = $_POST['status'];
     $theme = $_POST['theme'];
     $text_letter = $_POST['text_letter'];
+    $date = $_POST['date'];
+    $time = $_POST['time'];
 
-    mysqli_query($connect, "INSERT INTO `letters`(`sender_id`, `destination_id`, `status`, `theme`, `letter_text`) 
-    VALUES ('$sender_id','$destination_id',' $status','$theme',' $text_letter')");
+    mysqli_query($connect, "INSERT INTO `letters`(`sender_id`, `destination_id`, `status`, `theme`, `letter_text`,`date`,`time`) 
+    VALUES ('$sender_id','$destination_id',$status,'$theme',' $text_letter', '$date', '$time')");
     header("Location: mail.php");
 }
 
@@ -85,7 +91,7 @@ if (isset($_POST['destination']) && isset($_POST['name'])) {
                         ?>
                         <input type="hidden" name="destinationAnser" value="<?= $destinationAnswer ?>">
                         <input type="hidden" name="sender_id" value="<?= $_SESSION['dataOfUser']['userId'] ?>">
-                        <input type="hidden" name="status" value="notRead">
+                        <input type="hidden" name="status" value='0'>
 
                     </div>
 
@@ -105,6 +111,8 @@ if (isset($_POST['destination']) && isset($_POST['name'])) {
                     </div>
                 </div>
                 <input type="hidden" name="action" value="answer">
+
+               
             </form>
             <form action=" " method="post">
                 <input hidden name="action" value="delete">
@@ -152,7 +160,7 @@ if (isset($_POST['destination']) && isset($_POST['name'])) {
                                 </div>
                                 <input type="hidden" name="destination_id" value="<?= $destination ?>">
                                 <input type="hidden" name="sender_id" value="<?= $_SESSION['dataOfUser']['userId'] ?>">
-                                <input type="hidden" name="status" value="notRead">
+                                <input type="hidden" name="status" value="0">
 
                             </div>
 
@@ -172,6 +180,14 @@ if (isset($_POST['destination']) && isset($_POST['name'])) {
                                     placeholder="Ваше сообщение"></textarea>
                             </div>
                         </div>
+
+                        <?
+                            $date = date('d.m.y');
+                            $time = date('H:i');
+                        ?>
+                        <input type="hidden" name="time" value ="<?=$time?>">
+                        <input type="hidden" name="date" value="<?=$date?>">
+                        
                     </form>
 
                 </div>
@@ -191,7 +207,7 @@ if (isset($_POST['destination']) && isset($_POST['name'])) {
                                 </div>
                                 <input type="hidden" name="destination_id" value="<?= $destination ?>">
                                 <input type="hidden" name="sender_id" value="<?= $_SESSION['dataOfUser']['userId'] ?>">
-                                <input type="hidden" name="status" value="notRead">
+                                <input type="hidden" name="status" value= '0'>
 
                             </div>
 
@@ -210,6 +226,13 @@ if (isset($_POST['destination']) && isset($_POST['name'])) {
                                 <textarea name="text_letter" id="" cols="30" rows="15" maxlength="600"
                                     placeholder="Ваше сообщение"></textarea>
                             </div>
+
+                            <?
+                            $date = date('d.m.y');
+                            $time = date('H:i');
+                        ?>
+                        <input type="hidden" name="time" value ="<?=$time?>">
+                        <input type="hidden" name="date" value="<?=$date?>">
                         </div>
                     </form>
 
