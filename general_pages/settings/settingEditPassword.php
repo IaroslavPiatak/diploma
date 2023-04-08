@@ -1,4 +1,6 @@
-<!-- Made by Iaroslav Piatak -->
+<?
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +29,31 @@
                             </div>
 
                             <div class="exit">
-                            <a href="../../admin/paAdmin.php"><span>Вернуться в личный кабинет</span></a>
+                            <?
+                                $checkUserRole = $_SESSION['dataOfUser']['userRole'];
+                                if($checkUserRole == 1)
+                                {
+                                    ?>
+                                   <a href="../../admin/paAdmin.php">Вернуться в личный кабинет</a>
+                                    <?
+                
+                                }
+                                else if($checkUserRole == 2)
+                                {
+                                    ?>
+                                   <a href="../../teacher/pa_teacher.php">Вернуться в личный кабинет</a>
+                                    <?
+                
+                                }
+                                else
+                                {
+                                    ?>
+                                   <a href="../../student/pa_student.php">Вернуться в личный кабинет</a>
+                                    <?
+                
+                                }
+                                
+                                ?>
                             </div>
                         </div>
                     </div>

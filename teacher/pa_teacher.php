@@ -17,7 +17,7 @@ if (!$_SESSION['dataOfUser']) // если нет сессии о пользов�
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/admin/paAdmin.css">
-    <title>Администратор</title>
+    <title>Личный кабинет</title>
 </head>
 
 <body>

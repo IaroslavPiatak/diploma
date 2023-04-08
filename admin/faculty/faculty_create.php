@@ -1,4 +1,3 @@
-<!-- Mady by Iaroslav Piatak (php) -->
 <?php
 require_once '../../connection.php';
 
@@ -9,16 +8,12 @@ if (isset($_POST['facultyName'])) {
     if ($checkFaculty == 0) {
         mysqli_query($connect, "INSERT INTO `faculties`(`faculty_name`) VALUES ('$facultyName')");
         header('Location:faculty.php');
-
     } elseif ($checkFaculty > 0) {
-
         ?>
         <script async src="../../js/alert.js"></script>
     <?
     }
-
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

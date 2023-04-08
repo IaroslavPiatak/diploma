@@ -1,4 +1,3 @@
-<!-- Made by Iaroslav Piatak -->
 <?
 require_once '../../connection.php';
 session_start();

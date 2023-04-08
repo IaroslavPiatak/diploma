@@ -1,4 +1,3 @@
-<!-- Made by Iaroslav Piatak -->
 <?
 session_start();
 ?>

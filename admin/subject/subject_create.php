@@ -1,4 +1,3 @@
-<!-- Mady by Iaroslav Piatak (php) -->
 <?php
 require_once '../../connection.php';
 if (!empty($_POST['subjectName'])) {

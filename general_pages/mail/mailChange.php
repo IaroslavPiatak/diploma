@@ -1,4 +1,3 @@
-<!-- Made by Iaroslav Piatak -->
 <?
 require_once '../../connection.php';
 session_start();
@@ -151,7 +150,7 @@ echo '<span hidden id = "outputContent">admin</span>';
                 else 
                 {
                     $userIdMass = mysqli_fetch_all(mysqli_query($connect, "SELECT `user_id` FROM `teachers`"));
-                    for ($i = 0; $i < $countOfAdmins; $i++) {
+                    for ($i = 0; $i < $countOfTeachers; $i++) {
                         $userId = $userIdMass[$i][0];
                         if ($userId == $_SESSION['dataOfUser']['userId']) {
                             continue;

@@ -28,6 +28,12 @@ if (isset($_POST['destination']) && isset($_POST['name'])) {
     header("Location: mail.php");
 }
 
+else if (isset($_POST['action']) && $_POST['action'] == 'delete') {
+        $letterId = $_POST['letterId'];
+        mysqli_query($connect, "DELETE FROM `letters` WHERE `letter_id` = '$letterId'");
+        header("Location:mail.php");
+    }
+
 
 
 ?>
@@ -39,7 +45,7 @@ if (isset($_POST['destination']) && isset($_POST['name'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Почта</title>
+    <title>Письмо</title>
     <link rel="stylesheet" href="../../css/reset.css">
     <link rel="stylesheet" href="../../css/general_pages/mail/mailCreate.css">
 </head>
@@ -122,11 +128,7 @@ if (isset($_POST['destination']) && isset($_POST['name'])) {
         </div>
     <?
 
-    } else if (isset($_POST['action']) && $_POST['action'] == 'delete') {
-        $letterId = $_POST['letterId'];
-        mysqli_query($connect, "DELETE FROM `letters` WHERE `letter_id` = '$letterId'");
-        header("Location:mail.php");
-    } else if (isset($_POST['action']) && $_POST['action'] == 'answer') {
+    }  else if (isset($_POST['action']) && $_POST['action'] == 'answer') {
 
         $destination = $_POST['destinationAnser'];
         $userRole = mysqli_fetch_all(mysqli_query($connect, "SELECT `user_role` FROM `users` WHERE `user_id` = '$destination'"))[0][0];
