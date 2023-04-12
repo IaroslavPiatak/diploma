@@ -107,7 +107,7 @@ if (!$_SESSION['dataOfUser']) // если нет сессии о пользов�
                 <div class="delete">
                     <div class="content">
                         <div class="text">
-                            <span>Заявки на удаление</spam>
+                            <span>Список пользователей</spam>
                         </div>
                         <div class="img">
                             <img src="../img/admin/notepad_regular_icon_203433 1.png" class="icon1">

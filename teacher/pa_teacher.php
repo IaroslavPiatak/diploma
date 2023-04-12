@@ -92,14 +92,14 @@ if (!$_SESSION['dataOfUser']) // если нет сессии о пользов�
                     </div>
                 </a>
 
-                <a href="registration/registration.php">
+                <a href="homework/homeworkChange.php">
                     <div class="new_user">
                         <div class="content">
                             <div class="text">
-                                <span>Зарегистрировать нового пользователя</span>
+                                <span>Конспекты и практики</span>
                             </div>
                             <div class="img">
-                                <img src="../img/admin/adduser_105070 1.png" class="icon2">
+                                <img src="../img/teacher/notepad_regular_icon_203433.png" class="icon2">
                             </div>
                         </div>
                     </div>
