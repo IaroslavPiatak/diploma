@@ -2,27 +2,27 @@ const mainContainerSubject =  document.querySelector(".main_container_subject");
 const mainContainerFaculty = document.querySelector(".main_container_faculty");
 const mainContainerGroup = document.querySelector(".main_container_group");
 const titleHeaderSpan = document.querySelector('.title_teacher_span');
-const submitSubject = document.querySelectorAll(".submit_subject");
-const sumbitFaculty = document.querySelectorAll(".submit_faculty");
-for (let i = 0; i < submitSubject.length; i++) {
-    submitSubject[i].addEventListener("click", () => {
+let span = document.getElementById('span');
 
-        mainContainerSubject.classList.add('hidden');
-        mainContainerFaculty.classList.remove('hidden');
-        titleHeaderSpan.innerHTML = 'Выбирите факультет';
+if(span.innerHTML == 'faculties')
+{
+    mainContainerSubject.classList.add('hidden');
+    mainContainerFaculty.classList.remove('hidden');
+    titleHeaderSpan.innerHTML = 'Выберите факультет';
+}
 
-    })
+else if (span.innerHTML == 'groups')
+{
+    mainContainerSubject.classList.add('hidden');
+    mainContainerFaculty.classList.add('hidden');
+    mainContainerGroup.classList.remove('hidden');
+    titleHeaderSpan.innerHTML = 'Выберите группу';
+
+}
+else if (span.innerHTML = 'subjects')
+{
+    
+    titleHeaderSpan.innerHTML == 'Выберите предмет';
 
 }
 
-for (let i = 0; i < sumbitFaculty.length; i++) {
-    sumbitFaculty[i].addEventListener("click", () => {
-
-        
-        titleHeaderSpan.innerHTML = 'Выбирите группу';
-        mainContainerGroup.classList.remove('hidden');
-        mainContainerFaculty.classList.add('hidden');
-
-    })
-
-}

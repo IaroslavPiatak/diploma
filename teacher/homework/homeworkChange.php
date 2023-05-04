@@ -1,21 +1,36 @@
 <?
+
 session_start();
 require_once '../../connection.php';
 $userId = $_SESSION['dataOfUser']['userId'];
 $teacherId = mysqli_fetch_all(mysqli_query($connect, "SELECT `teacher_id` FROM `teachers` WHERE `user_id` = '$userId'"))[0][0];
-$_SESSION['homework'] = 
-[
-    
-];
-if(isset($_POST['subjectId']) and !empty($_POST['subjectId']))
+
+if(isset($_POST['post']) AND !empty($_POST['post']))
+{
+    $post = $_POST['post'];
+}
+else
+{
+    $post = 'subjects';
+}
+
+// Заполнение сессии
+if(isset($_POST['subjectId']) AND !empty($_POST['subjectId']))
 {
     $_SESSION['homework']['subjectId'] = $_POST['subjectId'];
-
 }
-else if (isset($_POST['facultyId']) and !empty($_POST['facultyId']))
+else if (isset($_POST['facultyId']) AND !empty($_POST['facultyId']))
 {
     $_SESSION['homework']['facultyId'] = $_POST['facultyId'];
+
 }
+else if (isset($_POST['groupId']) AND !empty($_POST['groupId']))
+{
+    $_SESSION['homework']['groupId'] = $_POST['groupId'];
+    header('Location: homeworkCreate.php');
+
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -31,6 +46,8 @@ else if (isset($_POST['facultyId']) and !empty($_POST['facultyId']))
 </head>
 
 <body>
+    <!-- span - служит для отображения контента -->
+    <span  id = "span" hidden><?=$post?></span> 
     <div class="main_container" action=" " method="post">
 
         <div class="main_container_header">
@@ -48,8 +65,9 @@ else if (isset($_POST['facultyId']) and !empty($_POST['facultyId']))
             $subjects = mysqli_fetch_all(mysqli_query($connect, "SELECT `id_subject` FROM `teachers-subjects` WHERE `id_teacher` = '$teacherId'"));
             for ($i = 0; $i < $countOfSubjects; $i++) {
                 $idSubject = $subjects[$i][0];
+                // Вывод предметов
                 echo '
-                <form action = "" method = "post" onsubmit="return false;"> 
+                <form action = " " method = "post" > 
                     <div class="faculty">
                     <div class="faculty_content">
                         <div class="faculty_text">
@@ -64,9 +82,11 @@ else if (isset($_POST['facultyId']) and !empty($_POST['facultyId']))
                     '</span>
                             
                         </div>
-                        <input type = "button" class = "submit_subject">
+                         <input type = "hidden" name = "subjectId" value ="' . $idSubject . '">
+                         <input type = "hidden" name = "post" value = "faculties">
+                        <input type = "submit" class = "submit_subject">
                     </div>
-                    <input type = "hidden" name = "subjectId" value ="' . $idSubject . '">
+                   
                 </div>
                 </form>';
             }
@@ -82,7 +102,7 @@ else if (isset($_POST['facultyId']) and !empty($_POST['facultyId']))
             for ($i = 0; $i < $countFaculties; $i++) {
                 $idFaculty = $arrFaculties[$i][0];
                 echo '
-                <form action = "" method = "post" onsubmit="return false;"> 
+                <form action = "" method = "post" "> 
                     <div class="faculty">
                     <div class="faculty_content">
                         <div class="faculty_text">
@@ -97,9 +117,10 @@ else if (isset($_POST['facultyId']) and !empty($_POST['facultyId']))
                     '</span>
                             
                         </div>
-                        <input type = "button" class = "submit_faculty">
+                        <input type = "submit" class = "submit_faculty">
                     </div>
                     <input type = "hidden" name = "facultyId" value ="' . $idFaculty . '">
+                    <input type = "hidden" name = "post" value = "groups">
                 </div>
                 </form>';
             }
@@ -110,7 +131,37 @@ else if (isset($_POST['facultyId']) and !empty($_POST['facultyId']))
         </div>
 
         <div class="main_container_group hidden">
-            <span>Группы</span>
+            <?php
+            $facultyId = $_SESSION['homework']['facultyId'];
+             $countGroups = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `groups` WHERE `faculty_id` = '$facultyId'"))[0][0];
+             $arrGroups = mysqli_fetch_all(mysqli_query($connect, "SELECT * FROM `groups` WHERE `faculty_id` = '$facultyId' "));
+             
+             for ($i = 0; $i < $countGroups; $i++) {
+                 $idGroup = $arrGroups[$i][0];
+                 echo '
+                 <form action = "" method = "post" "> 
+                     <div class="faculty">
+                     <div class="faculty_content">
+                         <div class="faculty_text">
+                             <span>'
+                     . $groupName = mysqli_fetch_all(
+                         mysqli_query(
+                             $connect,
+                             "SELECT `groups_name` FROM `groups` 
+                             WHERE `groups_id` = '$idGroup'"
+                         )
+                     )[0][0].
+                     '</span>
+                             
+                         </div>
+                         <input type = "submit" class = "submit_faculty">
+                     </div>
+                     <input type = "hidden" name = "groupId" value ="' . $idGroup . '">
+                     <input type = "hidden" name = "post" value = "groups">
+                 </div>
+                 </form>';
+             }
+            ?>
         </div>
     </div>
 
