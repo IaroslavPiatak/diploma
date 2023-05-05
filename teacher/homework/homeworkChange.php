@@ -24,12 +24,7 @@ else if (isset($_POST['facultyId']) AND !empty($_POST['facultyId']))
     $_SESSION['homework']['facultyId'] = $_POST['facultyId'];
 
 }
-else if (isset($_POST['groupId']) AND !empty($_POST['groupId']))
-{
-    $_SESSION['homework']['groupId'] = $_POST['groupId'];
-    header('Location: homeworkCreate.php');
 
-}
 
 
 ?>
@@ -139,7 +134,7 @@ else if (isset($_POST['groupId']) AND !empty($_POST['groupId']))
              for ($i = 0; $i < $countGroups; $i++) {
                  $idGroup = $arrGroups[$i][0];
                  echo '
-                 <form action = "" method = "post" "> 
+                 <form action = "homeworkCreate.php" method = "post"> 
                      <div class="faculty">
                      <div class="faculty_content">
                          <div class="faculty_text">

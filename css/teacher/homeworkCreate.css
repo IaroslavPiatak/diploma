@@ -1,0 +1,193 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.main_container {
+    width: 1100px;
+    height: 700px;
+
+    background: #F9F9F9;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+
+    width: 1000px;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.destination_container {
+    width: 350px;
+    height: 50px;
+    background: #2F2D35;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.left_container {
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #F6F5FB;
+    
+}
+
+.right_container {
+   
+    width: 200px;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+}
+
+.right_container span {
+    width: 100%;
+    height: 100%;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #F6F5FB;
+    background-color: inherit;
+
+}
+
+
+.buttons {
+    width: 320px;
+    height: 100px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button_header {
+    width: 150px;
+    height: 50px;
+    background: #8F7ECE;
+    border-radius: 15px;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #FFFFFF;
+
+}
+
+.button_delete {
+    width: 300px;
+    height: 50px;
+    margin-top: 30px;
+    background: #8F7ECE;
+    border-radius: 15px;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #FFFFFF;
+
+}
+
+.exit {
+    background: #EC5863;
+}
+
+.mail {
+    width: 1000px;
+    min-height: 550px;
+    max-height: 550px;
+    background: #FFFFFF;
+    border: 3px solid #2F2D35;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hedder_mail {
+    width:  900px;
+    height: 100px;
+    background: #FFFFFF;
+
+    
+
+}
+
+.hedder_mail input {
+    width: 100%;
+    height: 100%;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 24px;
+    text-align: center;
+    color:#2F2D35;
+    background-color: inherit;
+
+}
+
+.textmail
+{
+    width: 900px;
+    min-height: 200px;
+    max-height: 400px;
+}
+
+.textmail textarea {
+    border: 1px red solid;
+    width: 100%;
+    margin-top: 30px;
+    max-height: 300px;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 30px;
+    text-align: center;
+    color:#2F2D35;
+    background-color: inherit;
+    resize:unset;
+    overflow:hidden;
+    
+
+}
+
