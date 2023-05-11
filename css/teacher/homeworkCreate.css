@@ -15,6 +15,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: start;
+ 
 }
 
 .header {
@@ -24,6 +26,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
 }
 
 .destination_container {
@@ -46,11 +49,11 @@ body {
     font-size: 20px;
     line-height: 24px;
     color: #F6F5FB;
-    
+
 }
 
 .right_container {
-   
+
     width: 200px;
     font-family: 'Rubik';
     font-style: normal;
@@ -78,6 +81,49 @@ body {
     background-color: inherit;
 
 }
+
+.radio_container {
+    width: 300px;
+    height: 50px;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    
+}
+
+.content_radio_container  {
+    width: 150px;
+    height: 100%;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: #2F2D35;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.content_radio_container input
+{
+    position: absolute;
+    z-index: 1;
+    width: 150px;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    
+}
+.content_radio_container input:checked + label{
+    transition: ease-out 0.1s;
+    border-radius: 15px;
+    color:#8F7ECE;
+    border: 3px #8F7ECE solid;
+    padding: 8px;
+  } 
 
 
 .buttons {
@@ -140,14 +186,17 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
+  
 }
 
 .hedder_mail {
-    width:  900px;
-    height: 100px;
+    width: 900px;
+    height: 50px;
     background: #FFFFFF;
-
     
+
+
 
 }
 
@@ -160,13 +209,12 @@ body {
     font-size: 28px;
     line-height: 24px;
     text-align: center;
-    color:#2F2D35;
+    color: #2F2D35;
     background-color: inherit;
 
 }
 
-.textmail
-{
+.textmail {
     width: 900px;
     min-height: 200px;
     max-height: 400px;
@@ -175,7 +223,6 @@ body {
 .textmail textarea {
     border: 1px red solid;
     width: 100%;
-    margin-top: 30px;
     max-height: 300px;
     font-family: 'Rubik';
     font-style: normal;
@@ -183,11 +230,24 @@ body {
     font-size: 26px;
     line-height: 30px;
     text-align: center;
-    color:#2F2D35;
+    color: #2F2D35;
     background-color: inherit;
-    resize:unset;
-    overflow:hidden;
-    
+    resize: unset;
+    overflow: hidden;
+
 
 }
 
+.bottom
+{
+    width: 900px;
+    height: 60px;
+    border: 1px red solid;
+}
+
+input[type=date]
+{
+    width: 200px;
+    height: 50px;
+    border: 1px red solid;
+}

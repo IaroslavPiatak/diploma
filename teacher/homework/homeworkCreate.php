@@ -1,8 +1,8 @@
 <?
 require_once '../../connection.php';
 session_start();
-if(isset($_POST['groupId']) AND !empty($_POST['groupId']))
-$_SESSION['homework']['groupId'] = $_POST['groupId'];
+if (isset($_POST['groupId']) and !empty($_POST['groupId']))
+    $_SESSION['homework']['groupId'] = $_POST['groupId'];
 ?>
 
 
@@ -32,18 +32,13 @@ $_SESSION['homework']['groupId'] = $_POST['groupId'];
             $senderFullName = $senderFullName[0][1] . ' ' . $senderFullName[0][0] . ' ' . $senderFullName[0][2];
 
 
-        }
-
-        else if ($senderRole == 2) {
+        } else if ($senderRole == 2) {
             $senderFullName = mysqli_fetch_all(mysqli_query($connect, "SELECT `first_name`, `last_name`, `surname`
             FROM `teachers` WHERE `user_id` = '$senderId'"));
             $senderFullName = $senderFullName[0][1] . ' ' . $senderFullName[0][0] . ' ' . $senderFullName[0][2];
 
 
-        }
-
-        else
-        {
+        } else {
             $senderFullName = mysqli_fetch_all(mysqli_query($connect, "SELECT `first_name`, `last_name`, `surname`
             FROM `studients` WHERE `user_id` = '$senderId'"));
             $senderFullName = $senderFullName[0][1] . ' ' . $senderFullName[0][0] . ' ' . $senderFullName[0][2];
@@ -57,7 +52,7 @@ $_SESSION['homework']['groupId'] = $_POST['groupId'];
                         <div class="left_container"><span>Отправитель:</span></div>
                         <div class="right_container">
                             <span>
-                               группа
+                                группа
                             </span>
                         </div>
                         <?
@@ -86,7 +81,7 @@ $_SESSION['homework']['groupId'] = $_POST['groupId'];
                 </div>
                 <input type="hidden" name="action" value="answer">
 
-               
+
             </form>
             <form action=" " method="post">
                 <input hidden name="action" value="delete">
@@ -96,7 +91,7 @@ $_SESSION['homework']['groupId'] = $_POST['groupId'];
         </div>
     <?
 
-    }  else if (isset($_POST['action']) && $_POST['action'] == 'answer') {
+    } else if (isset($_POST['action']) && $_POST['action'] == 'answer') {
 
         $destination = $_POST['destinationAnser'];
         $userRole = mysqli_fetch_all(mysqli_query($connect, "SELECT `user_role` FROM `users` WHERE `user_id` = '$destination'"))[0][0];
@@ -118,105 +113,123 @@ $_SESSION['homework']['groupId'] = $_POST['groupId'];
 
 
         ?>
-                <div class="main_container">
-                    <form action="" method="post">
-                        <div class="header">
-                            <div class="destination_container">
-                                <div class="left_container"><span>Получатель:</span></div>
-                                <div class="right_container">
-                                    <span>
+            <div class="main_container">
+                <form action="" method="post">
+                    <div class="header">
+                        <div class="destination_container">
+                            <div class="left_container"><span>Получатель:</span></div>
+                            <div class="right_container">
+                                <span>
 
-                                    </span>
-                                </div>
-                                <input type="hidden" name="destination_id" value="">
-                                <input type="hidden" name="sender_id" value="<?= $_SESSION['dataOfUser']['userId'] ?>">
-                                <input type="hidden" name="status" value="0">
-
+                                </span>
                             </div>
+                            <input type="hidden" name="destination_id" value="">
+                            <input type="hidden" name="sender_id" value="<?= $_SESSION['dataOfUser']['userId'] ?>">
+                            <input type="hidden" name="status" value="0">
 
-                            <div class="buttons">
-                                <button type="submit" class="button_header">Отправить</button>
-                                <button type="button" class="button_header exit" onClick='location.href="mail.php"'>В личный кабинет</button>
-                            </div>
                         </div>
 
-                        <div class="mail">
-                            <div class="hedder_mail">
-                                <input maxlength="50" type="text" name="theme" placeholder="Напишите тему">
-                            </div>
-                            <div class="textmail">
-                                <textarea name="text_letter" id="" cols="30" rows="15" maxlength="600"
-                                    placeholder="Ваш текст"></textarea>
-                            </div>
+                        <div class="buttons">
+                            <button type="submit" class="button_header">Отправить</button>
+                            <button type="button" class="button_header exit" onClick='location.href="mail.php"'>В личный
+                                кабинет</button>
                         </div>
+                    </div>
 
-                        <?
-                            $date = date('d.m.y');
-                            $time = date('H:i');
-                        ?>
-                        <input type="hidden" name="time" value ="<?=$time?>">
-                        <input type="hidden" name="date" value="<?=$date?>">
-                        
-                    </form>
+                    <div class="mail">
+                        <div class="hedder_mail">
+                            <input maxlength="50" type="text" name="theme" placeholder="Напишите тему">
+                        </div>
+                        <div class="textmail">
+                            <textarea name="text_letter" id="" cols="30" rows="15" maxlength="600"
+                                placeholder="Ваш текст"></textarea>
+                        </div>
+                    </div>
 
-                </div>
+                <?
+                $date = date('d.m.y');
+                $time = date('H:i');
+                ?>
+                    <input type="hidden" name="time" value="<?= $time ?>">
+                    <input type="hidden" name="date" value="<?= $date ?>">
+
+                </form>
+
+            </div>
     <?
+        // Создание
     } else {
-        
+
         ?>
-                <div class="main_container">
-                    
-                    <form action="" method="post">
-                        <div class="header">
-                            <div class="destination_container">
-                                <div class="left_container"><span>Группа:</span></div>
-                                <div class="right_container">
-                                    <!-- Узнаем имя группы -->
-                                    <?
-                                    $groupId = $_SESSION['homework']['groupId'];
-                                    $groupName = mysqli_fetch_all(mysqli_query($connect, "SELECT `groups_name` FROM `groups` WHERE `groups_id` = $groupId"))[0][0]
-                                    ?>
-                                    <span><?=$groupName?></span>
-                                </div>
-                                <input type="hidden" name="destination_id" value="<?= $destination ?>">
-                                <input type="hidden" name="sender_id" value="<?= $_SESSION['dataOfUser']['userId'] ?>">
-                                <input type="hidden" name="status" value= '0'>
+            <div class="main_container">
 
-                            </div>
-
-                            <div class="buttons">
-                                <button type="submit" class="button_header">Отправить</button>
-                                <button type="button" class="button_header exit" onClick='location.href="../pa_teacher.php"'>Выйти</button>
-                            </div>
-                        </div>
-
-                        <div class="mail">
-                            <div class="hedder_mail">
-                                <input maxlength="50" type="text" name="theme" placeholder="Напишите тему">
-                            </div>
-                            <div class="textmail">
-                                <textarea name="text_letter" id="" cols="30" rows="15" maxlength="600"
-                                    placeholder="Ваш текст"></textarea>
-                            </div>
-
+                <form action="" method="post">
+                    <div class="header">
+                        <div class="destination_container">
+                            <div class="left_container"><span>Группа:</span></div>
+                            <div class="right_container">
+                                <!-- Узнаем имя группы -->
                             <?
-                            $date = date('d.m.y');
-                            $time = date('H:i');
-                        ?>
-                        <input type="hidden" name="time" value ="<?=$time?>">
-                        <input type="hidden" name="date" value="<?=$date?>">
-                        </div>
-                    </form>
+                            $groupId = $_SESSION['homework']['groupId'];
+                            $groupName = mysqli_fetch_all(mysqli_query($connect, "SELECT `groups_name` FROM `groups` WHERE `groups_id` = $groupId"))[0][0]
+                                ?>
+                                <span>
+                                <?= $groupName ?>
+                                </span>
+                            </div>
+                            <input type="hidden" name="destination_id" value="<?= $destination ?>">
+                            <input type="hidden" name="sender_id" value="<?= $_SESSION['dataOfUser']['userId'] ?>">
+                            <input type="hidden" name="status" value='0'>
 
-                </div>
+                        </div>
+                        <div class="radio_container">
+                            <div class="content_radio_container">
+                                <input id="1" type="radio" name="typeOfHomework" value="practice" checked>
+                                <label>Практика</label>
+                            </div>
+                            <div class="content_radio_container">
+                                <input type="radio" name="typeOfHomework" value="abstract">
+                                <label>Конспект</label>
+                            </div>
+                        </div>
+                        <div class="buttons">
+                            <button type="submit" class="button_header">Отправить</button>
+                            <button type="button" class="button_header exit"
+                                onClick='location.href="../pa_teacher.php"'>Выйти</button>
+                        </div>
+                    </div>
+
+                    <div class="mail">
+                        <div class="hedder_mail">
+                            <input maxlength="50" type="text" name="theme" placeholder="Напишите тему">
+                        </div>
+                        <div class="textmail">
+                            <textarea name="text_letter" id="" cols="30" rows="15" maxlength="800"
+                                placeholder="Ваш текст"></textarea>
+                        </div>
+
+                    <?
+                    $date = date('d.m.y');
+                    $time = date('H:i');
+                    ?>
+                        <input type="hidden" name="time" value="<?= $time ?>">
+                        <input type="hidden" name="date" value="<?= $date ?>">
+
+                        <div class="bottom">
+                            <input style = "date" type="date">
+                        </div>
+                    </div>
+
+                   
+                </form>
+
+            </div>
     <?
 
     }
     ?>
 
-
+<script></script>
 </body>
 
 </html>
-
-
