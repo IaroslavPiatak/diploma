@@ -1,8 +1,6 @@
 <?
 require_once '../../connection.php';
 session_start();
-if (isset($_POST['groupId']) and !empty($_POST['groupId']))
-    $_SESSION['homework']['groupId'] = $_POST['groupId'];
 ?>
 
 
@@ -76,7 +74,7 @@ if (isset($_POST['groupId']) and !empty($_POST['groupId']))
                         <input readonly maxlength="50" type="text" value="<?= $theme ?>">
                     </div>
                     <div class="textmail">
-                        <textarea readonly cols="30" rows="15" maxlength="600"><?= $text ?></textarea>
+                        <textarea readonly cols="30" rows="15" maxlength="300"><?= $text ?></textarea>
                     </div>
                 </div>
                 <input type="hidden" name="action" value="answer">
@@ -91,7 +89,7 @@ if (isset($_POST['groupId']) and !empty($_POST['groupId']))
         </div>
     <?
 
-    } else if (isset($_POST['action']) && $_POST['action'] == 'answer') {
+    } else if (isset($_POST['action']) && $_POST['action'] == 'answer') { // СКОРЕЕ ВСЕГО ДЛЯ ПРЕПОДА ЭТО НЕ НУЖНО !!!
 
         $destination = $_POST['destinationAnser'];
         $userRole = mysqli_fetch_all(mysqli_query($connect, "SELECT `user_role` FROM `users` WHERE `user_id` = '$destination'"))[0][0];
@@ -141,7 +139,7 @@ if (isset($_POST['groupId']) and !empty($_POST['groupId']))
                             <input maxlength="50" type="text" name="theme" placeholder="Напишите тему">
                         </div>
                         <div class="textmail">
-                            <textarea name="text_letter" id="" cols="30" rows="15" maxlength="600"
+                            <textarea name="text_homework" id="" cols="30" rows="15" maxlength="600"
                                 placeholder="Ваш текст"></textarea>
                         </div>
                     </div>
@@ -163,7 +161,7 @@ if (isset($_POST['groupId']) and !empty($_POST['groupId']))
         ?>
             <div class="main_container">
 
-                <form action="" method="post">
+                <form action="homeworkHandler.php" method="post" enctype="multipart/form-data">
                     <div class="header">
                         <div class="destination_container">
                             <div class="left_container"><span>Группа :</span></div>
@@ -177,9 +175,10 @@ if (isset($_POST['groupId']) and !empty($_POST['groupId']))
                                 <?= $groupName ?>
                                 </span>
                             </div>
-                            <input type="hidden" name="destination_id" value="<?= $destination ?>">
                             <input type="hidden" name="sender_id" value="<?= $_SESSION['dataOfUser']['userId'] ?>">
                             <input type="hidden" name="status" value='0'>
+                            <input type="hidden" name="groupId" value='<?=$groupId?>'>
+                            <input type="hidden" name="subjectId" value='<?=$_SESSION['homework']['subjectId']?>'>
 
                         </div>
                         <div class="radio_container">
@@ -204,7 +203,7 @@ if (isset($_POST['groupId']) and !empty($_POST['groupId']))
                             <input maxlength="50" type="text" name="theme" placeholder="Напишите тему">
                         </div>
                         <div class="textmail">
-                            <textarea name="text_letter" id="" cols="30" rows="15" maxlength="800"
+                            <textarea name="text_homework" id="" cols="30" rows="15" maxlength="800"
                                 placeholder="Ваш текст"></textarea>
                         </div>
 
@@ -218,7 +217,7 @@ if (isset($_POST['groupId']) and !empty($_POST['groupId']))
                         <div class="bottom">
                             <div class="date_select">
                                 <span id="datetext">Выбрать дату выполнения</span>
-                                <input id="dateInput" type="date" name="date">
+                                <input id="dateInput" type="date" name="deadline_of_work">
                             </div>
 
                             <div class="file_select">

@@ -96,6 +96,9 @@ else if (isset($_POST['facultyId']) AND !empty($_POST['facultyId']))
             $arrFaculties = mysqli_fetch_all(mysqli_query($connect, "SELECT * FROM `faculties`"));
             for ($i = 0; $i < $countFaculties; $i++) {
                 $idFaculty = $arrFaculties[$i][0];
+                $countGroupsInFaculty = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `groups` WHERE `faculty_id` = '$idFaculty'"))[0][0];
+                if($countGroupsInFaculty == 0)
+                continue;
                 echo '
                 <form action = "" method = "post" "> 
                     <div class="faculty">
@@ -134,7 +137,7 @@ else if (isset($_POST['facultyId']) AND !empty($_POST['facultyId']))
              for ($i = 0; $i < $countGroups; $i++) {
                  $idGroup = $arrGroups[$i][0];
                  echo '
-                 <form action = "homeworkCreate.php" method = "post"> 
+                 <form action = "homeworkHub.php" method = "post"> 
                      <div class="faculty">
                      <div class="faculty_content">
                          <div class="faculty_text">
