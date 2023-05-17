@@ -166,7 +166,7 @@ if (isset($_POST['groupId']) and !empty($_POST['groupId']))
                 <form action="" method="post">
                     <div class="header">
                         <div class="destination_container">
-                            <div class="left_container"><span>Группа:</span></div>
+                            <div class="left_container"><span>Группа :</span></div>
                             <div class="right_container">
                                 <!-- Узнаем имя группы -->
                             <?
@@ -184,11 +184,11 @@ if (isset($_POST['groupId']) and !empty($_POST['groupId']))
                         </div>
                         <div class="radio_container">
                             <div class="content_radio_container">
-                                <input id="1" type="radio" name="typeOfHomework" value="practice" checked>
+                                <input id="practice" id="1" type="radio" name="typeOfHomework" value="practice" checked>
                                 <label>Практика</label>
                             </div>
                             <div class="content_radio_container">
-                                <input type="radio" name="typeOfHomework" value="abstract">
+                                <input id="abstract" type="radio" name="typeOfHomework" value="abstract">
                                 <label>Конспект</label>
                             </div>
                         </div>
@@ -216,11 +216,23 @@ if (isset($_POST['groupId']) and !empty($_POST['groupId']))
                         <input type="hidden" name="date" value="<?= $date ?>">
 
                         <div class="bottom">
-                            <input style = "date" type="date">
+                            <div class="date_select">
+                                <span id="datetext">Выбрать дату выполнения</span>
+                                <input id="dateInput" type="date" name="date">
+                            </div>
+
+                            <div class="file_select">
+                                <div class="file_text">
+                                    <span id="filetext">Загрузить файл</span>
+                                </div>
+                                <div class="file_icon"></div>
+
+                                <input class="input_photo" type="file" name="filename" size="10"/>
+                            </div>
                         </div>
                     </div>
 
-                   
+
                 </form>
 
             </div>
@@ -229,7 +241,7 @@ if (isset($_POST['groupId']) and !empty($_POST['groupId']))
     }
     ?>
 
-<script></script>
+    <script src = "../../js/homeworkCreate.js"></script>
 </body>
 
 </html>

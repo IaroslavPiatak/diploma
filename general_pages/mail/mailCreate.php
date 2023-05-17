@@ -128,7 +128,7 @@ else if (isset($_POST['action']) && $_POST['action'] == 'delete') {
         </div>
     <?
 
-    }  else if (isset($_POST['action']) && $_POST['action'] == 'answer') {
+    }  else if (isset($_POST['action']) && $_POST['action'] == 'create') {
 
         $destination = $_POST['destinationAnser'];
         $userRole = mysqli_fetch_all(mysqli_query($connect, "SELECT `user_role` FROM `users` WHERE `user_id` = '$destination'"))[0][0];
