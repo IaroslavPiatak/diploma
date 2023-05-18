@@ -1,3 +1,5 @@
+
+
 const date = document.getElementById('dateInput');
 const filetext = document.getElementById('filetext');
 const fileicon = document.querySelector('.file_icon');
@@ -5,46 +7,9 @@ const fileinput = document.querySelector('.input_photo');
 let datetext = document.getElementById('datetext');
 
 const typeOfHomework = document.querySelector('.forJS');
-if(typeOfHomework.innerHTML == 'Конспект')
-{
-    document.querySelector('.bottom').style.justifyContent = "flex-end";
-}
-
-else
-{
-    document.querySelector('.main_container').style.height = ' ';
-    document.querySelector('.main_container').style.margin = '150px 0 0 0';
-   
-    document.querySelector('.statusOfGroup').classList.remove('hidden');
-}
-
 
 const abstract = document.getElementById('abstract');
 const practice = document.getElementById('practice');
-
-
-abstract.addEventListener('click', ()=>
-{
-    document.querySelector('.date_select').classList.add('hidden');
-    document.querySelector('.bottom').style.justifyContent = "flex-end";
-    
-
-})
-
-practice.addEventListener('click', ()=>
-{
-    document.querySelector('.date_select').classList.remove('hidden');
-    document.querySelector('.bottom').style.justifyContent = "space-between";
-
-})
-
-
-function reverse(val) // переворачивает дату
-{
-    let split = val.split("");
-    return split[8] + split[9] + '.' + split[5] + split[6] + '.' + split[0] + split[1] + split[2] + split[3];
-}
-
 
 
 const intervalId = setInterval(function () { // проверяет введена ли дата
@@ -54,10 +19,41 @@ const intervalId = setInterval(function () { // проверяет введен�
     datetext.innerHTML = 'Выбрать дату выполнения';
 
        
-}, 1000)
+}, 1000);
+
+
+abstract.addEventListener('click', ()=>
+{
+    document.querySelector('.date_select').classList.add('hidden');
+    document.querySelector('.bottom').style.justifyContent = "flex-end";
+    
+
+});
+
+practice.addEventListener('click', ()=>
+{
+    document.querySelector('.date_select').classList.remove('hidden');
+    document.querySelector('.bottom').style.justifyContent = "space-between";
+
+});
+
+
+    
+
+
+function reverse(val) // переворачивает дату
+{
+    let split = val.split("");
+    return split[8] + split[9] + '.' + split[5] + split[6] + '.' + split[0] + split[1] + split[2] + split[3];
+}
 
 
 fileinput.addEventListener("input", (event) => {
     filetext.innerHTML = `<span>Файл загружен</span>`;
     fileicon.style.backgroundImage = "url(../../img/teacher/homework/file_ready.png)";
 });
+
+
+
+
+

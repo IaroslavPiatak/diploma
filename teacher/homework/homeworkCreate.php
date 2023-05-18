@@ -164,7 +164,7 @@ session_start();
                     <div class="buttons">
                         <button type="submit" class="button_header">Отправить</button>
                         <button type="button" class="button_header exit"
-                            onClick='location.href="../pa_teacher.php"'>Выйти</button>
+                            onClick='location.href="homeworkHub.php"'>Назад</button>
                     </div>
                 </div>
 
@@ -211,6 +211,7 @@ session_start();
     ?>
 
     <script src="../../js/homeworkCreate.js"></script>
+    <script src="../../js/homeworkRead.js"></script>
 </body>
 
 </html>

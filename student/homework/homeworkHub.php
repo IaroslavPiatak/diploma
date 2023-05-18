@@ -6,8 +6,7 @@ header('Refresh: 10');
 $userId = $_SESSION['dataOfUser']['userId'];
 $studentId = mysqli_fetch_all(mysqli_query($connect, "SELECT `studient_id` FROM `studients` WHERE `user_id` = '$userId'"))[0][0];
 $groupId = mysqli_fetch_all(mysqli_query($connect, "SELECT `group_id` FROM `studients` WHERE `user_id` = '$userId'"))[0][0];
-if(isset($_POST['subjectId']) AND !empty($_POST['subjectId']))
-{
+if (isset($_POST['subjectId']) and !empty($_POST['subjectId'])) {
     $_SESSION['subjectId'] = $_POST['subjectId'];
 
 }
@@ -38,8 +37,7 @@ $subjectId = $_SESSION['subjectId'];
             </div>
 
             <div class="buttons">
-                <button class="button_header" onClick='location.href="homeworkCreate.php"'>Создать</button>
-                <? $checkUserRole = $_SESSION['dataOfUser']['userRole'];    ?>
+                <? $checkUserRole = $_SESSION['dataOfUser']['userRole']; ?>
                 <button class="button_header exit" onClick='location.href="../pa_student.php"'>Выйти</button>
             </div>
         </div>
@@ -64,33 +62,29 @@ $subjectId = $_SESSION['subjectId'];
             <?
             } else {
                 for ($i = 0; $i < $countOfHomework; $i++) {
-                
+
                     $idHomework = $homeworks[$i][0];
                     $typeOfHomework = $homeworks[$i][4];
                     $theme = $homeworks[$i][5];
                     $time = $homeworks[$i][7];
                     $date = $homeworks[$i][8];
-                
+
 
                     if ($date == date('d.m.y'))
                         $dateTime = $time;
                     else
                         $dateTime = $date;
 
-                    if ($typeOfHomework == 'abstract')
-                    {
+                    if ($typeOfHomework == 'abstract') {
                         $homeworkIcon = '<div class = "letter_close">';
                         $typeOfHomework = 'Конспект';
-                    }
-                    else
-                    {
+                    } else {
                         $homeworkIcon = '<div class = "letter_open">';
                         $typeOfHomework = 'Практика';
                     }
                     echo '
-                <form action = "homeworkCreate.php" method = "post">
+                <form action = "homeworkRead.php" method = "post">
                 <input type = "hidden" name = "idHomework" value = "' . $idHomework . '">
-                <input type = "hidden" name = "action" value = "read">
                 <input type = "submit" class = "inputSubmit">
                 <div class="letter">
                 <div class="icon">
@@ -110,6 +104,9 @@ $subjectId = $_SESSION['subjectId'];
 
         </div>
     </div>
+    <script> // чтобы не переделывать css и не писать новых файлов :)
+        document.querySelector('.buttons').style.justifyContent = 'end';
+    </script>
 
 </body>
 
