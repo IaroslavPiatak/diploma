@@ -1,8 +1,22 @@
 ::-webkit-scrollbar {
-    width: 0;
+  position: absolute;
+  left: -100px;
+  width: 10px;
+  border-radius: 40px;
 }
 
-/* удаляет scroll bar */
+::-webkit-scrollbar-track {
+ 
+  background-color: inherit;
+  border-radius: 40px;
+}
+
+::-webkit-scrollbar-thumb {
+  
+  box-shadow: inset 1px 1px 60px #2F2D35;;
+  border-radius: 40px;
+}
+
 body {
     height: 100%;
     display: flex;
@@ -13,7 +27,7 @@ body {
 
 .main_container {
     width: 1100px;
-    height: 600px;
+    height: 650px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -76,18 +90,22 @@ body {
 .main_container_subject,
 .main_container_faculty
 {
+  
     width: 1000px;
-    height: 450px;
+    height: 500px;
     display: flex;
     justify-content: space-between;
+    overflow: scroll;
+    gap: 5px;
     flex-wrap: wrap;
    
-    overflow: auto;
+    
 }
 
 .faculty {
     width: 300px;
     height: 150px;
+    margin-bottom: 5px;
     background: white;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;

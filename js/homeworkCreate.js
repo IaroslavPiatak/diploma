@@ -4,6 +4,21 @@ const fileicon = document.querySelector('.file_icon');
 const fileinput = document.querySelector('.input_photo');
 let datetext = document.getElementById('datetext');
 
+const typeOfHomework = document.querySelector('.forJS');
+if(typeOfHomework.innerHTML == 'Конспект')
+{
+    document.querySelector('.bottom').style.justifyContent = "flex-end";
+}
+
+else
+{
+    document.querySelector('.main_container').style.height = ' ';
+    document.querySelector('.main_container').style.margin = '150px 0 0 0';
+   
+    document.querySelector('.statusOfGroup').classList.remove('hidden');
+}
+
+
 const abstract = document.getElementById('abstract');
 const practice = document.getElementById('practice');
 

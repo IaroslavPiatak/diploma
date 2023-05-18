@@ -21,10 +21,12 @@ if ($_FILES && $_FILES["filename"]["error"] == UPLOAD_ERR_OK) // Если пол
     mysqli_query($connect, "INSERT INTO `homeworks`(`status`, `groupId`, `subjectId`, `typeOfHomework`, `theme`, `textHomework`, `time`, `date`, `deadlineOfHomework`, `document`) 
     VALUES ('$status','$groupId','$subjectId','$typeOfHomework','$theme','$text_homework','$time','$date','$deadline_of_work','$nameForDataBase')");
     move_uploaded_file($_FILES["filename"]["tmp_name"], $name); // в функции передаем временное расположение файла и его имя
-
-    
-
+}
+else
+{
+    mysqli_query($connect, "INSERT INTO `homeworks`(`status`, `groupId`, `subjectId`, `typeOfHomework`, `theme`, `textHomework`, `time`, `date`, `deadlineOfHomework`) 
+    VALUES ('$status','$groupId','$subjectId','$typeOfHomework','$theme','$text_homework','$time','$date','$deadline_of_work')");
 
 }
-// header('Location: homeworkExit.php');
+header('Location: homeworkExit.php');
 ?>

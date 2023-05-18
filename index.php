@@ -24,6 +24,9 @@ if (isset($_POST['login'])) {
         } else if ($requestRole == 2) {
             header('Location:teacher/pa_teacher.php');
         }
+        else if ($requestRole == 3) {
+            header('Location: student/pa_student.php');
+        }
     } else {
         $alert = 'true';
 

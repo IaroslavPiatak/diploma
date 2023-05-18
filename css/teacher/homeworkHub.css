@@ -135,18 +135,34 @@ body {
     width: 60px;
     height: 60px;
     background-size: cover;
-    background-image: url(../../../img/general_pages/mail/close_letter.png);
+    background-image: url(../../../img/teacher/homework/abstract.png);
 }
 
 .letter_open {
     width: 60px;
     height: 60px;
     background-size: cover;
-    background-image: url(../../../img/general_pages/mail/open_letter.png);
+    background-image: url(../../../img/teacher/homework/practice.png);
+}
+
+.typeOfHomework
+{
+    width: 150px;
+    height: 75px;
+  
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2F2D35;
 }
 
 .theme {
-    width: 750px;
+    width: 600px;
     height: 75px;
   
     font-family: 'Rubik';

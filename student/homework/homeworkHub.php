@@ -3,8 +3,18 @@ require_once '../../connection.php';
 session_start();
 header('Refresh: 10');
 
-if (isset($_POST['groupId']) and !empty($_POST['groupId']))
-    $_SESSION['homework']['groupId'] = $_POST['groupId'];
+$userId = $_SESSION['dataOfUser']['userId'];
+$studentId = mysqli_fetch_all(mysqli_query($connect, "SELECT `studient_id` FROM `studients` WHERE `user_id` = '$userId'"))[0][0];
+$groupId = mysqli_fetch_all(mysqli_query($connect, "SELECT `group_id` FROM `studients` WHERE `user_id` = '$userId'"))[0][0];
+if(isset($_POST['subjectId']) AND !empty($_POST['subjectId']))
+{
+    $_SESSION['subjectId'] = $_POST['subjectId'];
+
+}
+
+$subjectId = $_SESSION['subjectId'];
+
+
 
 ?>
 
@@ -30,14 +40,11 @@ if (isset($_POST['groupId']) and !empty($_POST['groupId']))
             <div class="buttons">
                 <button class="button_header" onClick='location.href="homeworkCreate.php"'>Создать</button>
                 <? $checkUserRole = $_SESSION['dataOfUser']['userRole'];    ?>
-                <button class="button_header exit" onClick='location.href="../../teacher/pa_teacher.php"'>Выйти</button>
+                <button class="button_header exit" onClick='location.href="../pa_student.php"'>Выйти</button>
             </div>
         </div>
         <div class="letter_box">
             <?
-            // тут надо поработать
-            $groupId = $_SESSION['homework']['groupId'];
-            $subjectId = $_SESSION['homework']['subjectId'];
 
             $countOfHomework = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `homeworks` WHERE `groupId` = '$groupId' AND `subjectId` = '$subjectId'"))[0][0];
             $homeworks = mysqli_fetch_all(mysqli_query($connect, "SELECT * FROM `homeworks`  WHERE `groupId` = '$groupId' AND `subjectId` = '$subjectId'"));
