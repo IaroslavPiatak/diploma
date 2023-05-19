@@ -1,14 +1,33 @@
+::-webkit-scrollbar {
+    position: absolute;
+    width: 15px;
+    border-radius: 40px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: inherit;
+    border-radius: 40px;
+}
+
+::-webkit-scrollbar-thumb {
+    box-shadow: inset 1px 1px 60px #2F2D35;;
+    border-radius: 40px;
+}
+
 body {
+    position: relative;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    
 
 }
 
 .main_container {
+   
     width: 1100px;
-    min-height: 700px;
-
+    min-height: 640px;
+    margin-top: 15px;
     background: #F9F9F9;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
@@ -179,8 +198,8 @@ body {
 
 .mail {
     width: 1000px;
-    min-height: 550px;
-    max-height: 550px;
+    min-height: 500px;
+    max-height: 500px;
     background: #FFFFFF;
     border: 3px solid #2F2D35;
     border-radius: 15px;
@@ -345,9 +364,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
     cursor: pointer;
 }
 
-.hidden {
-    display: none;
-}
+
 
 .typeOfHomework {
     box-sizing: border-box;
@@ -371,8 +388,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
 
 }
 
-.statusOfGroup
-{
+.statusOfGroup {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -404,35 +420,89 @@ input[type=date]::-webkit-calendar-picker-indicator {
     border: 3px solid #2F2D35;
     border-radius: 15px;
     display: flex;
+    justify-content: space-between;
 }
 
-.nameOfStudent
-{
-    margin-left: 20px;
+.nameOfStudent {
     width: 375px;
     height: 100%;
-    background-color: red;
-}
-
-.statusOfHomework
-{
-    width: 200px;
-    height: 100%;
-    background-color: green;
-}
-
-.dateHomework
-{
-    width: 200px;
-    height: 100%;
-    background-color: red;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #2F2D35;
 
 }
 
-.buttonViewHomework
-{
+.statusOfHomework {
     width: 200px;
     height: 100%;
-    background-color: green;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6CD14C;
+  
+}
 
+.dateHomework {
+    width: 200px;
+    height: 100%;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2F2D35;
+
+}
+
+.buttonViewHomework {
+    width: 220px;
+    height: 100%;
+    
+}
+
+.buttonViewHomework form {
+    width: 100%;
+    height: 100%;
+    
+}
+
+.buttonViewHomework button {
+    width: 100%;
+    margin-left: 0.1px;
+    height: 100%;
+    background: #8F7ECE;
+    border-radius: 12px;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+
+}
+
+.buttonViewHomework button img
+{
+    width: 15%;
+}
+
+.hidden {
+    display: none;
 }

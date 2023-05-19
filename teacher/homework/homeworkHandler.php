@@ -28,5 +28,5 @@ else
     VALUES ('$status','$groupId','$subjectId','$typeOfHomework','$theme','$text_homework','$time','$date','$deadline_of_work')");
 
 }
-header('Location: homeworkExit.php');
+header('Location: homeworkHub.php');
 ?>

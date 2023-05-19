@@ -6,11 +6,8 @@ const fileicon = document.querySelector('.file_icon');
 const fileinput = document.querySelector('.input_photo');
 let datetext = document.getElementById('datetext');
 
-const typeOfHomework = document.querySelector('.forJS');
-
 const abstract = document.getElementById('abstract');
 const practice = document.getElementById('practice');
-
 
 const intervalId = setInterval(function () { // проверяет введена ли дата
     if (date.value.trim() != '')
@@ -37,8 +34,6 @@ practice.addEventListener('click', ()=>
 
 });
 
-
-    
 
 
 function reverse(val) // переворачивает дату

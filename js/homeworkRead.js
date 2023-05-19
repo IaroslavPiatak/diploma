@@ -3,6 +3,7 @@ const typeOfHomework = document.querySelector('.forJS');
 if(typeOfHomework.innerHTML == 'Конспект')
 {
     document.querySelector('.bottom').style.justifyContent = 'end';
+    document.querySelector('.statusOfGroup').classList.add('hidden');
 }
 
 else

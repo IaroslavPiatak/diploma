@@ -75,7 +75,6 @@ session_start();
             ?>
             <input type="hidden" name="time" value="<?= $time ?>">
             <input type="hidden" name="date" value="<?= $date ?>">
-            ?>
         </form>
     </div>
     <script>

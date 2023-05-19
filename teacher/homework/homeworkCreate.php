@@ -1,6 +1,7 @@
 <?
 require_once '../../connection.php';
 session_start();
+
 ?>
 
 
@@ -70,7 +71,7 @@ session_start();
                         else {
                             echo '
                             <div class="date_select">
-                            <span id="datetext">Выполнить до : ' . $deadlineOfHomework[8] . $deadlineOfHomework[9] . '.' . $deadlineOfHomework[5] . $deadlineOfHomework[6] . '.' . $deadlineOfHomework[0] . $deadlineOfHomework[1] . $deadlineOfHomework[2] . $deadlineOfHomework[3] . '</span>
+                            <span >Выполнить до : ' . $deadlineOfHomework[8] . $deadlineOfHomework[9] . '.' . $deadlineOfHomework[5] . $deadlineOfHomework[6] . '.' . $deadlineOfHomework[0] . $deadlineOfHomework[1] . $deadlineOfHomework[2] . $deadlineOfHomework[3] . '</span>
                             <input readonly id="dateInput" type="date" name="deadline_of_work">
                         </div>';
                         }
@@ -98,37 +99,81 @@ session_start();
 
                 </div>
             </form>
-            <div class="statusOfGroup hidden">
-                <div class="statusGroupBar">
-                    <span>Статистика по группе</span>
-                </div>
-
-                <?
-                $countOfStudents = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `studients` WHERE `group_id` = '$groupId'"))[0][0];
-                $arrOfStudents = mysqli_fetch_all(mysqli_query($connect, "SELECT * FROM `studients` WHERE `group_id` = '$groupId'"));
-                print_r($arrOfStudents);
-                
-                for ($i = 0; $i < $countOfStudents; $i++) {
-                    ?>
-                    <div class="statusOfEverStudet">
-                        <div class="nameOfStudent"><?=$arrOfStudents[$i][2] . ' '. $arrOfStudents[$i][3] . ' ' . $arrOfStudents[$i][4]?></div>
-                        <div class="statusOfHomework"></div>
-                        <div class="dateHomework"></div>
-                        <div class="buttonViewHomework"></div>
-                    </div>
-                <?
-                }
-                ?>
-
-
+        </div>
+        <div class="statusOfGroup">
+            <div class="statusGroupBar">
+                <span>Статистика по группе</span>
             </div>
 
+            <?
+            $countOfStudents = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `studients` WHERE `group_id` = '$groupId'"))[0][0];
+            $arrOfStudents = mysqli_fetch_all(mysqli_query($connect, "SELECT * FROM `studients` WHERE `group_id` = '$groupId'"));
+
+            for ($i = 0; $i < $countOfStudents; $i++) {
+                ?>
+                <div class="statusOfEverStudet">
+                    <div class="nameOfStudent">
+                        <?= $arrOfStudents[$i][2] . ' ' . $arrOfStudents[$i][3] . ' ' . $arrOfStudents[$i][4] ?>
+                    </div>
+                    <div class="statusOfHomework">
+                        <?
+                        $senderId = $arrOfStudents[$i][0];
+                        $checkAnser = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `answers` WHERE `senderId` = '$senderId' AND `homeworkId` = '$idHomework'"))[0][0];
+                        if ($checkAnser == 1)
+                            $idAnswer = mysqli_fetch_all(mysqli_query($connect, "SELECT `answerId` FROM `answers` WHERE `senderId` = '$senderId' AND `homeworkId` = '$idHomework'"))[0][0];
+                        else
+                            $idAnswer = '';
+
+                        if (!empty($idAnswer)) {
+                            echo '<span>Практика сдана</span>';
+                        } else
+                            echo '<span style = "color: #EC5863;">Практика не сдана</span>';
+
+                        ?>
+                    </div>
+                    <div class="dateHomework">
+                        <?
+                        if (!empty($idAnswer)) {
+                            $dateAnswer = mysqli_fetch_all(mysqli_query($connect, "SELECT `date` FROM `answers` WHERE `answerId` = '$idAnswer'"))[0][0];
+                            echo '<span>' . $dateAnswer . '</span>';
+                        } else
+                            echo '<span>---</span>';
+                        ?>
+                    </div>
+                    <div class="buttonViewHomework">
+                        <?
+                        if (!empty($idAnswer)) {
+                            ?>
+                            <form action="homeworkViewAnswer.php" method = "post">
+                                <input type="hidden" name="idAnswer" value = "<?=$idAnswer?>">
+                                <button type = "submit">Посмотреть</button>
+                            </form>
+                            <?  
+                        } else
+                            echo '<button disabled style = "cursor:not-allowed;"><img src = "../../img/teacher/homework/locker.png" alt = "замочек"></button>';
+                        ?>
+                    </div>
+                </div>
+            <?
+            }
+            ?>
         </div>
     <?
 
     } else {
 
         ?>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .main_container
+            {
+                margin-top: 0px;
+            }
+        </style>
         <div class="main_container">
 
             <form action="homeworkHandler.php" method="post" enctype="multipart/form-data">
