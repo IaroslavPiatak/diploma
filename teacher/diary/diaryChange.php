@@ -3,7 +3,6 @@ session_start();
 require_once '../../connection.php';
 $userId = $_SESSION['dataOfUser']['userId'];
 $teacherId = mysqli_fetch_all(mysqli_query($connect, "SELECT `teacher_id` FROM `teachers` WHERE `user_id` = '$userId'"))[0][0];
-
 if(isset($_POST['post']) AND !empty($_POST['post']))
 {
     $post = $_POST['post'];
@@ -23,6 +22,11 @@ else if (isset($_POST['facultyId']) AND !empty($_POST['facultyId']))
     $_SESSION['homework']['facultyId'] = $_POST['facultyId'];
 
 }
+else if (isset($_POST['groupId']) AND !empty($_POST['groupId']))
+{
+    $_SESSION['homework']['groupId'] = $_POST['groupId'];
+
+}
 
 
 
@@ -37,6 +41,7 @@ else if (isset($_POST['facultyId']) AND !empty($_POST['facultyId']))
     <title>Выбор предмета</title>
     <link rel="stylesheet" href="../../css/reset.css">
     <link rel="stylesheet" href="../../css/teacher/homeworkChange.css">
+    <link rel="stylesheet" href="../../css/teacher/diaryChange.css">
 </head>
 
 <body>
@@ -50,7 +55,7 @@ else if (isset($_POST['facultyId']) AND !empty($_POST['facultyId']))
                 <span class="title_teacher_span">Выберите предмет</span>
             </div>
 
-            <button onclick="location.href = 'homeworkExit.php'" class="btn_exit">Вернуться в личный кабинет</button>
+            <button onclick="location.href = '../pa_teacher.php'" class="btn_exit">Вернуться в личный кабинет</button>
         </div>
 
         <div class="main_container_subject ">
@@ -136,7 +141,7 @@ else if (isset($_POST['facultyId']) AND !empty($_POST['facultyId']))
              for ($i = 0; $i < $countGroups; $i++) {
                  $idGroup = $arrGroups[$i][0];
                  echo '
-                 <form action = "homeworkHub.php" method = "post"> 
+                 <form action = " " method = "post"> 
                      <div class="faculty">
                      <div class="faculty_content">
                          <div class="faculty_text">
@@ -154,13 +159,68 @@ else if (isset($_POST['facultyId']) AND !empty($_POST['facultyId']))
                          <input type = "submit" class = "submit_faculty">
                      </div>
                      <input type = "hidden" name = "groupId" value ="' . $idGroup . '">
-                     <input type = "hidden" name = "post" value = "groups">
+                     <input type = "hidden" name = "post" value = "student">
                  </div>
                  </form>';
              }
             ?>
         </div>
+
+        <div class="main_container_student hidden">
+        <?php
+            $idGroup = $_SESSION['homework']['groupId'];
+             $countStudent = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `studients` WHERE `group_id` = '$idGroup'"))[0][0];
+             $arrStudents = mysqli_fetch_all(mysqli_query($connect, "SELECT * FROM `studients` WHERE `group_id` = '$idGroup' "));
+             
+             for ($i = 0; $i < $countStudent; $i++) {
+                 $idStudent = $arrStudents[$i][0];
+                 $userId =  mysqli_fetch_all(mysqli_query($connect, "SELECT `user_id` FROM `studients` WHERE `studient_id` = '$idStudent'"))[0][0];
+                 ?>
+                 <form method="post" action="diary.php">
+                            <div class="profile_card">
+                                <div class="profile_card_content">
+                                    <div class="profile_card_img">
+                                        <?php
+                                        $check_photo = mysqli_fetch_all(mysqli_query($connect, "SELECT `photo` FROM `studients` WHERE `user_id` = '$userId'"))[0][0];
+
+                                        if ($check_photo === NULL) {
+                                            echo '<img src="../../img/student/avatar.png" class="avatar">';
+                                        } else {
+                                            $path = '../../img/student/avatars/' . $check_photo;
+                                            $path = str_replace(' ', '', $path);
+                                            echo '<img class = "avatarChange" src="' . $path . '">';
+
+                                        }
+                                        ?>
+
+                                    </div>
+                                    <div class="name">
+                                        <?php
+                                        $userFullName = mysqli_fetch_all(mysqli_query($connect, "SELECT `first_name`, `last_name`, `surname`
+                            FROM `studients` WHERE `user_id` = '$userId'"));
+                                        echo '<span>' . $userFullName[0][1] . ' ' . $userFullName[0][0] . ' ' . $userFullName[0][2] . '</span>';
+                                        echo '<input type = "hidden" name="name" value = "' . $userFullName[0][1] . ' ' . $userFullName[0][0] . ' ' . $userFullName[0][2] . '">';
+                                        ?>
+                                    </div>
+                                    <div class="email">
+                                        <?php
+                                        $userEmail = mysqli_fetch_all(mysqli_query($connect, "SELECT email FROM `studients` WHERE `user_id` = '$userId'"))[0][0];
+                                        echo '<span>' . $userEmail . '</span>';
+                                        ?>
+
+                                    </div>
+
+                                </div>
+
+                                <input class="btn-submit" type="submit">
+                            </div>
+
+                        </form>
+                 <?
+             }
+            ?>
+        </div>
     </div>
 
-            <script src="../../js/homeworkChange.js"></script>
+            <script src="../../js/diaryChange.js"></script>
 </body>

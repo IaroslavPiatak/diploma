@@ -91,6 +91,18 @@ if (!$_SESSION['dataOfUser']) // если нет сессии о пользов�
                         </div>
                     </div>
                 </a>
+                <a href="diary/diaryChange.php">
+                    <div class="delete">
+                        <div class="content">
+                            <div class="text">
+                                <span>Журнал</spam>
+                            </div>
+                            <div class="img">
+                                <img src="../img/admin/notepad_regular_icon_203433 1.png" class="icon1">
+                            </div>
+                        </div>
+                    </div>
+                </a>
 
                 <a href="homework/homeworkChange.php">
                     <div class="new_user">
@@ -104,16 +116,7 @@ if (!$_SESSION['dataOfUser']) // если нет сессии о пользов�
                         </div>
                     </div>
                 </a>
-                <div class="delete">
-                    <div class="content">
-                        <div class="text">
-                            <span>Заявки на удаление</spam>
-                        </div>
-                        <div class="img">
-                            <img src="../img/admin/notepad_regular_icon_203433 1.png" class="icon1">
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
         <!-- <div class="second_container">

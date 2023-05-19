@@ -71,7 +71,7 @@ $idAnswer = $_POST['idAnswer'];
                         </div>
                         <div class="file_icon_download"></div>
 
-                        <a class = "input_photo" href ="../../student/homework/homeworkDocuments/' . $document . '" download="' . $document . '">Скачать файл</a>
+                        <a class = "input_photo" href ="homeworkDocuments/' . $document . '" download="' . $document . '">Скачать файл</a>
                         </div>';
                         ?>
                     </div>
