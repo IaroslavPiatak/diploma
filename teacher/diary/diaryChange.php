@@ -3,27 +3,19 @@ session_start();
 require_once '../../connection.php';
 $userId = $_SESSION['dataOfUser']['userId'];
 $teacherId = mysqli_fetch_all(mysqli_query($connect, "SELECT `teacher_id` FROM `teachers` WHERE `user_id` = '$userId'"))[0][0];
-if(isset($_POST['post']) AND !empty($_POST['post']))
-{
+if (isset($_POST['post']) and !empty($_POST['post'])) {
     $post = $_POST['post'];
-}
-else
-{
+} else {
     $post = 'subjects';
 }
 
 // Заполнение сессии
-if(isset($_POST['subjectId']) AND !empty($_POST['subjectId']))
-{
+if (isset($_POST['subjectId']) and !empty($_POST['subjectId'])) {
     $_SESSION['homework']['subjectId'] = $_POST['subjectId'];
-}
-else if (isset($_POST['facultyId']) AND !empty($_POST['facultyId']))
-{
+} else if (isset($_POST['facultyId']) and !empty($_POST['facultyId'])) {
     $_SESSION['homework']['facultyId'] = $_POST['facultyId'];
 
-}
-else if (isset($_POST['groupId']) AND !empty($_POST['groupId']))
-{
+} else if (isset($_POST['groupId']) and !empty($_POST['groupId'])) {
     $_SESSION['homework']['groupId'] = $_POST['groupId'];
 
 }
@@ -46,7 +38,7 @@ else if (isset($_POST['groupId']) AND !empty($_POST['groupId']))
 
 <body>
     <!-- span - служит для отображения контента -->
-    <span  id = "span" hidden><?=$post?></span> 
+    <span id="span" hidden><?= $post ?></span>
     <div class="main_container" action=" " method="post">
 
         <div class="main_container_header">
@@ -55,7 +47,7 @@ else if (isset($_POST['groupId']) AND !empty($_POST['groupId']))
                 <span class="title_teacher_span">Выберите предмет</span>
             </div>
 
-            <button onclick="location.href = '../pa_teacher.php'" class="btn_exit">Вернуться в личный кабинет</button>
+            <button onclick="location.href = 'diaryExit.php'" class="btn_exit">Вернуться в личный кабинет</button>
         </div>
 
         <div class="main_container_subject ">
@@ -101,8 +93,8 @@ else if (isset($_POST['groupId']) AND !empty($_POST['groupId']))
             for ($i = 0; $i < $countFaculties; $i++) {
                 $idFaculty = $arrFaculties[$i][0];
                 $countGroupsInFaculty = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `groups` WHERE `faculty_id` = '$idFaculty'"))[0][0];
-                if($countGroupsInFaculty == 0)
-                continue;
+                if ($countGroupsInFaculty == 0)
+                    continue;
                 echo '
                 <form action = "" method = "post" "> 
                     <div class="faculty">
@@ -115,7 +107,7 @@ else if (isset($_POST['groupId']) AND !empty($_POST['groupId']))
                             "SELECT `faculty_name` FROM `faculties` 
                             WHERE `faculty_id` = '$idFaculty'"
                         )
-                    )[0][0].
+                    )[0][0] .
                     '</span>
                             
                         </div>
@@ -126,8 +118,8 @@ else if (isset($_POST['groupId']) AND !empty($_POST['groupId']))
                 </div>
                 </form>';
             }
-            
-        
+
+
 
             ?>
         </div>
@@ -135,25 +127,25 @@ else if (isset($_POST['groupId']) AND !empty($_POST['groupId']))
         <div class="main_container_group hidden">
             <?php
             $facultyId = $_SESSION['homework']['facultyId'];
-             $countGroups = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `groups` WHERE `faculty_id` = '$facultyId'"))[0][0];
-             $arrGroups = mysqli_fetch_all(mysqli_query($connect, "SELECT * FROM `groups` WHERE `faculty_id` = '$facultyId' "));
-             
-             for ($i = 0; $i < $countGroups; $i++) {
-                 $idGroup = $arrGroups[$i][0];
-                 echo '
+            $countGroups = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `groups` WHERE `faculty_id` = '$facultyId'"))[0][0];
+            $arrGroups = mysqli_fetch_all(mysqli_query($connect, "SELECT * FROM `groups` WHERE `faculty_id` = '$facultyId' "));
+
+            for ($i = 0; $i < $countGroups; $i++) {
+                $idGroup = $arrGroups[$i][0];
+                echo '
                  <form action = " " method = "post"> 
                      <div class="faculty">
                      <div class="faculty_content">
                          <div class="faculty_text">
                              <span>'
-                     . $groupName = mysqli_fetch_all(
-                         mysqli_query(
-                             $connect,
-                             "SELECT `groups_name` FROM `groups` 
+                    . $groupName = mysqli_fetch_all(
+                        mysqli_query(
+                            $connect,
+                            "SELECT `groups_name` FROM `groups` 
                              WHERE `groups_id` = '$idGroup'"
-                         )
-                     )[0][0].
-                     '</span>
+                        )
+                    )[0][0] .
+                    '</span>
                              
                          </div>
                          <input type = "submit" class = "submit_faculty">
@@ -162,65 +154,69 @@ else if (isset($_POST['groupId']) AND !empty($_POST['groupId']))
                      <input type = "hidden" name = "post" value = "student">
                  </div>
                  </form>';
-             }
+            }
             ?>
         </div>
 
         <div class="main_container_student hidden">
-        <?php
-            $idGroup = $_SESSION['homework']['groupId'];
-             $countStudent = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `studients` WHERE `group_id` = '$idGroup'"))[0][0];
-             $arrStudents = mysqli_fetch_all(mysqli_query($connect, "SELECT * FROM `studients` WHERE `group_id` = '$idGroup' "));
-             
-             for ($i = 0; $i < $countStudent; $i++) {
-                 $idStudent = $arrStudents[$i][0];
-                 $userId =  mysqli_fetch_all(mysqli_query($connect, "SELECT `user_id` FROM `studients` WHERE `studient_id` = '$idStudent'"))[0][0];
-                 ?>
-                 <form method="post" action="diary.php">
-                            <div class="profile_card">
-                                <div class="profile_card_content">
-                                    <div class="profile_card_img">
-                                        <?php
-                                        $check_photo = mysqli_fetch_all(mysqli_query($connect, "SELECT `photo` FROM `studients` WHERE `user_id` = '$userId'"))[0][0];
+            <?php
+            if (isset($_SESSION['homework']['groupId'])) {
+                $idGroup = $_SESSION['homework']['groupId'];
+                $countStudent = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `studients` WHERE `group_id` = '$idGroup'"))[0][0];
+                $arrStudents = mysqli_fetch_all(mysqli_query($connect, "SELECT * FROM `studients` WHERE `group_id` = '$idGroup' "));
 
-                                        if ($check_photo === NULL) {
-                                            echo '<img src="../../img/student/avatar.png" class="avatar">';
-                                        } else {
-                                            $path = '../../img/student/avatars/' . $check_photo;
-                                            $path = str_replace(' ', '', $path);
-                                            echo '<img class = "avatarChange" src="' . $path . '">';
 
-                                        }
-                                        ?>
+                for ($i = 0; $i < $countStudent; $i++) {
+                    $idStudent = $arrStudents[$i][0];
+                    $userId = mysqli_fetch_all(mysqli_query($connect, "SELECT `user_id` FROM `studients` WHERE `studient_id` = '$idStudent'"))[0][0];
+                    ?>
+                    <form method="post" action="diary.php">
+                        <div class="profile_card">
+                            <div class="profile_card_content">
+                                <div class="profile_card_img">
+                                    <?php
+                                    $check_photo = mysqli_fetch_all(mysqli_query($connect, "SELECT `photo` FROM `studients` WHERE `user_id` = '$userId'"))[0][0];
 
-                                    </div>
-                                    <div class="name">
-                                        <?php
-                                        $userFullName = mysqli_fetch_all(mysqli_query($connect, "SELECT `first_name`, `last_name`, `surname`
+                                    if ($check_photo === NULL) {
+                                        echo '<img src="../../img/student/avatar.png" class="avatar">';
+                                    } else {
+                                        $path = '../../img/student/avatars/' . $check_photo;
+                                        $path = str_replace(' ', '', $path);
+                                        echo '<img class = "avatarChange" src="' . $path . '">';
+
+                                    }
+                                    ?>
+
+                                </div>
+                                <div class="name">
+                                    <?php
+                                    $userFullName = mysqli_fetch_all(mysqli_query($connect, "SELECT `first_name`, `last_name`, `surname`
                             FROM `studients` WHERE `user_id` = '$userId'"));
-                                        echo '<span>' . $userFullName[0][1] . ' ' . $userFullName[0][0] . ' ' . $userFullName[0][2] . '</span>';
-                                        echo '<input type = "hidden" name="name" value = "' . $userFullName[0][1] . ' ' . $userFullName[0][0] . ' ' . $userFullName[0][2] . '">';
-                                        ?>
-                                    </div>
-                                    <div class="email">
-                                        <?php
-                                        $userEmail = mysqli_fetch_all(mysqli_query($connect, "SELECT email FROM `studients` WHERE `user_id` = '$userId'"))[0][0];
-                                        echo '<span>' . $userEmail . '</span>';
-                                        ?>
-
-                                    </div>
+                                    echo '<span>' . $userFullName[0][1] . ' ' . $userFullName[0][0] . ' ' . $userFullName[0][2] . '</span>';
+                                    echo '<input type = "hidden" name="name" value = "' . $userFullName[0][1] . ' ' . mb_substr($userFullName[0][0], 0,1) . '.' . mb_substr($userFullName[0][2],0,1) . '.'. '">';
+                                    echo '<input type = "hidden" name = "idOfStudent" value = "'.$idStudent.'">';
+                                    ?>
+                                </div>
+                                <div class="email">
+                                    <?php
+                                    $userEmail = mysqli_fetch_all(mysqli_query($connect, "SELECT email FROM `studients` WHERE `user_id` = '$userId'"))[0][0];
+                                    echo '<span>' . $userEmail . '</span>';
+                                    ?>
 
                                 </div>
 
-                                <input class="btn-submit" type="submit">
                             </div>
 
-                        </form>
-                 <?
-             }
+                            <input class="btn-submit" type="submit">
+                        </div>
+
+                    </form>
+                <?
+                }
+            }
             ?>
         </div>
     </div>
 
-            <script src="../../js/diaryChange.js"></script>
+    <script src="../../js/diaryChange.js"></script>
 </body>
