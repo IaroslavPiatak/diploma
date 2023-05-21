@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Май 19 2023 г., 10:25
+-- Время создания: Май 21 2023 г., 16:58
 -- Версия сервера: 8.0.30
 -- Версия PHP: 8.1.9
 
@@ -70,6 +70,23 @@ CREATE TABLE `answers` (
 CREATE TABLE `faculties` (
   `faculty_id` int NOT NULL,
   `faculty_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `greades`
+--
+
+CREATE TABLE `greades` (
+  `gradeId` int NOT NULL,
+  `grade` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subjectId` int NOT NULL,
+  `studentId` int NOT NULL,
+  `comment` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `day` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `month` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `year` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -242,6 +259,12 @@ ALTER TABLE `faculties`
   ADD PRIMARY KEY (`faculty_id`);
 
 --
+-- Индексы таблицы `greades`
+--
+ALTER TABLE `greades`
+  ADD PRIMARY KEY (`gradeId`);
+
+--
 -- Индексы таблицы `groups`
 --
 ALTER TABLE `groups`
@@ -309,25 +332,31 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT для таблицы `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `answerId` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `answerId` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT для таблицы `faculties`
 --
 ALTER TABLE `faculties`
-  MODIFY `faculty_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `faculty_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT для таблицы `greades`
+--
+ALTER TABLE `greades`
+  MODIFY `gradeId` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT для таблицы `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `groups_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `groups_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT для таблицы `homeworks`
 --
 ALTER TABLE `homeworks`
-  MODIFY `id_homework` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_homework` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT для таблицы `letters`
@@ -345,31 +374,31 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT для таблицы `studients`
 --
 ALTER TABLE `studients`
-  MODIFY `studient_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `studient_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT для таблицы `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `subjects_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `subjects_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT для таблицы `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `teacher_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `teacher_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT для таблицы `teachers-subjects`
 --
 ALTER TABLE `teachers-subjects`
-  MODIFY `id_link` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_link` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

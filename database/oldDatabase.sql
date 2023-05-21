@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Апр 08 2023 г., 21:56
+-- Время создания: Май 19 2023 г., 10:25
 -- Версия сервера: 8.0.30
 -- Версия PHP: 8.1.9
 
@@ -47,6 +47,23 @@ INSERT INTO `admins` (`admin_id`, `user_id`, `first_name`, `last_name`, `surname
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `answers`
+--
+
+CREATE TABLE `answers` (
+  `answerId` int NOT NULL,
+  `senderId` int NOT NULL,
+  `groupId` int NOT NULL,
+  `homeworkId` int NOT NULL,
+  `text` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `time` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `document` varchar(300) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `faculties`
 --
 
@@ -66,6 +83,26 @@ CREATE TABLE `groups` (
   `faculty_id` int NOT NULL,
   `groups_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `number_of_students` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `homeworks`
+--
+
+CREATE TABLE `homeworks` (
+  `id_homework` int NOT NULL,
+  `status` int NOT NULL,
+  `groupId` int NOT NULL,
+  `subjectId` int NOT NULL,
+  `typeOfHomework` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `theme` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `textHomework` varchar(350) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `time` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `deadlineOfHomework` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `document` varchar(350) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -193,6 +230,12 @@ ALTER TABLE `admins`
   ADD PRIMARY KEY (`admin_id`);
 
 --
+-- Индексы таблицы `answers`
+--
+ALTER TABLE `answers`
+  ADD PRIMARY KEY (`answerId`);
+
+--
 -- Индексы таблицы `faculties`
 --
 ALTER TABLE `faculties`
@@ -203,6 +246,12 @@ ALTER TABLE `faculties`
 --
 ALTER TABLE `groups`
   ADD PRIMARY KEY (`groups_id`);
+
+--
+-- Индексы таблицы `homeworks`
+--
+ALTER TABLE `homeworks`
+  ADD PRIMARY KEY (`id_homework`);
 
 --
 -- Индексы таблицы `letters`
@@ -257,16 +306,28 @@ ALTER TABLE `admins`
   MODIFY `admin_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT для таблицы `answers`
+--
+ALTER TABLE `answers`
+  MODIFY `answerId` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT для таблицы `faculties`
 --
 ALTER TABLE `faculties`
-  MODIFY `faculty_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `faculty_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT для таблицы `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `groups_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `groups_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
+-- AUTO_INCREMENT для таблицы `homeworks`
+--
+ALTER TABLE `homeworks`
+  MODIFY `id_homework` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT для таблицы `letters`
@@ -284,31 +345,31 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT для таблицы `studients`
 --
 ALTER TABLE `studients`
-  MODIFY `studient_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `studient_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT для таблицы `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `subjects_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `subjects_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT для таблицы `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `teacher_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `teacher_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT для таблицы `teachers-subjects`
 --
 ALTER TABLE `teachers-subjects`
-  MODIFY `id_link` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_link` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

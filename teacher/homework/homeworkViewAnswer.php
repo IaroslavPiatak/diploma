@@ -1,5 +1,11 @@
 <?
+session_start();
 require_once '../../connection.php';
+if(isset($_SESSION['homework']['idAnswer']))
+{
+    $idAnswer = $_SESSION['homework']['idAnswer'];
+}
+else
 $idAnswer = $_POST['idAnswer'];
 ?>
 
@@ -36,7 +42,16 @@ $idAnswer = $_POST['idAnswer'];
 
                 </div>
                 <div class="buttons">
-                    <button type="submit" class="button_header">Открыть журнал</button>
+                        <?
+                        $homeworkId = mysqli_fetch_all(mysqli_query($connect, "SELECT `homeworkId` FROM `answers` WHERE `answerId` = '$idAnswer'"))[0][0];  
+                        $_SESSION['homework']['subjectId'] = mysqli_fetch_all(mysqli_query($connect, "SELECT `subjectId` FROM `homeworks` WHERE `id_homework` = '$homeworkId'"))[0][0]; 
+                        $_SESSION['homework']['idOfStudent'] = mysqli_fetch_all(mysqli_query($connect, "SELECT `senderId` FROM `answers` WHERE `answerId` = '$idAnswer'"))[0][0];
+                        $_SESSION['homework']['action'] = 'homeworkAnswer';
+                        $_SESSION['homework']['idAnswer'] = $idAnswer;
+                        $_SESSION['homework']['idHomework'] = $homeworkId;
+                        ?>
+                        <button onClick='location.href="../diary/diary.php"' type = "button" class="button_header">Открыть журнал</button>
+                       
                     <button type="button" class="button_header exit"
                         onClick='location.href="homeworkHub.php"'>Назад</button>
                 </div>
