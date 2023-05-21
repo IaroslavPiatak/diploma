@@ -79,19 +79,19 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
                 } else {
                     echo ' <div class="input_container_admin">
                     <label id="labelAdmin">Администратор</label>
-                    <input id="inputAdmin" type="radio" name="userRole" value="admin">
+                    <input  id="inputAdmin" type="radio" name="userRole" value="admin">
                 </div>
 
                 <div class="input_container_teacher">
                     <label id="labelTeacher">Преподаватель</label>
-                    <input id="inputTeacher" type="radio" name="userRole" value="teacher">
+                    <input  id="inputTeacher" type="radio" name="userRole" value="teacher">
 
                 </div>
 
 
                 <div class="input_container_student">
                     <label id="labelStudent">Студент</label>
-                    <input id="inputStudent" type="radio" name="userRole" value="student">
+                    <input  id="inputStudent" type="radio" name="userRole" value="student">
 
                 </div>';
                 }
@@ -113,44 +113,44 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
                 <?
                 if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFaculty'])) {
                     ?>
-                    <input class="input_data" type="text" placeholder="Введите Фамилию" name="lastName"
+                    <input required class="input_data" type="text" placeholder="Введите Фамилию" name="lastName"
                         value="<?= $_SESSION['studentWithFaculty']['lastName'] ?>">
-                    <input class="input_data" type="text" placeholder="Введите Имя" name="name"
+                    <input required class="input_data" type="text" placeholder="Введите Имя" name="name"
                         value="<?= $_SESSION['studentWithFaculty']['name'] ?>">
-                    <input class="input_data" type="text" placeholder="Введите Отчество" name="surname"
+                    <input required class="input_data" type="text" placeholder="Введите Отчество" name="surname"
                         value="<?= $_SESSION['studentWithFaculty']['surname'] ?>">
-                    <input class="input_data" type="text" placeholder="Введите Email" name="email"
+                    <input required class="input_data" type="text" placeholder="Введите Email" name="email"
                         value="<?= $_SESSION['studentWithFaculty']['email'] ?>">
-                    <input class="input_data" type="text" placeholder="Введите Логин" name="login"
+                    <input required class="input_data" type="text" placeholder="Введите Логин" name="login"
                         value="<?= $_SESSION['studentWithFaculty']['login'] ?>">
-                    <input class="input_data" type="text" placeholder="Введите Пароль" name="password"
+                    <input required class="input_data" type="text" placeholder="Введите Пароль" name="password"
                         value="<?= $_SESSION['studentWithFaculty']['password'] ?>">
                 <?
 
                 } else if (isset($_SESSION['teacher']) and !empty($_SESSION['teacher'])) {
                     ?>
-                        <input class="input_data" type="text" placeholder="Введите Фамилию" name="lastName"
+                        <input required class="input_data" type="text" placeholder="Введите Фамилию" name="lastName"
                             value="<?= $_SESSION['teacher']['lastName'] ?>">
-                        <input class="input_data" type="text" placeholder="Введите Имя" name="name"
+                        <input required class="input_data" type="text" placeholder="Введите Имя" name="name"
                             value="<?= $_SESSION['teacher']['name'] ?>">
-                        <input class="input_data" type="text" placeholder="Введите Отчество" name="surname"
+                        <input required class="input_data" type="text" placeholder="Введите Отчество" name="surname"
                             value="<?= $_SESSION['teacher']['surname'] ?>">
-                        <input class="input_data" type="text" placeholder="Введите Email" name="email"
+                        <input required class="input_data" type="text" placeholder="Введите Email" name="email"
                             value="<?= $_SESSION['teacher']['email'] ?>">
-                        <input class="input_data" type="text" placeholder="Введите Логин" name="login"
+                        <input required class="input_data" type="text" placeholder="Введите Логин" name="login"
                             value="<?= $_SESSION['teacher']['login'] ?>">
-                        <input class="input_data" type="text" placeholder="Введите Пароль" name="password"
+                        <input required class="input_data" type="text" placeholder="Введите Пароль" name="password"
                             value="<?= $_SESSION['teacher']['password'] ?>">
                 <?
 
                 } else {
                     echo '
-                <input class="input_data" type="text" placeholder="Введите Фамилию" name="lastName">
-                <input class="input_data" type="text" placeholder="Введите Имя" name="name">
-                <input class="input_data" type="text" placeholder="Введите Отчество" name="surname">
-                <input class="input_data" type="text" placeholder="Введите Email" name="email">
-                <input class="input_data" type="text" placeholder="Введите Логин" name="login">
-                <input class="input_data" type="text" placeholder="Введите Пароль" name="password">
+                <input required class="input_data" type="text" placeholder="Введите Фамилию" name="lastName">
+                <input required class="input_data" type="text" placeholder="Введите Имя" name="name">
+                <input required class="input_data" type="text" placeholder="Введите Отчество" name="surname">
+                <input required class="input_data" type="text" placeholder="Введите Email" name="email">
+                <input required class="input_data" type="text" placeholder="Введите Логин" name="login">
+                <input required class="input_data" type="text" placeholder="Введите Пароль" name="password">
                 ';
                 }
                 ?>
@@ -185,7 +185,7 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
                     for ($i = 0; $i < $countOfFaculty; $i++) {
                         echo '
                             <div class="faculty_content">
-                            <input type = "radio" class = "btn_form"  name = "facultyId" value = "' . $firstFacultyId . '">
+                            <input  type = "radio" class = "btn_form"  name = "facultyId" value = "' . $firstFacultyId . '">
                                 <div class="faculty_text">
                                     <span>'
                             . $facultyName = mysqli_fetch_all(

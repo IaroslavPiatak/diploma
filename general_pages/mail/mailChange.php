@@ -116,7 +116,7 @@ echo '<span hidden id = "outputContent">admin</span>';
                                     </div>
 
                                 </div>
-
+                                <input type="hidden" name = "action"value ="create">        
                                 <input class="btn-submit" type="submit">
                             </div>
 
@@ -199,7 +199,7 @@ echo '<span hidden id = "outputContent">admin</span>';
                                     </div>
 
                                 </div>
-
+                                <input type="hidden" name = "action"value ="create">
                                 <input class="btn-submit" type="submit">
                             </div>
 
@@ -282,7 +282,7 @@ echo '<span hidden id = "outputContent">admin</span>';
                                     </div>
 
                                 </div>
-
+                                <input type="hidden" name = "action"value ="create">
                                 <input class="btn-submit" type="submit">
                             </div>
 

@@ -2,7 +2,7 @@
 session_start();
 require_once '../../connection.php';
 
-if(isset($_SESSION['homework']['action']) AND $_SESSION['homewro']['action']  == 'homeworkAnswer')
+if(isset($_SESSION['homework']['action']) AND $_SESSION['homework']['action']  == 'homeworkAnswer')
 {
     $subjectId = $_SESSION['homework']['subjectId'];
     $studentId = $_SESSION['homework']['idOfStudent'];
@@ -92,7 +92,7 @@ if (isset($_POST['modal'])) {
                 </div>
             </form>
             <?
-            if(isset($_SESSION['homework']['action']) AND $_SESSION['homewro']['action']  == 'homeworkAnswer')
+            if(isset($_SESSION['homework']['action']) AND $_SESSION['homework']['action']  == 'homeworkAnswer')
             {
                 ?>
                 <form method = "post" action = "../homework/homeworkCreate.php">

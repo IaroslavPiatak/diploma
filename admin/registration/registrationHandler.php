@@ -1,6 +1,8 @@
 <?php
 require_once '../../connection.php';
+
 session_start();
+
 if ($_POST['type_form'] == 'studentFaculties') {
     if (isset($_SESSION['studentWithFaculty']))
         unset($_SESSION['studentWithFaculty']);
@@ -48,7 +50,7 @@ if ($_POST['type_form'] == 'studentFaculties') {
             'email' => $_POST['email'],
             'login' => $_POST['login'],
             'password' => $_POST['password'],
-            'facultyId' => $_POST['facultyId'],
+            // 'facultyId' => $_POST['facultyId'], вроде бы не нужно
             'teacherFinal' => 'false'
 
         ];

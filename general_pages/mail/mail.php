@@ -70,7 +70,7 @@ header('Refresh: 10');
                                     <img src="/img/general_pages/mail/mail_box.png" class="icon2">
                                 </div>
                                 <div class="warning_text">
-                                    <span>Ваш почтовый ящик пуст, милорд...</span>
+                                    <span>Ваш почтовый ящик пуст</span>
                                 </div>
                             </div>
                         </div>

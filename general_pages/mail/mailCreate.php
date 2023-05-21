@@ -116,7 +116,7 @@ else if (isset($_POST['action']) && $_POST['action'] == 'delete') {
                         <textarea readonly cols="30" rows="15" maxlength="600"><?= $text ?></textarea>
                     </div>
                 </div>
-                <input type="hidden" name="action" value="answer">
+                <input type="hidden" name="action" value="create">
 
                
             </form>
@@ -129,8 +129,13 @@ else if (isset($_POST['action']) && $_POST['action'] == 'delete') {
     <?
 
     }  else if (isset($_POST['action']) && $_POST['action'] == 'create') {
+        if(isset($_POST['destinationAnser']))
+        {
+            $destination = $_POST['destinationAnser'];
 
-        $destination = $_POST['destinationAnser'];
+        }
+        else
+        $destination = $_POST['destination'];
         $userRole = mysqli_fetch_all(mysqli_query($connect, "SELECT `user_role` FROM `users` WHERE `user_id` = '$destination'"))[0][0];
         if ($userRole == 1) {
             $fullName = mysqli_fetch_all(mysqli_query($connect, "SELECT `first_name`, `last_name`, `surname`
@@ -146,9 +151,6 @@ else if (isset($_POST['action']) && $_POST['action'] == 'delete') {
      FROM `studients` WHERE `user_id` = '$destination'"));
             $name = $fullName[0][1] . ' ' . $fullName[0][0] . ' ' . $fullName[0][2];
         }
-
-
-
         ?>
                 <div class="main_container">
                     <form action="" method="post">
@@ -178,8 +180,7 @@ else if (isset($_POST['action']) && $_POST['action'] == 'delete') {
                                 <input maxlength="50" type="text" name="theme" placeholder="Напишите тему письма">
                             </div>
                             <div class="textmail">
-                                <textarea name="text_letter" id="" cols="30" rows="15" maxlength="600"
-                                    placeholder="Ваше сообщение"></textarea>
+                                <textarea name="text_letter" id="" cols="30" rows="15" maxlength="600" placeholder="Ваше сообщение"></textarea>
                             </div>
                         </div>
 
@@ -194,56 +195,9 @@ else if (isset($_POST['action']) && $_POST['action'] == 'delete') {
 
                 </div>
     <?
-    } else {
-        ?>
-
-                <div class="main_container">
-                    <form action="" method="post">
-                        <div class="header">
-                            <div class="destination_container">
-                                <div class="left_container"><span>Получатель:</span></div>
-                                <div class="right_container">
-                                    <span>
-                                <?= $name ?>
-                                    </span>
-                                </div>
-                                <input type="hidden" name="destination_id" value="<?= $destination ?>">
-                                <input type="hidden" name="sender_id" value="<?= $_SESSION['dataOfUser']['userId'] ?>">
-                                <input type="hidden" name="status" value= '0'>
-
-                            </div>
-
-                            <div class="buttons">
-                                <button type="submit" class="button_header">Отправить</button>
-                                <button type="button" class="button_header exit" onClick='location.href="mail.php"'>К
-                                    письмам</button>
-                            </div>
-                        </div>
-
-                        <div class="mail">
-                            <div class="hedder_mail">
-                                <input maxlength="50" type="text" name="theme" placeholder="Напишите тему письма">
-                            </div>
-                            <div class="textmail">
-                                <textarea name="text_letter" id="" cols="30" rows="15" maxlength="600"
-                                    placeholder="Ваше сообщение"></textarea>
-                            </div>
-
-                            <?
-                            $date = date('d.m.y');
-                            $time = date('H:i');
-                        ?>
-                        <input type="hidden" name="time" value ="<?=$time?>">
-                        <input type="hidden" name="date" value="<?=$date?>">
-                        </div>
-                    </form>
-
-                </div>
-    <?
-
     }
-    ?>
-
+    print_r($_POST);
+   ?>
 
 </body>
 

@@ -119,7 +119,7 @@ session_start();
                         <?
                         $senderId = $arrOfStudents[$i][0];
                         $checkAnser = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `answers` WHERE `senderId` = '$senderId' AND `homeworkId` = '$idHomework'"))[0][0];
-                        if ($checkAnser == 1)
+                        if (!empty($checkAnser))
                             $idAnswer = mysqli_fetch_all(mysqli_query($connect, "SELECT `answerId` FROM `answers` WHERE `senderId` = '$senderId' AND `homeworkId` = '$idHomework'"))[0][0];
                         else
                             $idAnswer = '';

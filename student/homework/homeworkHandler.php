@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once '../../connection.php';
-print_r($_FILES);
 $userId = $_SESSION['dataOfUser']['userId'];
 $studentId = mysqli_fetch_all(mysqli_query($connect, "SELECT `studient_id` FROM `studients` WHERE `user_id` = '$userId'"))[0][0];
 $groupId = mysqli_fetch_all(mysqli_query($connect, "SELECT `group_id` FROM `studients` WHERE `user_id` = '$userId'"))[0][0];
