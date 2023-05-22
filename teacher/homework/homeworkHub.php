@@ -30,12 +30,11 @@ if (isset($_POST['groupId']) and !empty($_POST['groupId']))
             <div class="buttons">
                 <button class="button_header" onClick='location.href="homeworkCreate.php"'>Создать</button>
                 <? $checkUserRole = $_SESSION['dataOfUser']['userRole'];    ?>
-                <button class="button_header exit" onClick='location.href="../../teacher/pa_teacher.php"'>Выйти</button>
+                <button class="button_header exit" onClick='location.href="homeworkExit.php"'>Выйти</button>
             </div>
         </div>
         <div class="letter_box">
             <?
-            // тут надо поработать
             $groupId = $_SESSION['homework']['groupId'];
             $subjectId = $_SESSION['homework']['subjectId'];
 
@@ -50,7 +49,7 @@ if (isset($_POST['groupId']) and !empty($_POST['groupId']))
                             <img src="/img/general_pages/mail/mail_box.png" class="icon2">
                         </div>
                         <div class="warning_text">
-                            <span>У этой группы пока нет никаких работ</span>
+                            <span>У этой группы нет никаких работ</span>
                         </div>
                     </div>
                 </div>

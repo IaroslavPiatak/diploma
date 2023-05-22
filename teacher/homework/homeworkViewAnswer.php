@@ -1,7 +1,8 @@
 <?
 session_start();
 require_once '../../connection.php';
-if(isset($_SESSION['homework']['idAnswer']))
+
+if(isset($_SESSION['homework']['idAnswer']) && !empty($_SESSION['homework']['idAnswer']))
 {
     $idAnswer = $_SESSION['homework']['idAnswer'];
 }
@@ -51,9 +52,9 @@ $idAnswer = $_POST['idAnswer'];
                         $_SESSION['homework']['idHomework'] = $homeworkId;
                         ?>
                         <button onClick='location.href="../diary/diary.php"' type = "button" class="button_header">Открыть журнал</button>
-                       
+              
                     <button type="button" class="button_header exit"
-                        onClick='location.href="homeworkHub.php"'>Назад</button>
+                        onClick='location.href="bridge.php"'>Назад</button>
                 </div>
             </div>
 
@@ -78,17 +79,19 @@ $idAnswer = $_POST['idAnswer'];
 
                     <div class="file_select">
                         <?
-                        $document = mysqli_fetch_all(mysqli_query($connect, "SELECT `document` FROM `answers` WHERE `answerId` = '$idAnswer'"))[0][0]; 
+                        $document = trim(mysqli_fetch_all(mysqli_query($connect, "SELECT `document` FROM `answers` WHERE `answerId` = '$idAnswer'"))[0][0]); 
                         echo '
-                        <div class="file_select">
+                        
                         <div class="file_text">
                             <span id="filetext">Скачать файл</span>
                         </div>
                         <div class="file_icon_download"></div>
 
-                        <a class = "input_photo" href ="homeworkDocuments/' . $document . '" download="' . $document . '">Скачать файл</a>
-                        </div>';
+                        <a class = "input_photo" href ="../../student/homework/homeworkDocuments/' . $document . '"download="' . $document . '">Скачать файл</a>
+                       ';
+                       // убрал контейнер для файла, ибо двоился border
                         ?>
+                        
                     </div>
                 </div>
             </div>

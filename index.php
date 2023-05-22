@@ -23,8 +23,7 @@ if (isset($_POST['login'])) {
             header('Location:admin/paAdmin.php');
         } else if ($requestRole == 2) {
             header('Location:teacher/pa_teacher.php');
-        }
-        else if ($requestRole == 3) {
+        } else if ($requestRole == 3) {
             header('Location: student/pa_student.php');
         }
     } else {
@@ -55,8 +54,18 @@ if (isset($_POST['login'])) {
         <div class="main_container">
             <div class="main_container_block">
                 <form class="container_input" action=" " method="post">
-                    <input type="text" class="text_input" name="login" placeholder="Введите логин">
-                    <input type="password" class="text_input" name="password" placeholder="Введите пароль">
+                    <div class="input-block"> 
+                        <input  maxlength="20" type="text" required name="login" id="login"  spellcheck="false">
+                        <span class="placeholder">
+                            Введите логин
+                        </span>
+                    </div>
+                    <div class="input-block">
+                        <input maxlength="20" type="password" name="password" id="password" required spellcheck="false">
+                        <span class="placeholder">
+                            Введите пароль
+                        </span>
+                    </div> 
                     <button type="submit">Войти</button>
                 </form>
 

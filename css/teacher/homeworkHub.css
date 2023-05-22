@@ -101,13 +101,15 @@ body {
 }
 
 .letter_box {
+ 
     width: 1000px;
     max-height: 500px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     overflow-y: auto;
     overflow-x: hidden;
+   
     
  
    

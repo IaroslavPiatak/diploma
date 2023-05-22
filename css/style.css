@@ -64,27 +64,19 @@ main {
   text-align: center;
   color: #FFFFFF;
   cursor: pointer;
+  transition: ease 0.5s;
 }
 
-input:focus::placeholder {
-  color: transparent;
+.container_input button:hover {
+  transform: translateY(-0.20em);
+  transition: ease 0.3s;
+  box-shadow: 0 0 1em 0em #8F7ECE;
 }
 
-::placeholder {
-  color: #808080;
-  text-align: center;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 24px;
-}
+.container_input button:active {
+  transition: ease 0.1s;
+  transform: translateY(+0.20em);
 
-.text_input {
-  color: #2F2D35;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 28px;
-  padding-left: 10px;
 }
 
 
@@ -143,27 +135,24 @@ input:focus::placeholder {
   z-index: 2;
   width: 25px;
   height: 25px;
-  top:15px;
+  top: 15px;
   right: 20px;
 
 }
 
-.cross-btn svg path
-{
+.cross-btn svg path {
   transition: 0.25s;
 }
 
-.cross-btn:hover svg path
-{
-  
+.cross-btn:hover svg path {
+
   fill: #EC5863;
   stroke: #EC5863;
   transition: 0.25s;
 }
 
-.cross-btn:active svg path
-{
-  
+.cross-btn:active svg path {
+
   fill: gray;
   stroke: gray;
 
@@ -176,4 +165,60 @@ input:focus::placeholder {
 
 .modal.open .modal_box {
   transform: scale(1);
+}
+
+div.input-block {
+  position: relative;
+
+}
+div.input-block input {
+  width: 400px;
+  height: 60px;
+  border: 3px solid #8F7ECE;
+  border-radius: 15px;
+  color: #2F2D35;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  padding-left: 10px;
+  
+  
+}
+div.input-block span.placeholder {
+ 
+  color: #808080;
+  text-align: center;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  position: absolute;
+  margin: 17px 0;
+  padding: 0 4px;
+  font-family: 'Rubik';
+  top: 0;
+  left: 120px;
+  transition: all 0.3s;
+  transform-origin: 0% 0%;
+  background: none;
+  pointer-events: none;
+  
+}
+div.input-block input:valid + span.placeholder,
+div.input-block input:focus + span.placeholder {
+  transform: scale(0.8) translateY(-30px) translateX(-100px);
+  
+  background: #FFFFFF;
+  
+}
+div.input-block input:focus{
+  color: #2F2D35;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  padding-left: 10px;
+  border-color: #8F7ECE;
+}
+div.input-block input:focus + span.placeholder {
+  color: #808080;
 }

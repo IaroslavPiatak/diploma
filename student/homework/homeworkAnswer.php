@@ -35,13 +35,13 @@ session_start();
                 </div>
                 <button type="submit" class="button_header">Отправить</button>
                 <button type="button" class="button_header exit"
-                    onClick='location.href="homeworkHub.php"'>Назад</button>
+                    onClick='location.href="homeworkExit.php"'>Назад</button>
 
             </div>
 
             <div class="mail">
                 <div class="textmail">
-                    <textarea placeholder="Начните писать тут" cols="30" rows="15" maxlength="300" name = "text"></textarea>
+                    <textarea required placeholder="Начните писать тут" cols="30" rows="15" maxlength="300" name = "text"></textarea>
                 </div>
                 <div class="bottom">
                     <?

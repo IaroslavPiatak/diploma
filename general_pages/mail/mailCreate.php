@@ -177,10 +177,10 @@ else if (isset($_POST['action']) && $_POST['action'] == 'delete') {
 
                         <div class="mail">
                             <div class="hedder_mail">
-                                <input maxlength="50" type="text" name="theme" placeholder="Напишите тему письма">
+                                <input required maxlength="50" type="text" name="theme" placeholder="Напишите тему письма">
                             </div>
                             <div class="textmail">
-                                <textarea name="text_letter" id="" cols="30" rows="15" maxlength="600" placeholder="Ваше сообщение"></textarea>
+                                <textarea required name="text_letter" id="" cols="30" rows="15" maxlength="600" placeholder="Ваше сообщение"></textarea>
                             </div>
                         </div>
 
@@ -196,7 +196,6 @@ else if (isset($_POST['action']) && $_POST['action'] == 'delete') {
                 </div>
     <?
     }
-    print_r($_POST);
    ?>
 
 </body>

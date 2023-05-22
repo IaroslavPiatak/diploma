@@ -1,7 +1,9 @@
 <?
 require_once '../../connection.php';
 session_start();
-
+$_SESSION['homework']['idOfStudent'] = '';
+$_SESSION['homework']['name'] = '';
+$_SESSION['homework']['idAnswer'] = '';
 ?>
 
 
@@ -19,7 +21,10 @@ session_start();
 
 <body>
     <?
-    if (isset($_POST['action']) && $_POST['action'] == 'read') {
+    if (isset($_POST['action']) && $_POST['action'] == 'read' || (isset($_SESSION['homework']['action'])) && $_SESSION['homework']['action'] = 'read') {
+        if(isset($_SESSION['homework']['idHomework']))
+        $idHomework = $_SESSION['homework']['idHomework'];
+        else
         $idHomework = $_POST['idHomework'];
         $groupId = $_SESSION['homework']['groupId'];
         $groupName = mysqli_fetch_all(mysqli_query($connect, "SELECT `groups_name` FROM `groups` WHERE `groups_id` = '$groupId'"))[0][0];
@@ -215,10 +220,10 @@ session_start();
 
                 <div class="mail">
                     <div class="hedder_mail">
-                        <input maxlength="50" type="text" name="theme" placeholder="Напишите тему">
+                        <input required maxlength="50" type="text" name="theme" placeholder="Напишите тему">
                     </div>
                     <div class="textmail">
-                        <textarea name="text_homework" id="" cols="30" rows="15" maxlength="800"
+                        <textarea required name="text_homework" id="" cols="30" rows="15" maxlength="800"
                             placeholder="Ваш текст"></textarea>
                     </div>
 
@@ -232,7 +237,7 @@ session_start();
                     <div class="bottom">
                         <div class="date_select">
                             <span id="datetext">Выбрать дату выполнения</span>
-                            <input id="dateInput" type="date" name="deadline_of_work">
+                            <input  id="dateInput" type="date" name="deadline_of_work">
                         </div>
 
                         <div class="file_select">

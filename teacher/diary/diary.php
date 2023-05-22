@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 require_once '../../connection.php';
 
@@ -267,12 +268,13 @@ setInterval(function () {
     let grade =  document.querySelectorAll('.grade');
     let submitInput  = document.querySelectorAll('.submitInput');
     let gradeForJs = document.querySelectorAll('.gradeForJs');
-    for(let i = 0; i < gradeForJs.length; i++)
-    if(gradeForJs[i].innerHTML)
+    for(let i = 0; i < dayOfWeek.length; i++)
+    
+    if(grade[i].innerHTML.indexOf('span') != -1)
     {
-    grade[i].style.cursor = "not-allowed";
-    dayOfWeek[i].style.cursor = "not-allowed";
-    submitInput[i].style.display = "none";
+     grade[i].style.cursor = "not-allowed";
+     dayOfWeek[i].style.cursor = "not-allowed";
+     submitInput[i].style.display = "none";
     }
     
 
