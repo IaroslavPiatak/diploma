@@ -145,7 +145,7 @@ if (isset($_POST['modal'])) {
                     $subjectId = $_SESSION['homework']['subjectId'];
                     $studentId = $_SESSION['homework']['idOfStudent'];
                     ?>
-                    <form action="" method="post">
+                    <form class = "facultyBtnContent" action="" method="post">
                         <div class="day">
                             <div class="dayOfWeek">
                                 <span>
@@ -164,7 +164,7 @@ if (isset($_POST['modal'])) {
                             <input type="hidden" name="dayOfGrade" value="<?= $i ?>">
                             <input type="hidden" name="month" value="<?= $month ?>">
                             <input type="hidden" name="year" value="<?= $year ?>">
-                            <input type="submit" class="submitInput">
+                            <input type="submit" class="submitInput facultyBtn">
                         </div>
                     </form>
                 <?
@@ -261,6 +261,7 @@ if (isset($_POST['modal'])) {
                 </div>
             </div>
     </form>
+    <script src = "../../js/hoverAndAction.js"></script>
     <script>
 
 setInterval(function () {

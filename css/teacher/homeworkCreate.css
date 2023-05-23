@@ -196,6 +196,29 @@ body {
     background: #EC5863;
 }
 
+.button_header:hover, .date_select:hover
+{
+    transform: translateY(-0.20em);
+    transition: ease 0.3s;
+    box-shadow: 0 0 1em 0em #8F7ECE;
+
+}
+
+.exit:hover {
+    transform: translateY(-0.20em);
+    transition: ease 0.3s;
+    box-shadow: 0 0 1em 0em #EC5863;
+  }
+  
+  .exit:active, .button_header:active, .date_select:active {
+    transition: ease 0.1s;
+    transform: translateY(+0.20em);
+  
+  }
+
+
+
+
 .mail {
     width: 1000px;
     min-height: 500px;
@@ -495,8 +518,40 @@ input[type=date]::-webkit-calendar-picker-indicator {
     align-items: center;
     justify-content: center;
     color: #FFFFFF;
+    transition: ease 0.3s;
 
 }
+
+.forCss:hover
+{
+    background: inherit;
+    border: 3px #8F7ECE solid;
+    color: #8F7ECE;
+    transition: ease 0.3s;
+
+}
+
+.forCss:active
+{
+    width: 100%;
+    margin-left: 0.1px;
+    height: 100%;
+    background: #8F7ECE;
+    border-radius: 12px;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    transition: ease 0.1s;
+
+}
+
+
 
 .buttonViewHomework button img
 {

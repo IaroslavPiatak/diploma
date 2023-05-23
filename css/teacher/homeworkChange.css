@@ -85,6 +85,19 @@ body {
     align-items: center;
     justify-content: center;
     color: #FFFFFF;
+    transition: ease 0.3s;
+}
+
+.btn_exit:hover {
+  transform: translateY(-0.20em);
+  transition: ease 0.3s;
+  box-shadow: 0 0 1em 0em #EC5863;
+}
+
+.btn_exit:active {
+  transition: ease 0.1s;
+  transform: translateY(+0.20em);
+
 }
 
 .main_container_subject,
@@ -95,10 +108,11 @@ body {
     width: 1000px;
     height: 500px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     overflow: scroll;
     gap: 5px;
     flex-wrap: wrap;
+  
    
     
 }
@@ -149,6 +163,14 @@ body {
   .hidden
   {
     display: none;
+  }
+
+  form
+  {
+    margin-top: 15px;
+    border-radius: 15px;
+    width: 300px;
+    height: 150px;
   }
 
 

@@ -158,7 +158,19 @@ gap:30px;
     text-align: center;
     color: #FFFFFF;
     cursor: pointer;
+    transition: ease 0.3s;
     }
+    .container_input button:hover {
+      transform: translateY(-0.20em);
+      transition: ease 0.3s;
+      box-shadow: 0 0 1em 0em #8F7ECE;
+  }
+  
+  .container_input button:active {
+      transition: ease 0.1s;
+      transform: translateY(+0.20em);
+  
+  }
     
     input:focus::placeholder {
         color: transparent;
@@ -290,4 +302,70 @@ gap:30px;
   height: 100%;
   opacity: 0;
   
+}
+div.input-block {
+  position: relative;
+  z-index: 0;
+  width: 400px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+
+  
+}
+
+div.input-block input {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  border: 3px solid #8F7ECE;
+  border-radius: 15px;
+  color: #2F2D35;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  padding-left: 10px;
+  text-align: center;
+}
+
+div.input-block span.placeholder {
+  position: absolute;
+  z-index: 100;
+  color: #808080;
+  text-align: center;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  position: absolute;
+  margin: 17px 0;
+  padding: 0 4px;
+  font-family: 'Rubik';
+  top: 0;
+  left: 1;
+  transition: all 0.3s;
+  transform-origin: 0% 0%;
+  background: none;
+  pointer-events: none;
+
+}
+
+div.input-block input:valid+span.placeholder,
+div.input-block input:focus+span.placeholder {
+  transform: scale(0.8) translateY(-30px) translateX(-30px);
+  background: #FFFFFF;
+}
+
+div.input-block input:focus {
+  color: #2F2D35;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  padding-left: 10px;
+  border-color: #8F7ECE;
+}
+
+div.input-block input:focus+span.placeholder {
+  color: #808080;
 }

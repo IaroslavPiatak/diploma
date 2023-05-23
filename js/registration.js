@@ -160,7 +160,7 @@ inputAdmin.addEventListener("click", () => {
     document.querySelector('.list_output_teacher').classList.add('hidden');
     document.querySelector('.list_output_student').classList.add('hidden');
     document.querySelector('.list_output_student_group').classList.add('hidden');
-    titleList.innerHTML = `<span>Выберите привелегии</span>`;
+    titleList.innerHTML = `<span>Введите личные данные</span>`;
 
 });
 // Событие для препода

@@ -66,8 +66,14 @@ if (!empty($_POST['subjectName'])) {
                     <div class="create">
                         <div class="create_content">
                             <form class="container_input" method="post" action="">
-                                <input type="text" class="text_input" name="subjectName"
-                                    placeholder="Введите название предмета">
+                            <div class="input-block">
+                            <input maxlength="20" type="text" name="subjectName" required spellcheck="false">
+                            <span class="placeholder">
+                            Введите название предмета
+                            </span>
+                        </div> 
+
+                               
                                 <button type="submit">Подтвердить</button>
                             </form>
                         </div>

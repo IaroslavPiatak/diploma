@@ -109,10 +109,22 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-
+    transition: ease 0.3s;
     color: #FFFFFF;
 
 }
+
+.button_header:hover {
+    transform: translateY(-0.20em);
+    transition: ease 0.3s;
+    box-shadow: 0 0 1em 0em #8F7ECE;
+  }
+  
+  .button_header:active {
+    transition: ease 0.1s;
+    transform: translateY(+0.20em);
+  
+  }
 
 .button_delete {
     width: 300px;
@@ -135,7 +147,20 @@ body {
 
 .exit {
     background: #EC5863;
+    transition: ease 0.3s;
 }
+
+.exit:hover {
+    transform: translateY(-0.20em);
+    transition: ease 0.3s;
+    box-shadow: 0 0 1em 0em #EC5863;
+  }
+  
+  .exit:active {
+    transition: ease 0.1s;
+    transform: translateY(+0.20em);
+  
+  }
 
 .mail {
     width: 1000px;
@@ -345,4 +370,17 @@ input[type=date]::-webkit-calendar-picker-indicator {
     justify-content: center;
     color: #F6F5FB;
     cursor: pointer;
+    transition: ease 0.3s;
 }
+
+.buttonAnswer:hover {
+    transform: translateY(-0.20em);
+    transition: ease 0.3s;
+    box-shadow: 0 0 1em 0em #8F7ECE;
+  }
+  
+  .buttonAnswer:active {
+    transition: ease 0.1s;
+    transform: translateY(+0.20em);
+  
+  }

@@ -1,4 +1,3 @@
-<!-- Mady by Iaroslav Piatak (php) -->
 <?php
 require_once '../../connection.php';
 ?>
@@ -36,7 +35,7 @@ require_once '../../connection.php';
                                 </div>
                             </div>
                         </div>
-                        <a href="faculty_create.php">
+                        <a class ="registrationButton" href="faculty_create.php">
                         
                             <div class="register_faculty">
                                 <div class="register_faculty_content">
@@ -88,7 +87,7 @@ require_once '../../connection.php';
                                 </div>
                             </div>
                         </div>
-                        <a href="faculty_create.php">
+                        <a class ="registrationButton" href="faculty_create.php">
                         
                             <div class="register_faculty">
                                 <div class="register_faculty_content">
@@ -118,7 +117,7 @@ require_once '../../connection.php';
                             if ($i == 6) {
                                 break;
                             }
-                            echo ' <form action = "../groups/groups.php" method="POST" class="faculty">
+                            echo ' <form action = "../groups/groups.php" method="POST" class="faculty facultyBtnContent">
                             <div class="faculty_content">
                                 <div class="faculty_text">
                                     <span>'
@@ -133,7 +132,7 @@ require_once '../../connection.php';
                                     
                                 </div>
                                 <input type = "hidden" name = "facultyId" value = "' . $firstFacultyId . '">
-                                <button class = "btn_form" type = "submit"></button>
+                                <button class = "btn_form facultyBtn" type = "submit"></button>
                             </div>
                         </form>';
                             $firstFacultyId++; // увеличиваем id первого элемента, т.е. получаем id 2 элемента
@@ -148,7 +147,7 @@ require_once '../../connection.php';
                     <div class="down_block">
                         <?
                         for ($i <= 7; $i < $countFaculties; ++$i) { // вывод блоков
-                            echo ' <form action = "../groups/groups.php" method="POST" class="faculty">
+                            echo ' <form action = "../groups/groups.php" method="POST" class="faculty facultyBtnContent">
                             <div class="faculty_content">
                                 <div class="faculty_text">
                                     <span>'
@@ -163,7 +162,7 @@ require_once '../../connection.php';
                                     
                                 </div>
                                 <input type = "hidden" name = "facultyId" value = "' . $firstFacultyId . '">
-                                <button class = "btn_form" type = "submit"></button>
+                                <button class = "btn_form facultyBtn" type = "submit"></button>
                             </div>
                         </form>';
                             $firstFacultyId++;
@@ -177,6 +176,7 @@ require_once '../../connection.php';
         ?>
 
     </main>
+    <script src = "../../js/hoverAndAction.js"></script>
 </body>
 
 </html>

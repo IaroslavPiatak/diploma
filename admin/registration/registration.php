@@ -1,12 +1,9 @@
 <?
 require_once '../../connection.php';
 session_start();
-if(isset($_SESSION['alert']) AND $_SESSION['alert']['alert'] == 'true')
-{
+if (isset($_SESSION['alert']) and $_SESSION['alert']['alert'] == 'true') {
     $alert = 'true';
-}
-else
-{
+} else {
     $alert = 'false';
 }
 
@@ -48,6 +45,7 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
 </head>
 
 <body>
+    
 
     <main>
         <!-- В другом положении span НЕ РАБОТАЕТ !!!!    
@@ -145,12 +143,34 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
 
                 } else {
                     echo '
-                <input required class="input_data" type="text" placeholder="Введите Фамилию" name="lastName">
-                <input required class="input_data" type="text" placeholder="Введите Имя" name="name">
-                <input required class="input_data" type="text" placeholder="Введите Отчество" name="surname">
-                <input required class="input_data" type="text" placeholder="Введите Email" name="email">
-                <input required class="input_data" type="text" placeholder="Введите Логин" name="login">
-                <input required class="input_data" type="text" placeholder="Введите Пароль" name="password">
+                    <div class="input-block"> 
+                    <input  maxlength="20" type="text" required name="lastName"  spellcheck="false">
+                    <span class="placeholder">
+                        Введите фамилию
+                    </span>
+                </div>
+                <div class="input-block"> 
+                    <input  maxlength="20" type="text" required name="name"  spellcheck="false">
+                    <span class="placeholder">
+                        Введите имя
+                    </span>
+                </div>
+                <div class="input-block"> 
+                    <input  maxlength="20" type="text" required name="surname"  spellcheck="false">
+                    <span class="placeholder">Введите отчество</span>
+                </div>
+                <div class="input-block"> 
+                    <input  maxlength="20" type="text" required name="email"  spellcheck="false">
+                    <span class="placeholder">Введите email</span>
+                </div>
+                <div class="input-block"> 
+                    <input  maxlength="20" type="text" required name="login"  spellcheck="false">
+                    <span class="placeholder">Введите логин</span>
+                </div>
+                <div class="input-block"> 
+                    <input  maxlength="20" type="password" required name="password"  spellcheck="false">
+                    <span class="placeholder">Введите пароль</span>
+                </div>
                 ';
                 }
                 ?>
@@ -158,7 +178,7 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
             </div>
 
             <div class="title_list " id="titleList">
-                <span>Выберите привилегии</span>
+                <span>Введите личные данные</span>
             </div>
             <!-- Лист вывода для студентов  -->
             <div class="list_output_student hidden">
@@ -171,10 +191,11 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
                             <span>Ни одного зарегистрированного факультета не обнаружено !</span>
                         </div>
                         <div class="exit_btn_container">
-                            <button type="button" class="exit_btn_none" onClick='location.href="../faculty/faculty.php"'>Перейти к факультетам</button>
+                            <button type="button" class="exit_btn_none"
+                                onClick='location.href="../faculty/faculty.php"'>Перейти к факультетам</button>
+                        </div>
                     </div>
-                    </div>
-                    <?
+                <?
                 } else {
                     $firstFacultyId = mysqli_fetch_all(
                         mysqli_query(
@@ -184,8 +205,8 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
                     )[0][0];
                     for ($i = 0; $i < $countOfFaculty; $i++) {
                         echo '
-                            <div class="faculty_content">
-                            <input  type = "radio" class = "btn_form"  name = "facultyId" value = "' . $firstFacultyId . '">
+                            <div class="faculty_content facultyBtnContent">
+                            <input  type = "radio" class = "btn_form facultyBtn"  name = "facultyId" value = "' . $firstFacultyId . '">
                                 <div class="faculty_text">
                                     <span>'
                             . $facultyName = mysqli_fetch_all(
@@ -205,11 +226,11 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
                     }
 
                     ?>
-                    <div class="faculty_content_button">
+                    <div class="faculty_content_button nextBtnContent">
                         <div class="faculty_text_button">
                             <span>Далее</span>
                         </div>
-                        <button type="submit" id="btn_form_faculties_next" class="btn_form" name="type_form"
+                        <button type="submit" id="btn_form_faculties_next" class="btn_form nextBtn" name="type_form"
                             value="studentFaculties"></button>
 
 
@@ -235,10 +256,11 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
                             <span>Ни одной группы у этого факультета не зарегистрированно</span>
                         </div>
                         <div class="exit_btn_container">
-                            <button type="button" class="exit_btn_none" onClick='location.href="../faculty/faculty.php"'>Перейти к факульетам</button>
+                            <button type="button" class="exit_btn_none"
+                                onClick='location.href="../faculty/faculty.php"'>Перейти к факульетам</button>
+                        </div>
                     </div>
-                    </div>
-                    <?
+                <?
                 } else {
                     $arrayOfGroups = mysqli_fetch_all(
                         mysqli_query(
@@ -259,34 +281,34 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
                             )
                         )[0][0];
                         echo '
-                        <div class="faculty_content">
+                        <div class="faculty_content GroupBtnContent">
                         <div class="faculty_text">
                             <span>' . $arrayOfGroups[$nextGroup][0] . '</span>
                             
                         </div>
                     
-                    <input type = "radio" class = "btn_form"  name = "groupId" value = "' . $idGroup . '">
+                    <input type = "radio" class = "btn_form GroupBtn"  name = "groupId" value = "' . $idGroup . '">
                 </div>';
                         $nextGroup++; // увеличиваем id первого элемента, т.е. получаем id 2 элемента
                 
                     }
                     ?>
 
-                    <div class="faculty_content_button_back">
+                    <div class="faculty_content_button_back btnBackContent">
                         <div class="faculty_text_button">
                             <span>Назад</span>
                         </div>
-                        <button id="button_back_groups" type="button" class="btn_form"></button>
+                        <button id="button_back_groups" type="button" class="btn_form btnBack" ></button>
 
 
                     </div>
 
 
-                    <div class="faculty_content_button">
+                    <div class="faculty_content_button nextBtnContent">
                         <div class="faculty_text_button">
                             <span>Далее</span>
                         </div>
-                        <button type="submit" id="btn_form_faculties_next" class="btn_form" name="type_form"
+                        <button type="submit" id="btn_form_faculties_next" class="btn_form nextBtn" name="type_form"
                             value="studentGroups"></button>
 
                     </div>
@@ -308,10 +330,11 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
                             <span>Ни одного зарегистрированного предмета не обнаружено !</span>
                         </div>
                         <div class="exit_btn_container">
-                            <button type="button" class="exit_btn_none" onClick='location.href="../subject/subject.php"'>Перейти к предметам</button>
+                            <button type="button" class="exit_btn_none"
+                                onClick='location.href="../subject/subject.php"'>Перейти к предметам</button>
+                        </div>
                     </div>
-                    </div>
-                    <?
+                <?
                 } else {
                     $firstSubjectsId = mysqli_fetch_all(
                         mysqli_query(
@@ -335,13 +358,13 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
                     }
                     ?>
 
-                    <div class="faculty_content_button">
+                    <div class="faculty_content_button nextBtnContent">
                         <div class="faculty_text_button">
                             <span>Далее</span>
 
                         </div>
                         <input type="hidden" name="countOfSubjects" value="<?= $countSubjects ?>">
-                        <button type="submit" id="btn_form_faculties_next" class="btn_form" name="type_form"
+                        <button type="submit" id="btn_form_faculties_next" class="btn_form nextBtn" name="type_form"
                             value="teacherNextFinal"></button>
                     </div>
                 <?
@@ -352,15 +375,15 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
 
             <!-- Лист вывода  для админов -->
             <div class="list_output_admin ">
-            <div class="faculty_content_button">
-                        <div class="faculty_text_button">
-                            <span>Зарегистрировать</span>
-                        </div>
-                        <button type="submit" id="btn_form_faculties_next" class="btn_form" name="type_form"
-                            value="adminRegister"></button>
-
-
+                <div class="faculty_content_button reginsterBtnContent">
+                    <div class="faculty_text_button">
+                        <span>Зарегистрировать</span>
                     </div>
+                    <button type="submit" id="btn_form_faculties_next" class="btn_form registerBtn" name="type_form"
+                        value="adminRegister"></button>
+
+
+                </div>
 
             </div>
             <!-- Конец листа вывода  для админов -->
@@ -387,18 +410,18 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
 
                     </div>
 
-                    <div class="faculty_content_button_back">
+                    <div class="faculty_content_button_back btnBackContent">
                         <div class="faculty_text_button">
                             <span>К группам</span>
                         </div>
-                        <button id="button_back_student_final" type="submit" class="btn_form" name="type_form"
+                        <button id="button_back_student_final" type="submit" class="btn_form btnBack" name="type_form"
                             value="studentBackToGroups"></button>
                         <?
                         if (isset($_SESSION['studentWithFaculty']['groupId'])) {
                             ?>
-                                <input type="hidden" name="gropId" value="<?= $_SESSION['studentWithFaculty']['groupId'] ?>">
-                                <input type="hidden" name="facultyId"
-                                    value="<?= $_SESSION['studentWithFaculty']['facultyId'] ?>">
+                            <input type="hidden" name="gropId" value="<?= $_SESSION['studentWithFaculty']['groupId'] ?>">
+                            <input type="hidden" name="facultyId"
+                                value="<?= $_SESSION['studentWithFaculty']['facultyId'] ?>">
                         <?
 
                         }
@@ -429,11 +452,11 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
 
                     </div>
 
-                    <div class="faculty_content_button">
+                    <div class="faculty_content_button reginsterBtnContent">
                         <div class="faculty_text_button">
                             <span>Зарегистрировать</span>
                         </div>
-                        <button type="submit" id="btn_form_faculties_next" class="btn_form" name="type_form"
+                        <button type="submit" id="btn_form_faculties_next" class="btn_form registerBtn" name="type_form"
                             value="studentRegister"></button>
 
 
@@ -462,29 +485,29 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
 
                 ?>
 
-                <div class="faculty_content_button_back">
+                <div class="faculty_content_button_back btnBackContent">
                     <div class="faculty_text_button">
                         <span>К выбору предметов</span>
                     </div>
-                    <button id="buttonBackTeacher" type="submit" class="btn_form" name="type_form"
+                    <button id="buttonBackTeacher" type="submit" class="btn_form btnBack" name="type_form"
                         value="teacherBackToSubjects"></button>
 
                 </div>
 
-                <div class="faculty_content_button">
-                <div class="faculty_text_button">
-                    <span>Зарегистрировать</span>
+                <div class="faculty_content_button reginsterBtnContent">
+                    <div class="faculty_text_button">
+                        <span>Зарегистрировать</span>
+                    </div>
+                    <button type="submit" id="btn_form_faculties_next" class="btn_form registerBtn" name="type_form"
+                        value="teacherRegister"></button>
+
+
                 </div>
-                <button type="submit" id="btn_form_faculties_next" class="btn_form" name="type_form"
-                    value="teacherRegister"></button>
-
-
-            </div>
 
             </div>
 
 
-            
+
 
 
             <!--Конец вывода финальной страницы студента  -->
@@ -499,14 +522,14 @@ if (isset($_SESSION['studentWithFaculty']) and !empty($_SESSION['studentWithFacu
                     <path
                         d="M4.20195 4.41681L4.18988 4.43078L4.17888 4.44561C3.80645 4.94755 3.84732 5.65912 4.30251 6.11432C4.30251 6.11432 4.30251 6.11432 4.30252 6.11432L10.6879 12.5L4.30251 18.8857C4.30251 18.8857 4.30251 18.8857 4.30251 18.8857C3.80216 19.3861 3.80216 20.1973 4.30251 20.6976C4.80286 21.198 5.61411 21.198 6.11447 20.6976C6.11447 20.6976 6.11448 20.6976 6.11448 20.6976L12.5002 14.3123L18.8859 20.6976L18.8988 20.7106L18.9127 20.7226L19.0003 20.7982L19.0143 20.8102L19.0291 20.8212C19.531 21.1937 20.2427 21.1529 20.6978 20.6976L20.7108 20.6846L20.7227 20.6708L20.7983 20.5832L20.8104 20.5692L20.8214 20.5545C21.1939 20.0525 21.153 19.3409 20.6978 18.8857C20.6978 18.8857 20.6977 18.8857 20.6977 18.8857L14.3125 12.5L20.6978 6.11433C20.6978 6.11433 20.6978 6.11432 20.6978 6.11431C21.1982 5.61396 21.1981 4.80271 20.6978 4.30236C20.1974 3.80201 19.3863 3.80201 18.8859 4.30235C18.8859 4.30235 18.8859 4.30236 18.8859 4.30236L12.5002 10.6877L6.11447 4.30235L6.10152 4.28941L6.08766 4.27744L6.00003 4.20179L5.98606 4.18973L5.97123 4.17873C5.46928 3.8063 4.75771 3.84717 4.30252 4.30236L4.28956 4.31532L4.27759 4.32918L4.20195 4.41681Z"
                         fill="#2F2D35" stroke="#2F2D35" />
-                    </svg>
-                    
+                </svg>
+
             </button>
             <div class="modal_box_text"><span>Пользователь с таким логином уже существует</span></div>
         </div>
     </div>
 
-
+    <script src="../../js/hoverAndAction.js"></script>
     <script src="../../js/registration.js"></script>
 
 </body>

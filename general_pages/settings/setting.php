@@ -59,7 +59,7 @@ session_start();
                     </div>
                 </div>
                 <div class="right_block">
-                    <a href="../../general_pages/settings/settingEditLogin.php">
+                    <a class = "a"href="../../general_pages/settings/settingEditLogin.php">
                         <div class="card_setting_action">
                             <div class="card_setting_action_title">
                                 <span>Изменить логин</span>
@@ -69,7 +69,7 @@ session_start();
                             </div>
                         </div>
                     </a>
-                    <a href="../../general_pages/settings/settingEditPassword.php">
+                    <a class = "a" href="../../general_pages/settings/settingEditPassword.php">
                         <div class="card_setting_action">
                             <div class="card_setting_action_title">
                                 <span>Изменить пароль</span>
@@ -80,7 +80,7 @@ session_start();
                         </div>
                     </a>
 
-                    <a href="../../general_pages/settings/settingEditEmail.php">
+                    <a class = "a" href="../../general_pages/settings/settingEditEmail.php">
                         <div class="card_setting_action">
                             <div class="card_setting_action_title">
                                 <span>Изменить адрес электронной почты</span>
@@ -91,7 +91,7 @@ session_start();
                         </div>
                     </a>
 
-                    <a href="../../general_pages/settings/settingEditPhoto.php">
+                    <a class = "a" href="../../general_pages/settings/settingEditPhoto.php">
                         <div class="card_setting_action">
                             <div class="card_setting_action_title">
                                 <span>Изменить фото профиля</span>
@@ -110,6 +110,7 @@ session_start();
         </div>
 
     </main>
+    <script src="../../js/hoverAndAction.js"></script>
 
 </body>
 

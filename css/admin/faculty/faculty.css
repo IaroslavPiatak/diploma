@@ -239,3 +239,18 @@ body {
   opacity: 0;
   
 }
+
+
+a.registrationButton:hover {
+  border-radius: 15px;
+  transform: translateY(-0.20em);
+  transition: ease 0.3s;
+  box-shadow: 0 0 1em 0em #8F7ECE;
+}
+
+a.registrationButton:active {
+  border-radius: 15px;
+  transition: ease 0.1s;
+  transform: translateY(+0.20em);
+
+}

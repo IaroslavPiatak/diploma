@@ -67,30 +67,27 @@ if (!$_SESSION['dataOfUser']) // если нет сессии о пользов�
             </div>
             <!--Карточки с настройками-->
             <div class="card_content">
-                <a href="../general_pages/mail/mail.php">
-                    <div class="mail">
+                <button onClick='location.href="../general_pages/mail/mail.php"' class="mail" >
                         <div class="content">
-                            <div class="text">
+                            <div  class="text">
                                 <span>Почта</span>
                             </div>
                             <div class="img">
                                 <img src="../img/admin/card_icon.png" class="icon">
                             </div>
                         </div>
-                    </div>
-                </a>
-                <a href="../general_pages/settings/setting.php">
-                    <div class="setting">
+                </button>
+                <button onClick='location.href="../general_pages/settings/setting.php"'class="setting">
                         <div class="content">
-                            <div class="text">
+                            <div  class="text">
                                 <span>Настройки</span>
                             </div>
-                            <div class="img">
+                            <div  class="img">
                                 <img src="../img/admin/card_icon (1).png" class="icon1">
                             </div>
                         </div>
-                    </div>
-                </a>
+                   
+                </button>
 
                 <a href="registration/registration.php">
                     <div class="new_user">

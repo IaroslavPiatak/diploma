@@ -51,7 +51,7 @@ $idAnswer = $_POST['idAnswer'];
                         $_SESSION['homework']['idAnswer'] = $idAnswer;
                         $_SESSION['homework']['idHomework'] = $homeworkId;
                         ?>
-                        <button onClick='location.href="../diary/diary.php"' type = "button" class="button_header">Открыть журнал</button>
+                        <button onClick='location.href="../diary/diary.php"' type = "button" class="button_header" style = "width: 200px">Открыть журнал</button>
               
                     <button type="button" class="button_header exit"
                         onClick='location.href="bridge.php"'>Назад</button>

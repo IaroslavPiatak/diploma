@@ -151,7 +151,7 @@ $_SESSION['homework']['idAnswer'] = '';
                             ?>
                             <form action="homeworkViewAnswer.php" method = "post">
                                 <input type="hidden" name="idAnswer" value = "<?=$idAnswer?>">
-                                <button type = "submit">Посмотреть</button>
+                                <button class="forCss" type = "submit">Посмотреть</button>
                             </form>
                             <?  
                         } else

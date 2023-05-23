@@ -76,8 +76,20 @@ if (isset($_GET['groupsName'])) {
                     <div class="create">
                         <div class="create_content">
                             <form class="container_input" method="get" action="">
-                                <input type="text" class="text_input" name="groupsName" placeholder="Введите название группы">
-                                <input type="text" class="text_input" name="numberOfStudents" placeholder="Введите кол-во учеников">
+                            <div class="input-block">
+                            <input maxlength="20" type="text" name="groupsName" required spellcheck="false">
+                            <span class="placeholder">
+                            Введите название группы
+                            </span>
+                        </div> 
+                        <div class="input-block">
+                            <input maxlength="20" type="text" name="numberOfStudents" required spellcheck="false">
+                            <span class="placeholder">
+                            Введите кол-во учеников
+                            </span>
+                        </div> 
+
+                
                                 <button type="submit">Подтвердить</button>
                             </form>
 

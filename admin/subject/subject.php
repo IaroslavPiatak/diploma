@@ -36,7 +36,7 @@ require_once '../../connection.php';
                                 </div>
                             </div>
                         </div>
-                        <a href="subject_create.php">
+                        <a class="registrationButton" href="subject_create.php">
                             <div class="register_faculty">
                                 <div class="register_faculty_content">
                                     <div class="text">
@@ -85,7 +85,8 @@ require_once '../../connection.php';
                                 </div>
                             </div>
                         </div>
-                        <a href="subject_create.php">
+
+                        <a class="registrationButton" href="subject_create.php">
                             <div class="register_faculty">
                                 <div class="register_faculty_content">
                                     <div class="text">
@@ -107,7 +108,7 @@ require_once '../../connection.php';
                             if ($i == 6) {
                                 break;
                             }
-                            echo ' <div class="faculty">
+                            echo ' <div class="faculty facultyBtn facultyBtnContent">
                             <div class="faculty_content">
                                 <div class="faculty_text">
                                     <span>'
@@ -131,7 +132,7 @@ require_once '../../connection.php';
                     <div class="down_block">
                         <?
                         for ($i <= 7; $i < $countFaculties; ++$i) { // вывод блоков
-                            echo ' <div class="faculty">
+                            echo ' <div class="faculty facultyBtn facultyBtnContent">
                             <div class="faculty_content">
                                 <div class="faculty_text">
                                     <span>'
@@ -154,6 +155,7 @@ require_once '../../connection.php';
         ?>
 
     </main>
+    <script src = "../../js/hoverAndAction.js"></script>
 </body>
 
 </html>

@@ -99,6 +99,25 @@ body {
 .exit {
     background: #EC5863;
 }
+.button_header:hover
+{
+    transform: translateY(-0.20em);
+    transition: ease 0.3s;
+    box-shadow: 0 0 1em 0em #8F7ECE;
+
+}
+
+.exit:hover {
+    transform: translateY(-0.20em);
+    transition: ease 0.3s;
+    box-shadow: 0 0 1em 0em #EC5863;
+  }
+  
+  .exit:active, .button_header:active {
+    transition: ease 0.1s;
+    transform: translateY(+0.20em);
+  
+  }
 
 .letter_box {
  

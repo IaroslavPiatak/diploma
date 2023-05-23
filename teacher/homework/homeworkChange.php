@@ -61,7 +61,7 @@ else if (isset($_POST['facultyId']) AND !empty($_POST['facultyId']))
                 $idSubject = $subjects[$i][0];
                 // Вывод предметов
                 echo '
-                <form action = " " method = "post" > 
+                <form class = "facultyBtnContent" action = " " method = "post" > 
                     <div class="faculty">
                     <div class="faculty_content">
                         <div class="faculty_text">
@@ -78,7 +78,7 @@ else if (isset($_POST['facultyId']) AND !empty($_POST['facultyId']))
                         </div>
                          <input type = "hidden" name = "subjectId" value ="' . $idSubject . '">
                          <input type = "hidden" name = "post" value = "faculties">
-                        <input type = "submit" class = "submit_subject">
+                        <input type = "submit" class = "submit_subject facultyBtn">
                     </div>
                    
                 </div>
@@ -99,7 +99,7 @@ else if (isset($_POST['facultyId']) AND !empty($_POST['facultyId']))
                 if($countGroupsInFaculty == 0)
                 continue;
                 echo '
-                <form action = "" method = "post" "> 
+                <form class = "facultyBtnContent" action = "" method = "post" "> 
                     <div class="faculty">
                     <div class="faculty_content">
                         <div class="faculty_text">
@@ -114,7 +114,7 @@ else if (isset($_POST['facultyId']) AND !empty($_POST['facultyId']))
                     '</span>
                             
                         </div>
-                        <input type = "submit" class = "submit_faculty">
+                        <input type = "submit" class = "submit_faculty facultyBtn">
                     </div>
                     <input type = "hidden" name = "facultyId" value ="' . $idFaculty . '">
                     <input type = "hidden" name = "post" value = "groups">
@@ -136,7 +136,7 @@ else if (isset($_POST['facultyId']) AND !empty($_POST['facultyId']))
              for ($i = 0; $i < $countGroups; $i++) {
                  $idGroup = $arrGroups[$i][0];
                  echo '
-                 <form action = "homeworkHub.php" method = "post"> 
+                 <form class = "facultyBtnContent" action = "homeworkHub.php" method = "post"> 
                      <div class="faculty">
                      <div class="faculty_content">
                          <div class="faculty_text">
@@ -151,7 +151,7 @@ else if (isset($_POST['facultyId']) AND !empty($_POST['facultyId']))
                      '</span>
                              
                          </div>
-                         <input type = "submit" class = "submit_faculty">
+                         <input type = "submit" class = "submit_faculty facultyBtn">
                      </div>
                      <input type = "hidden" name = "groupId" value ="' . $idGroup . '">
                      <input type = "hidden" name = "post" value = "groups">
@@ -161,6 +161,6 @@ else if (isset($_POST['facultyId']) AND !empty($_POST['facultyId']))
             ?>
         </div>
     </div>
-
+        <script src = "../../js/hoverAndAction.js"></script>
             <script src="../../js/homeworkChange.js"></script>
 </body>

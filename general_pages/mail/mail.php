@@ -29,52 +29,47 @@ header('Refresh: 10');
                 <button class="button_header" onClick='location.href="mailChange.php"'>Написать</button>
                 <?
                 $checkUserRole = $_SESSION['dataOfUser']['userRole'];
-                if($checkUserRole == 1)
-                {
+                if ($checkUserRole == 1) {
                     ?>
                     <button class="button_header exit" onClick='location.href="../../admin/paAdmin.php"'>Выйти</button>
-                    <?
+                <?
 
-                }
-                else if($checkUserRole == 2)
-                {
+                } else if ($checkUserRole == 2) {
                     ?>
-                    <button class="button_header exit" onClick='location.href="../../teacher/pa_teacher.php"'>Выйти</button>
-                    <?
+                        <button class="button_header exit" onClick='location.href="../../teacher/pa_teacher.php"'>Выйти</button>
+                <?
 
-                }
-                else
-                {
+                } else {
                     ?>
-                    <button class="button_header exit" onClick='location.href="../../student/pa_student.php"'>Выйти</button>
-                    <?
+                        <button class="button_header exit" onClick='location.href="../../student/pa_student.php"'>Выйти</button>
+                <?
 
                 }
-                
+
                 ?>
-               
+
             </div>
         </div>
         <div class="letter_box">
             <?
             $userId = $_SESSION['dataOfUser']['userId'];
-          
+
             $countOfLetter = mysqli_fetch_all(mysqli_query($connect, "SELECT COUNT(*) FROM `letters` WHERE `destination_id` = '$userId'"))[0][0];
             $letters = mysqli_fetch_all(mysqli_query($connect, "SELECT * FROM `letters` WHERE `destination_id` = '$userId'"));
-          
+
             if ($countOfLetter == 0) {
                 ?>
                 <div class="warning">
-                            <div class="warning_content">
-                                <div class="warning_img">
-                                    <img src="/img/general_pages/mail/mail_box.png" class="icon2">
-                                </div>
-                                <div class="warning_text">
-                                    <span>Ваш почтовый ящик пуст</span>
-                                </div>
-                            </div>
+                    <div class="warning_content">
+                        <div class="warning_img">
+                            <img src="/img/general_pages/mail/mail_box.png" class="icon2">
                         </div>
-                <?
+                        <div class="warning_text">
+                            <span>Ваш почтовый ящик пуст</span>
+                        </div>
+                    </div>
+                </div>
+            <?
             } else {
                 for ($i = 0; $i < $countOfLetter; $i++) {
                     $letterId = $letters[$i][0];
@@ -85,20 +80,20 @@ header('Refresh: 10');
                     $date = $letters[$i][6];
                     $time = $letters[$i][7];
 
-                    if($date == date('d.m.y'))
-                    $dateTime = $time;
+                    if ($date == date('d.m.y'))
+                        $dateTime = $time;
                     else
-                    $dateTime = $date;
+                        $dateTime = $date;
 
-                    if($letterStatus == 0)
-                    $letterIcon = '<div class = "letter_close">';
+                    if ($letterStatus == 0)
+                        $letterIcon = '<div class = "letter_close">';
                     else
-                    $letterIcon = '<div class = "letter_open">';
+                        $letterIcon = '<div class = "letter_open">';
 
-                   
-                   
+
+
                     echo '
-                <form action = "mailCreate.php" method = "post">
+                <form class = "hoverActiveForJs" action = "mailCreate.php" method = "post">
                 <input type = "hidden" name = "letterId" value = "' . $letterId . '">
                 <input type = "hidden" name = "senderId" value = "' . $senderId . '">
                 <input type = "hidden" name = "theme" value = "' . $theme . '">
@@ -107,7 +102,7 @@ header('Refresh: 10');
                 <input type = "submit" class = "inputSubmit">
                 <div class="letter">
                 <div class="icon">
-                '.$letterIcon.'
+                ' . $letterIcon . '
                 </div>
                 </div>
                 <div class="theme"><span>' . $theme . '</span></div>
@@ -122,7 +117,7 @@ header('Refresh: 10');
 
         </div>
     </div>
-
+    
 </body>
 
 </html>

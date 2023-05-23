@@ -300,7 +300,7 @@ echo '<span hidden id = "outputContent">admin</span>';
 
 
 
-
+    <script src="../../js/hoverAndAction.js"></script>
     <script src="../../js/mailChange.js"></script>
 
 </body>

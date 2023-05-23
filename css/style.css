@@ -67,17 +67,6 @@ main {
   transition: ease 0.5s;
 }
 
-.container_input button:hover {
-  transform: translateY(-0.20em);
-  transition: ease 0.3s;
-  box-shadow: 0 0 1em 0em #8F7ECE;
-}
-
-.container_input button:active {
-  transition: ease 0.1s;
-  transform: translateY(+0.20em);
-
-}
 
 
 .modal {
@@ -206,8 +195,7 @@ main {
   }
   div.input-block input:valid + span.placeholder,
   div.input-block input:focus + span.placeholder {
-    transform: scale(0.8) translateY(-30px) translateX(-10
-    0px);
+    transform: scale(0.8) translateY(-30px) translateX(-100px);
     
     background: #FFFFFF;
     
