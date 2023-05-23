@@ -211,3 +211,23 @@ main {
   div.input-block input:focus + span.placeholder {
     color: #808080;
   }
+
+  .hidden
+  {
+    display: none;
+  }
+
+
+  button:hover {
+    border-radius: 15px;
+    transform: translateY(-0.20em);
+    transition: ease 0.3s;
+    box-shadow: 0 0 1em 0em #8F7ECE;
+  }
+  
+  button:active {
+    border-radius: 15px;
+    transition: ease 0.1s;
+    transform: translateY(+0.20em);
+  
+  }

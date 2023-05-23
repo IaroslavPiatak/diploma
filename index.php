@@ -49,13 +49,20 @@ if (isset($_POST['login'])) {
 
 <body>
 
+    <div class="loader book ">
+        <figure class="page "></figure>
+        <figure class="page "></figure>
+        <figure class="page "></figure>
+    </div>
 
-    <div class="main">
+    <h1 class="textLoader">Загрузка</h1>
+
+    <div class="main hidden">
         <div class="main_container">
             <div class="main_container_block">
                 <form class="container_input" action=" " method="post">
-                    <div class="input-block"> 
-                        <input  maxlength="20" type="text" required name="login" id="login"  spellcheck="false">
+                    <div class="input-block">
+                        <input maxlength="20" type="text" required name="login" id="login" spellcheck="false">
                         <span class="placeholder">
                             Введите логин
                         </span>
@@ -65,7 +72,7 @@ if (isset($_POST['login'])) {
                         <span class="placeholder">
                             Введите пароль
                         </span>
-                    </div> 
+                    </div>
                     <button type="submit">Войти</button>
                 </form>
 
@@ -93,8 +100,12 @@ if (isset($_POST['login'])) {
         </div>
     </div>
 
+   
 
+    
     <script async src="js/alert.js"></script>
+    <script async src="js/loader.js"></script>
+   
 </body>
 
 </html>
