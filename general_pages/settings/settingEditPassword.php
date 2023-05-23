@@ -29,48 +29,50 @@ session_start();
                             </div>
 
                             <div class="exit">
-                            <?
+                                <?
                                 $checkUserRole = $_SESSION['dataOfUser']['userRole'];
-                                if($checkUserRole == 1)
-                                {
+                                if ($checkUserRole == 1) {
                                     ?>
-                                   <a href="../../admin/paAdmin.php">Вернуться в личный кабинет</a>
-                                    <?
-                
-                                }
-                                else if($checkUserRole == 2)
-                                {
+                                    <a href="../../admin/paAdmin.php">Вернуться в личный кабинет</a>
+                                <?
+
+                                } else if ($checkUserRole == 2) {
                                     ?>
-                                   <a href="../../teacher/pa_teacher.php">Вернуться в личный кабинет</a>
-                                    <?
-                
-                                }
-                                else
-                                {
+                                        <a href="../../teacher/pa_teacher.php">Вернуться в личный кабинет</a>
+                                <?
+
+                                } else {
                                     ?>
-                                   <a href="../../student/pa_student.php">Вернуться в личный кабинет</a>
-                                    <?
-                
+                                        <a href="../../student/pa_student.php">Вернуться в личный кабинет</a>
+                                <?
+
                                 }
-                                
+
                                 ?>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="right_block">
-                   <div class="form_block">
-                    <div class="form_block_content">
-                        <form action = "settingEdit.php" method = "post">
-                            <input type = "password" class="text_input" name="oldPassword" placeholder = "Введите старый пароль">
-                            <input type = "password" class="text_input" name="newPassword" placeholder = "Введите новый пароль">
-                            <input type="hidden" name="action" value="password"  hiden>
-                            <button type = "submit">Подтвердить</button>
-                        </form>
+                    <div class="form_block">
+                        <div class="form_block_content">
+                            <form action="settingEdit.php" method="post">
+                                <div class="input-block">
+                                    <input maxlength="20" type="password" required name="oldPassword"
+                                        spellcheck="false">
+                                    <span class="placeholder">Введите старый пароль</span>
+                                </div>
+                                <div class="input-block">
+                                    <input maxlength="20" type="password" name="newPassword" required spellcheck="false">
+                                    <span class="placeholder">Введите новый пароль</span>
+                                </div>
+                                <input type="hidden" name="action" value="password" hiden>
+                                <button type="submit">Подтвердить</button>
+                            </form>
+
+                        </div>
 
                     </div>
-
-                   </div>
                 </div>
             </div>
 

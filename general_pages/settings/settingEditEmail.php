@@ -62,9 +62,16 @@ session_start();
                    <div class="form_block">
                     <div class="form_block_content">
                     <form method="post" action="settingEdit.php">
-                            <input type = "text" class="text_input" name="oldEmail" placeholder = "Введите старую почту">
-                            <input type = "text" class="text_input" name="newEmail" placeholder = "Введите новую почту">
-                            <input type="hidden" name="action" value="email"  hiden>
+                    <div class="input-block">
+                                    <input maxlength="30" type="text" required name="oldEmail"
+                                        spellcheck="false">
+                                    <span class="placeholder">Введите старую почту</span>
+                                </div>
+                                <div class="input-block">
+                                    <input maxlength="30" type="text" name="newEmail" required spellcheck="false">
+                                    <span class="placeholder">Введите новую почту</span>
+                                </div>
+                            <input type="hidden" name="action" value="email">
                             <button type = "submit">Подтвердить</button>
                         </form>
 

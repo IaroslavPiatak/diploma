@@ -199,4 +199,19 @@ button {
     align-items: center;
     justify-content: center;    
     color: #FFFFFF;
+    transition: ease 0.5s;
+}
+
+
+
+button:hover {
+    transform: translateY(-0.20em);
+    transition: ease 0.3s;
+    box-shadow: 0 0 1em 0em #8F7ECE;
+}
+
+button:active {
+    transition: ease 0.1s;
+    transform: translateY(+0.20em);
+
 }

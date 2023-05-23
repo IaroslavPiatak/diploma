@@ -127,9 +127,23 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-
+    transition: ease 0.5s;
     color: #FFFFFF;
 }
+
+
+.exit_btn:hover {
+  transform: translateY(-0.20em);
+  transition: ease 0.3s;
+  box-shadow: 0 0 1em 0em #EC5863;
+}
+
+.exit_btn:active {
+  transition: ease 0.1s;
+  transform: translateY(+0.20em);
+
+}
+
 
 .clickInput {
     transition: ease-out 0.1s;

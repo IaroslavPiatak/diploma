@@ -32,30 +32,25 @@ require_once '../../connection.php';
                             </div>
 
                             <div class="exit">
-                            <?
+                                <?
                                 $checkUserRole = $_SESSION['dataOfUser']['userRole'];
-                                if($checkUserRole == 1)
-                                {
+                                if ($checkUserRole == 1) {
                                     ?>
-                                   <a href="../../admin/paAdmin.php">Вернуться в личный кабинет</a>
-                                    <?
-                
-                                }
-                                else if($checkUserRole == 2)
-                                {
+                                    <a href="../../admin/paAdmin.php">Вернуться в личный кабинет</a>
+                                <?
+
+                                } else if ($checkUserRole == 2) {
                                     ?>
-                                   <a href="../../teacher/pa_teacher.php">Вернуться в личный кабинет</a>
-                                    <?
-                
-                                }
-                                else
-                                {
+                                        <a href="../../teacher/pa_teacher.php">Вернуться в личный кабинет</a>
+                                <?
+
+                                } else {
                                     ?>
-                                   <a href="../../student/pa_student.php">Вернуться в личный кабинет</a>
-                                    <?
-                
+                                        <a href="../../student/pa_student.php">Вернуться в личный кабинет</a>
+                                <?
+
                                 }
-                                
+
                                 ?>
                             </div>
                         </div>
@@ -65,14 +60,25 @@ require_once '../../connection.php';
                     <div class="form_block">
                         <div class="form_block_content">
                             <form method="post" action="settingEdit.php">
-                                <input type="text" class="text_input" name="oldLogin"
-                                    placeholder="Введите старый логин">
-                                <input type="text" class="text_input" name="newLogin" placeholder="Введите новый логин">
-                                <input type="hidden" name="action" value="login"  hiden>
+                                <div class="input-block">
+                                    <input maxlength="20" type="text" required name="oldLogin" id="oldLogin"
+                                        spellcheck="false">
+                                    <span class="placeholder">
+                                        Введите старый логин
+                                    </span>
+                                </div>
+                                <div class="input-block">
+                                    <input maxlength="20" type="text" name="newLogin" id="newLogin" required
+                                        spellcheck="false">
+                                    <span class="placeholder">
+                                        Введите новый логин
+                                    </span>
+                                </div>
+                                <input type="hidden" name="action" value="login" hiden>
                                 <button type="submit">Подтвердить</button>
                             </form>
                         </div>
-                        
+
 
                     </div>
                 </div>
