@@ -21,14 +21,20 @@ if (!$_SESSION['dataOfUser']) // если нет сессии о пользов�
 </head>
 
 <body>
+<div class="glass"></div>
 
-
-    <div class="loader book ">
+<div class="preloader">
+<div class="loader book ">
         <figure class="page "></figure>
         <figure class="page "></figure>
         <figure class="page "></figure>
     </div>
+
     <h1 class="textLoader">Загрузка</h1>
+</div>
+
+
+
     <div class="main hidden">
         <div class="pa_container">
             <div class="first_container">
@@ -161,6 +167,7 @@ if (!$_SESSION['dataOfUser']) // если нет сессии о пользов�
             </div>
         </div>
     </div>
+
     <script async src="../js/loader.js"></script>
 </body>
 

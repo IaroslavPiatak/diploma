@@ -48,15 +48,17 @@ if (isset($_POST['login'])) {
 </head>
 
 <body>
-
-    <div class="loader book ">
+<div class="preloader">
+<div class="loader book ">
         <figure class="page "></figure>
         <figure class="page "></figure>
         <figure class="page "></figure>
     </div>
 
     <h1 class="textLoader">Загрузка</h1>
-
+</div>
+    
+<div class="glass"></div>
     <div class="main hidden">
         <div class="main_container">
             <div class="main_container_block">

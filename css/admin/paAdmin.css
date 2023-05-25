@@ -1,28 +1,75 @@
-
-body{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+body {
+  position: relative;
+  z-index: 0;
+    height: 100%;
+    width: 100%;
+    font-size: 100%;
+    line-height: 1;
+    font-size: 14px;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      /* background: linear-gradient(-45deg, #F6F5FB, #EC5863,#8F7ECE, white); */
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
 }
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.main {
+  position: absolute;
+  z-index: 10;
+}
+
+.glass {
+  position: absolute;
+  z-index: 9;
+  width: 100%;
+  height: 100%;;
+  background: rgba(5, 5, 5, 0.2);
+  backdrop-filter: blur(20px);
+  border: 2px solid transparent;
+  box-shadow: 8px 8px 12px rgba(0,0,0,10%);
+
+}
+
 /*контейнер для фотокарточек*/
-.pa_container{
+.pa_container {
   display: flex;
   justify-content: center;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
+
 /*Главная фотокарточка и контейнер для первых четырех*/
-.first_container{
-  width:1100px;
-  height:350px;
+.first_container {
+  width: 1100px;
+  height: 350px;
   display: flex;
-  justify-content: center;  
+  justify-content: center;
   align-items: center;
-  gap:100px;
-  }
+  gap: 100px;
+}
+
 /*Стили карточки профиля*/
-.profile_card{
+.profile_card {
   width: 300px;
   height: 350px;
   display: flex;
@@ -31,83 +78,106 @@ body{
   border-radius: 15px;
   background: #FFFFFF;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  }
-  /*Контейнер карточек с настройками(первые четыре)*/
-.card_content{
-  width:700px;
-  height:350px;
+}
+
+/*Контейнер карточек с настройками(первые четыре)*/
+.card_content {
+  width: 700px;
+  height: 350px;
   display: flex;
-  flex-wrap:wrap;
-  gap:50px 100px;
+  flex-wrap: wrap;
+  gap: 50px 100px;
 }
 
-  /*Стили карточки с настройками(первые четыре)*/
-  .mail, .setting, .new_user, .delete, .facultative, .items, .shedule{
-width: 300px;
-height: 150px;
-background: #FFFFFF;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 15px;
-transition: ease 0.3s;
-  }
-
-
-  .mail:hover, .setting:hover, .new_user:hover, .delete:hover, .facultative:hover, .items:hover, .shedule:hover {
-    transform: translateY(-0.20em);
-    transition: ease 0.3s;
-    box-shadow: 0 0 1em 0em #8F7ECE;
-}
-
-.mail:active, .setting:active, .new_user:active, .delete:active, .facultative:active, .items:active, .shedule:active {
-    transition: ease 0.1s;
-    transform: translateY(+0.20em);
-
+/*Стили карточки с настройками(первые четыре)*/
+.mail,
+.setting,
+.new_user,
+.delete,
+.facultative,
+.items,
+.shedule {
+  width: 300px;
+  height: 150px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  transition: ease 0.3s;
 }
 
 
-    /*Нижний контейнер с карточками*/
-  .second_container{
-    width:1100px;
-    height:150px;
-    margin-top:50px;
-    display:flex; 
-    gap:100px;
-  }
-  /*Стиль карточки профиля 2*/
-  .profile_card_content{
-    width: 250px;
-    height: 300px;
-    margin: 0 auto;
-  }
-  .profile_card_img{
-    text-align: center;
-  }
-  .name{
-    width: 250px;
-    height: 50px;
-    margin-top: 20px;
-    font-family: 'Rubik';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 24px;
-    text-align: center;
-    color: #2F2D35;
-  }
-.email{
+.mail:hover,
+.setting:hover,
+.new_user:hover,
+.delete:hover,
+.facultative:hover,
+.items:hover,
+.shedule:hover {
+  transform: translateY(-0.20em);
+  transition: ease 0.3s;
+  box-shadow: 0 0 1em 0em #8F7ECE;
+}
+
+.mail:active,
+.setting:active,
+.new_user:active,
+.delete:active,
+.facultative:active,
+.items:active,
+.shedule:active {
+  transition: ease 0.1s;
+  transform: translateY(+0.20em);
+
+}
+
+
+/*Нижний контейнер с карточками*/
+.second_container {
+  width: 1100px;
+  height: 150px;
+  margin-top: 50px;
+  display: flex;
+  gap: 100px;
+}
+
+/*Стиль карточки профиля 2*/
+.profile_card_content {
+  width: 250px;
+  height: 300px;
+  margin: 0 auto;
+}
+
+.profile_card_img {
+  text-align: center;
+}
+
+.name {
+  width: 250px;
+  height: 50px;
+  margin-top: 20px;
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: #2F2D35;
+}
+
+.email {
   width: 250px;
   height: 20px;
   font-family: 'Rubik';
   font-weight: normal;
   font-weight: 400;
   font-size: 16px;
-  line-height: 19px; 
+  line-height: 19px;
   text-align: center;
   color: #808080;
-  
+
 }
 
-.exit{
+.exit {
   width: 250px;
   height: 50px;
   font-family: 'Rubik';
@@ -119,69 +189,75 @@ transition: ease 0.3s;
   justify-content: center;
   align-items: center;
   color: #808080;
-  margin-top:55px;
+  margin-top: 55px;
 }
-.exit a{
+
+.exit a {
   text-decoration: none;
   color: #808080;
 }
 
-.exit a:hover{
+.exit a:hover {
   color: #EC5863;
-    transition: 1s;
+  transition: 1s;
 }
-  /*контент в маленьких карточках*/
-.content{
+
+/*контент в маленьких карточках*/
+.content {
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   padding-left: 25px;
-  gap:15px;
+  gap: 15px;
 
 }
-.text{
-  width:250px;
-  height:70px;
+
+.text {
+  width: 250px;
+  height: 70px;
   padding-top: 25px;
   text-align: start;
 }
-.text span{
+
+.text span {
   font-weight: 600;
   font-size: 20px;
   line-height: 24px;
   color: #8F7ECE;
   text-align: start;
 }
-.icon{
-  width:45px;
-  height:35px;
-}
-.icon1{
-  width:45px;
-  height:45px;
-}
-.icon2{
-  width:44.98px;
-  height:45px;
-}
-.avatar{
-  width:100px;
-  height:100px;
+
+.icon {
+  width: 45px;
+  height: 35px;
 }
 
-.avatarChange
-{
+.icon1 {
+  width: 45px;
+  height: 45px;
+}
+
+.icon2 {
+  width: 44.98px;
+  height: 45px;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+}
+
+.avatarChange {
   width: 100px;
   height: 100px;
   border-radius: 50px;
-  background-size:auto;
+  background-size: auto;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
   background-size: auto;
 }
 
-.img
-{
+.img {
   display: flex;
   justify-content: start;
   height: 45px;
