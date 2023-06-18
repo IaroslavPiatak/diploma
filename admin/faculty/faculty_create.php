@@ -67,7 +67,7 @@ if (isset($_POST['facultyName'])) {
                         <div class="create_content">
                             <form class="container_input" method="post" action="">
                             <div class="input-block">
-                            <input maxlength="20" type="text" name="facultyName" required spellcheck="false">
+                            <input maxlength="50" type="text" name="facultyName" required spellcheck="false">
                             <span class="placeholder">
                                 Введите название факультета
                             </span>

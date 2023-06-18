@@ -23,7 +23,7 @@ abstract.addEventListener('click', ()=>
 {
     document.querySelector('.date_select').classList.add('hidden');
     document.querySelector('.bottom').style.justifyContent = "flex-end";
-    document.getElementById("dateInput").setAttribute("required",false);;
+    // document.getElementById("dateInput").setAttribute("required",false);;
     
 
 });
@@ -32,7 +32,7 @@ practice.addEventListener('click', ()=>
 {
     document.querySelector('.date_select').classList.remove('hidden');
     document.querySelector('.bottom').style.justifyContent = "space-between";
-    document.getElementById("dateInput").setAttribute("required",true);
+    // document.getElementById("dateInput").setAttribute("required",true);
 
 });
 
